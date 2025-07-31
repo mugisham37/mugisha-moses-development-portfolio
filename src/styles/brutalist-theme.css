@@ -4,20 +4,22 @@
   --brutalist-white: #ffffff;
   --brutalist-yellow: #ffff00;
   --brutalist-gray: #808080;
-  
+
   /* Spacing */
   --brutalist-border-thick: 5px;
   --brutalist-border-medium: 3px;
   --brutalist-border-thin: 2px;
-  
+
   /* Shadows */
   --brutalist-shadow-small: 3px 3px 0px var(--brutalist-black);
   --brutalist-shadow-medium: 5px 5px 0px var(--brutalist-black);
   --brutalist-shadow-large: 8px 8px 0px var(--brutalist-black);
-  
+
   /* Glow effects */
-  --brutalist-glow-yellow: 0 0 10px var(--brutalist-yellow), 0 0 20px var(--brutalist-yellow);
-  --brutalist-glow-white: 0 0 10px var(--brutalist-white), 0 0 20px var(--brutalist-white);
+  --brutalist-glow-yellow: 0 0 10px var(--brutalist-yellow),
+    0 0 20px var(--brutalist-yellow);
+  --brutalist-glow-white: 0 0 10px var(--brutalist-white),
+    0 0 20px var(--brutalist-white);
 }
 
 /* Dark mode variables */
@@ -55,27 +57,48 @@
 
 /* Custom animations */
 @keyframes glitch {
-  0% { transform: translate(0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(-2px, -2px); }
-  60% { transform: translate(2px, 2px); }
-  80% { transform: translate(2px, -2px); }
-  100% { transform: translate(0); }
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { 
+  0%,
+  100% {
     box-shadow: 0 0 5px var(--brutalist-yellow);
   }
-  50% { 
-    box-shadow: 0 0 20px var(--brutalist-yellow), 0 0 30px var(--brutalist-yellow);
+  50% {
+    box-shadow: 0 0 20px var(--brutalist-yellow),
+      0 0 30px var(--brutalist-yellow);
   }
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-2px); }
-  75% { transform: translateX(2px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
 }
 
 /* Brutalist button styles */
@@ -708,11 +731,11 @@
   .playground-main {
     @apply grid-cols-1;
   }
-  
+
   .metrics-grid {
     @apply grid-cols-2;
   }
-  
+
   .category-examples {
     @apply grid-cols-1;
   }
@@ -740,7 +763,8 @@
 }
 
 @keyframes exit-intent-pulse {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: var(--brutalist-shadow-medium);
   }
   50% {
@@ -749,7 +773,8 @@
 }
 
 @keyframes exit-intent-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) rotate(0deg);
   }
   50% {
@@ -767,7 +792,8 @@
 }
 
 @keyframes toggle-glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: var(--brutalist-shadow-medium);
   }
   50% {
@@ -784,7 +810,7 @@
   .brutalist-shadow {
     box-shadow: 2px 2px 0px var(--brutalist-black);
   }
-  
+
   .brutalist-btn:hover,
   .brutalist-card:hover {
     transform: translate(-1px, -1px);

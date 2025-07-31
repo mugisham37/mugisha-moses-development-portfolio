@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ContactSection from "@/components/sections/ContactSection";
 import ContactInfo from "@/components/sections/ContactInfo";
-import ConsultationBooking from "@/components/ui/ConsultationBooking";
+import BookingSection from "@/components/sections/BookingSection";
 import { Clock, MapPin, CheckCircle, Globe } from "lucide-react";
 import {
   generateMetadata as generateSEOMetadata,
@@ -195,16 +195,7 @@ export default function Contact() {
         <ContactInfo className="border-b-5 border-black" />
 
         {/* Calendar Booking Section */}
-        <section className="py-16 lg:py-24 bg-gray-50 border-b-5 border-black">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <ConsultationBooking
-              onBookingSubmit={(booking) => {
-                console.log("Booking submitted:", booking);
-                // Handle booking submission
-              }}
-            />
-          </div>
-        </section>
+        <BookingSection />
 
         {/* Main Contact Form */}
         <ContactSection />

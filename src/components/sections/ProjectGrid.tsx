@@ -23,7 +23,7 @@ const CATEGORIES = [
   { id: "mobile", label: "Mobile", count: 0 },
 ] as const;
 
-export function ProjectGrid({
+function ProjectGrid({
   projects = FEATURED_PROJECTS,
   className = "",
   showFeatured = false,
@@ -401,3 +401,5 @@ function ProjectCard({ project, onOpenModal }: ProjectCardProps) {
     </motion.div>
   );
 }
+// Default export for lazy loading
+export default ProjectGrid;

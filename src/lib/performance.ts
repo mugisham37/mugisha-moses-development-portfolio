@@ -1,7 +1,25 @@
 // Performance monitoring utilities
 
+// Global gtag declaration
+declare global {
+  interface Window {
+    gtag?: (
+      command: string,
+      targetId: string,
+      config?: Record<string, unknown>
+    ) => void;
+  }
+}
+
+// Make gtag available globally
+const gtag = typeof window !== "undefined" ? window.gtag : undefined;
+
 // Web Vitals tracking
-export const trackWebVitals = (metric: any) => {
+export const trackWebVitals = (metric: {
+  name: string;
+  value: number;
+  id: string;
+}) => {
   if (typeof window !== "undefined") {
     // Log to console in development
     if (process.env.NODE_ENV === "development") {
@@ -58,24 +76,24 @@ export const observePerformance = () => {
 
     try {
       lcpObserver.observe({ entryTypes: ["largest-contentful-paint"] });
-    } catch (e) {
+    } catch {
       // LCP not supported
     }
 
-    // Observe First Input Delay
-    const fidObserver = new PerformanceObserver((list) => {
+    // Observe Interaction to Next Paint (replaces FID in web-vitals v5)
+    const inpObserver = new PerformanceObserver((list) => {
       const entries = list.getEntries();
       entries.forEach((entry) => {
         if (process.env.NODE_ENV === "development") {
-          console.log("FID:", entry.processingStart - entry.startTime);
+          console.log("INP:", entry.duration);
         }
       });
     });
 
     try {
-      fidObserver.observe({ entryTypes: ["first-input"] });
-    } catch (e) {
-      // FID not supported
+      inpObserver.observe({ entryTypes: ["event"] });
+    } catch {
+      // INP not supported
     }
 
     // Observe Cumulative Layout Shift
@@ -83,11 +101,15 @@ export const observePerformance = () => {
       let clsValue = 0;
       const entries = list.getEntries();
 
-      entries.forEach((entry: any) => {
-        if (!entry.hadRecentInput) {
-          clsValue += entry.value;
+      entries.forEach(
+        (
+          entry: PerformanceEntry & { value?: number; hadRecentInput?: boolean }
+        ) => {
+          if (!entry.hadRecentInput && entry.value) {
+            clsValue += entry.value;
+          }
         }
-      });
+      );
 
       if (process.env.NODE_ENV === "development") {
         console.log("CLS:", clsValue);
@@ -96,28 +118,17 @@ export const observePerformance = () => {
 
     try {
       clsObserver.observe({ entryTypes: ["layout-shift"] });
-    } catch (e) {
+    } catch {
       // CLS not supported
     }
   }
 };
 
 // Lazy loading utility for components
-export const createLazyComponent = <T extends React.ComponentType<any>>(
-  importFunc: () => Promise<{ default: T }>,
-  fallback?: React.ComponentType
+export const createLazyComponent = <T extends React.ComponentType>(
+  importFunc: () => Promise<{ default: T }>
 ) => {
-  const LazyComponent = React.lazy(importFunc);
-
-  return (props: React.ComponentProps<T>) => (
-    <React.Suspense
-      fallback={
-        fallback ? React.createElement(fallback) : <div>Loading...</div>
-      }
-    >
-      <LazyComponent {...props} />
-    </React.Suspense>
-  );
+  return React.lazy(importFunc);
 };
 
 // Image preloading utility
@@ -169,8 +180,11 @@ export const analyzeBundleSize = () => {
     // Log bundle information
     console.group("Bundle Analysis");
     console.log("User Agent:", navigator.userAgent);
-    console.log("Connection:", (navigator as any).connection);
-    console.log("Memory:", (performance as any).memory);
+    console.log(
+      "Connection:",
+      (navigator as { connection?: unknown }).connection
+    );
+    console.log("Memory:", (performance as { memory?: unknown }).memory);
     console.groupEnd();
   }
 };
@@ -178,9 +192,10 @@ export const analyzeBundleSize = () => {
 // Performance budget checker
 export const checkPerformanceBudget = () => {
   if (typeof window !== "undefined") {
+    // Performance budget thresholds
     const budget = {
       maxLCP: 2500, // 2.5 seconds
-      maxFID: 100, // 100 milliseconds
+      maxINP: 200, // 200 milliseconds
       maxCLS: 0.1, // 0.1
     };
 
@@ -209,6 +224,9 @@ export const checkPerformanceBudget = () => {
             performance.getEntriesByName("first-contentful-paint")[0]
               ?.startTime + "ms"
           );
+
+          // Check against budget thresholds
+          console.log("Performance Budget:", budget);
           console.groupEnd();
         }
       }

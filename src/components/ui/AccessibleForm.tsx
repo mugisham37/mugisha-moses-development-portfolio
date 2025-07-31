@@ -186,7 +186,7 @@ export default function AccessibleForm({
     try {
       await onSubmit(e);
       announceToScreenReader("Form submitted successfully", "polite");
-    } catch (error) {
+    } catch {
       announceToScreenReader(
         "Form submission failed. Please try again.",
         "assertive"

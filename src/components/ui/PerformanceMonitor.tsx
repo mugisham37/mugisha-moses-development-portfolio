@@ -15,15 +15,15 @@ export default function PerformanceMonitor() {
     preloadCriticalResources();
     addResourceHints();
 
-    // Track web vitals
+    // Track web vitals (v5.x API)
     if (typeof window !== "undefined") {
       import("web-vitals")
-        .then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-          getCLS(trackWebVitals);
-          getFID(trackWebVitals);
-          getFCP(trackWebVitals);
-          getLCP(trackWebVitals);
-          getTTFB(trackWebVitals);
+        .then(({ onCLS, onINP, onFCP, onLCP, onTTFB }) => {
+          onCLS(trackWebVitals);
+          onINP(trackWebVitals);
+          onFCP(trackWebVitals);
+          onLCP(trackWebVitals);
+          onTTFB(trackWebVitals);
         })
         .catch(() => {
           // web-vitals not available, continue without it

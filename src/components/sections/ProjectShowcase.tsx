@@ -13,7 +13,7 @@ interface ProjectShowcaseProps {
   className?: string;
 }
 
-export function ProjectShowcase({
+function ProjectShowcase({
   projects = FEATURED_PROJECTS,
   className = "",
 }: ProjectShowcaseProps) {
@@ -261,3 +261,5 @@ function ProjectCard({
     </motion.div>
   );
 }
+// Default export for lazy loading
+export default ProjectShowcase;

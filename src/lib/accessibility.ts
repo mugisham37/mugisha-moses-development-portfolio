@@ -190,7 +190,6 @@ export const prefersHighContrast = (): boolean => {
 export const addFocusVisiblePolyfill = () => {
   if (typeof window !== "undefined") {
     let hadKeyboardEvent = true;
-    let keyboardThrottleTimeout: NodeJS.Timeout;
 
     const focusTriggersKeyboardModality = (e: KeyboardEvent) => {
       if (e.metaKey || e.altKey || e.ctrlKey) {
@@ -301,8 +300,9 @@ export const runAccessibilityChecks = () => {
       "input:not([aria-label]):not([aria-labelledby])"
     );
     inputs.forEach((input) => {
-      const label = document.querySelector(`label[for="${input.id}"]`);
-      if (!label && input.type !== "hidden") {
+      const inputElement = input as HTMLInputElement;
+      const label = document.querySelector(`label[for="${inputElement.id}"]`);
+      if (!label && inputElement.type !== "hidden") {
         console.warn("Input without label found:", input);
       }
     });
