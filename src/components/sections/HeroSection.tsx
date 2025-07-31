@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
+// import Image from "next/image"; // Uncomment when adding actual headshot
 import { VantaBackground } from "@/components/interactive";
 import { BrutalistButton, AnimatedText } from "@/components/ui";
 import { cn } from "@/lib/utils";
@@ -250,6 +250,100 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
               </div>
             </motion.div>
           </div>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 2.0 }}
+          >
+            <motion.button
+              onClick={() => {
+                const portfolioSection = document.getElementById("portfolio");
+                if (portfolioSection) {
+                  portfolioSection.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              className="flex flex-col items-center space-y-2 group cursor-pointer focus:outline-none focus:ring-4 focus:ring-brutalist-yellow focus:ring-opacity-50 rounded-lg p-2"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Scroll to portfolio section"
+            >
+              {/* Scroll Text */}
+              <motion.span
+                className="font-mono text-xs uppercase tracking-wider text-brutalist-gray group-hover:text-brutalist-yellow transition-colors duration-300"
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                SCROLL
+              </motion.span>
+
+              {/* Animated Arrow */}
+              <div className="relative">
+                {/* Arrow Container */}
+                <motion.div
+                  className="w-6 h-10 border-2 border-brutalist-yellow rounded-full flex justify-center"
+                  animate={{
+                    borderColor: ["#ffff00", "#ffffff", "#ffff00"],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  {/* Animated Dot */}
+                  <motion.div
+                    className="w-1 h-1 bg-brutalist-yellow rounded-full mt-2"
+                    animate={{
+                      y: [0, 16, 0],
+                      backgroundColor: ["#ffff00", "#ffffff", "#ffff00"],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                </motion.div>
+
+                {/* Brutalist Arrow Below */}
+                <motion.div
+                  className="mt-2 flex flex-col items-center"
+                  animate={{ y: [0, 4, 0] }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[8px] border-l-transparent border-r-transparent border-t-brutalist-yellow group-hover:border-t-white transition-colors duration-300" />
+                  <div className="w-0 h-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-brutalist-yellow group-hover:border-t-white transition-colors duration-300 -mt-1" />
+                </motion.div>
+              </div>
+
+              {/* Additional Brutalist Elements */}
+              <motion.div
+                className="flex space-x-1 mt-2"
+                animate={{ opacity: [0.3, 1, 0.3] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5,
+                }}
+              >
+                <div className="w-1 h-1 bg-brutalist-yellow" />
+                <div className="w-1 h-1 bg-brutalist-white" />
+                <div className="w-1 h-1 bg-brutalist-yellow" />
+              </motion.div>
+            </motion.button>
+          </motion.div>
         </div>
       </VantaBackground>
     </section>
