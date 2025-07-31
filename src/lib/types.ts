@@ -4,12 +4,12 @@ export interface Project {
   title: string;
   description: string;
   longDescription: string;
-  technologies: readonly string[];
+  technologies: string[];
   category: "react" | "vue" | "ecommerce" | "saas" | "mobile";
   images: {
     thumbnail: string;
     mockup: string;
-    screenshots: readonly string[];
+    screenshots: string[];
   };
   links: {
     live?: string;
@@ -43,7 +43,7 @@ export interface Service {
   title: string;
   description: string;
   icon: string;
-  features: readonly string[];
+  features: string[];
   starting_price: string;
   delivery_time: string;
 }

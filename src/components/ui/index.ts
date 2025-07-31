@@ -2,6 +2,7 @@
 export { default as BrutalistCard } from "./BrutalistCard";
 export { default as BrutalistButton } from "./BrutalistButton";
 export { default as AnimatedText } from "./AnimatedText";
+export { ProjectModal } from "./ProjectModal";
 
 // Export component interfaces
 export type { BrutalistCardProps } from "./BrutalistCard";

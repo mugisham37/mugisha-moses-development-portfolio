@@ -4,8 +4,9 @@ import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, GitBranch, Eye, Filter } from "lucide-react";
 import { Project } from "@/lib/types";
-import { FEATURED_PROJECTS } from "@/lib/constants";
+import { FEATURED_PROJECTS, TESTIMONIALS } from "@/lib/constants";
 import BrutalistButton from "@/components/ui/BrutalistButton";
+import { ProjectModal } from "@/components/ui/ProjectModal";
 
 interface ProjectGridProps {
   projects?: readonly Project[];
@@ -29,6 +30,18 @@ export function ProjectGrid({
 }: ProjectGridProps) {
   const [activeFilter, setActiveFilter] = useState<string>("all");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (project: Project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
 
   // Filter projects and calculate counts
   const { filteredProjects, categoriesWithCounts } = useMemo(() => {
@@ -149,7 +162,10 @@ export function ProjectGrid({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <ProjectCard project={project} />
+                <ProjectCard
+                  project={project}
+                  onOpenModal={() => openModal(project)}
+                />
               </motion.div>
             ))}
           </motion.div>
@@ -183,6 +199,14 @@ export function ProjectGrid({
             Showing {filteredProjects.length} of {projects.length} projects
           </p>
         </motion.div>
+
+        {/* Project Modal */}
+        <ProjectModal
+          project={selectedProject}
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          testimonials={TESTIMONIALS}
+        />
       </div>
     </section>
   );
@@ -190,9 +214,10 @@ export function ProjectGrid({
 
 interface ProjectCardProps {
   project: Project;
+  onOpenModal: () => void;
 }
 
-function ProjectCard({ project }: ProjectCardProps) {
+function ProjectCard({ project, onOpenModal }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -264,19 +289,17 @@ function ProjectCard({ project }: ProjectCardProps) {
                         <GitBranch size={20} />
                       </motion.button>
                     )}
-                    {project.links.case_study && (
-                      <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.open(project.links.case_study, "_blank");
-                        }}
-                        className="bg-black text-white p-2 border-2 border-white"
-                      >
-                        <Eye size={20} />
-                      </motion.button>
-                    )}
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onOpenModal();
+                      }}
+                      className="bg-black text-white p-2 border-2 border-white"
+                    >
+                      <Eye size={20} />
+                    </motion.button>
                   </div>
                 </motion.div>
               </motion.div>
@@ -355,17 +378,15 @@ function ProjectCard({ project }: ProjectCardProps) {
               </BrutalistButton>
             )}
 
-            {project.links.case_study && (
-              <BrutalistButton
-                variant="accent"
-                size="sm"
-                onClick={() => window.open(project.links.case_study, "_blank")}
-                className="flex items-center gap-1 text-xs"
-              >
-                <Eye size={14} />
-                Study
-              </BrutalistButton>
-            )}
+            <BrutalistButton
+              variant="accent"
+              size="sm"
+              onClick={onOpenModal}
+              className="flex items-center gap-1 text-xs"
+            >
+              <Eye size={14} />
+              Study
+            </BrutalistButton>
           </div>
         </div>
 

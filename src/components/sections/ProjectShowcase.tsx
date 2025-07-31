@@ -4,8 +4,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Eye } from "lucide-react";
 import { Project } from "@/lib/types";
-import { FEATURED_PROJECTS } from "@/lib/constants";
+import { FEATURED_PROJECTS, TESTIMONIALS } from "@/lib/constants";
 import BrutalistButton from "@/components/ui/BrutalistButton";
+import { ProjectModal } from "@/components/ui/ProjectModal";
 
 interface ProjectShowcaseProps {
   projects?: readonly Project[];
@@ -17,10 +18,22 @@ export function ProjectShowcase({
   className = "",
 }: ProjectShowcaseProps) {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const featuredProjects = projects
     .filter((project) => project.featured)
     .slice(0, 4);
+
+  const openModal = (project: Project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
 
   return (
     <section className={`py-16 px-4 ${className}`}>
@@ -62,11 +75,20 @@ export function ProjectShowcase({
                 isHovered={hoveredProject === project.id}
                 onHover={() => setHoveredProject(project.id)}
                 onLeave={() => setHoveredProject(null)}
+                onOpenModal={() => openModal(project)}
                 isLarge={index === 0}
               />
             </motion.div>
           ))}
         </div>
+
+        {/* Project Modal */}
+        <ProjectModal
+          project={selectedProject}
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          testimonials={TESTIMONIALS}
+        />
       </div>
     </section>
   );
@@ -77,6 +99,7 @@ interface ProjectCardProps {
   isHovered: boolean;
   onHover: () => void;
   onLeave: () => void;
+  onOpenModal: () => void;
   isLarge?: boolean;
 }
 
@@ -85,6 +108,7 @@ function ProjectCard({
   isHovered,
   onHover,
   onLeave,
+  onOpenModal,
   isLarge = false,
 }: ProjectCardProps) {
   return (
@@ -214,17 +238,15 @@ function ProjectCard({
               </BrutalistButton>
             )}
 
-            {project.links.case_study && (
-              <BrutalistButton
-                variant="accent"
-                size="sm"
-                onClick={() => window.open(project.links.case_study, "_blank")}
-                className="flex items-center gap-2"
-              >
-                <Eye size={16} />
-                Case Study
-              </BrutalistButton>
-            )}
+            <BrutalistButton
+              variant="accent"
+              size="sm"
+              onClick={onOpenModal}
+              className="flex items-center gap-2"
+            >
+              <Eye size={16} />
+              Case Study
+            </BrutalistButton>
           </div>
         </div>
 

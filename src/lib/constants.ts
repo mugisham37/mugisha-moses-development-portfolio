@@ -305,4 +305,73 @@ export const FEATURED_PROJECTS = [
     },
     featured: false,
   },
-] as const;
+];
+
+// Sample testimonials data
+export const TESTIMONIALS = [
+  {
+    id: "testimonial-1",
+    client_name: "Sarah Johnson",
+    client_title: "CEO",
+    company: "TechStart Inc",
+    company_logo:
+      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop",
+    content:
+      "The e-commerce platform exceeded our expectations. The performance improvements and user experience enhancements led to a significant increase in our conversion rates.",
+    rating: 5,
+    project_type: "ecommerce",
+    results: "23% increase in sales",
+  },
+  {
+    id: "testimonial-2",
+    client_name: "Michael Chen",
+    client_title: "CTO",
+    company: "DataFlow Solutions",
+    company_logo:
+      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop",
+    content:
+      "The SaaS dashboard transformed how we visualize our data. The real-time analytics and intuitive interface have made our decision-making process much more efficient.",
+    rating: 5,
+    project_type: "saas",
+    results: "40% faster data processing",
+  },
+  {
+    id: "testimonial-3",
+    client_name: "Emily Rodriguez",
+    client_title: "Product Manager",
+    company: "Productivity Plus",
+    company_logo:
+      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop",
+    content:
+      "The task management app has revolutionized our team's workflow. The real-time collaboration features and intuitive design have significantly boosted our productivity.",
+    rating: 5,
+    project_type: "react",
+    results: "60% increase in team productivity",
+  },
+  {
+    id: "testimonial-4",
+    client_name: "David Kim",
+    client_title: "Founder",
+    company: "FitLife Mobile",
+    company_logo:
+      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop",
+    content:
+      "The fitness app delivered exactly what we envisioned. The cross-platform compatibility and engaging user interface have resulted in excellent user retention rates.",
+    rating: 5,
+    project_type: "mobile",
+    results: "85% user retention",
+  },
+  {
+    id: "testimonial-5",
+    client_name: "Lisa Thompson",
+    client_title: "Marketing Director",
+    company: "Vue Innovations",
+    company_logo:
+      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop",
+    content:
+      "The Vue.js portfolio site perfectly captured our brand identity. The performance optimization and SEO improvements have significantly increased our online visibility.",
+    rating: 5,
+    project_type: "vue",
+    results: "150% increase in organic traffic",
+  },
+];
