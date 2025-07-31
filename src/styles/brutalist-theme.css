@@ -1,0 +1,149 @@
+/* Brutalist Theme Variables */
+:root {
+  --brutalist-black: #000000;
+  --brutalist-white: #ffffff;
+  --brutalist-yellow: #ffff00;
+  --brutalist-gray: #808080;
+  
+  /* Spacing */
+  --brutalist-border-thick: 5px;
+  --brutalist-border-medium: 3px;
+  --brutalist-border-thin: 2px;
+  
+  /* Shadows */
+  --brutalist-shadow-small: 3px 3px 0px var(--brutalist-black);
+  --brutalist-shadow-medium: 5px 5px 0px var(--brutalist-black);
+  --brutalist-shadow-large: 8px 8px 0px var(--brutalist-black);
+  
+  /* Glow effects */
+  --brutalist-glow-yellow: 0 0 10px var(--brutalist-yellow), 0 0 20px var(--brutalist-yellow);
+  --brutalist-glow-white: 0 0 10px var(--brutalist-white), 0 0 20px var(--brutalist-white);
+}
+
+/* Dark mode variables */
+[data-theme="dark"] {
+  --background: var(--brutalist-black);
+  --foreground: var(--brutalist-white);
+}
+
+/* Light mode variables */
+[data-theme="light"] {
+  --background: var(--brutalist-white);
+  --foreground: var(--brutalist-black);
+}
+
+/* Brutalist utility classes */
+.brutalist-border {
+  border: var(--brutalist-border-thick) solid var(--brutalist-black);
+}
+
+.brutalist-shadow {
+  box-shadow: var(--brutalist-shadow-medium);
+}
+
+.brutalist-shadow-large {
+  box-shadow: var(--brutalist-shadow-large);
+}
+
+.brutalist-glow-yellow {
+  box-shadow: var(--brutalist-glow-yellow);
+}
+
+.brutalist-glow-white {
+  box-shadow: var(--brutalist-glow-white);
+}
+
+/* Custom animations */
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 5px var(--brutalist-yellow);
+  }
+  50% { 
+    box-shadow: 0 0 20px var(--brutalist-yellow), 0 0 30px var(--brutalist-yellow);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+/* Brutalist button styles */
+.brutalist-btn {
+  @apply font-mono font-bold uppercase tracking-wider;
+  @apply border-3 border-black bg-white text-black;
+  @apply px-6 py-3 transition-all duration-200;
+  @apply hover:bg-black hover:text-white;
+  box-shadow: var(--brutalist-shadow-medium);
+}
+
+.brutalist-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--brutalist-shadow-large);
+}
+
+.brutalist-btn-accent {
+  @apply brutalist-btn bg-brutalist-yellow;
+}
+
+.brutalist-btn-accent:hover {
+  @apply bg-black text-brutalist-yellow;
+}
+
+/* Brutalist card styles */
+.brutalist-card {
+  @apply bg-white border-3 border-black;
+  box-shadow: var(--brutalist-shadow-medium);
+  transition: all 0.2s ease;
+}
+
+.brutalist-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--brutalist-shadow-large);
+}
+
+.brutalist-card-invert:hover {
+  @apply bg-black text-white;
+}
+
+/* Typography styles */
+.brutalist-heading {
+  @apply font-mono font-black uppercase tracking-wider;
+  text-shadow: 2px 2px 0px var(--brutalist-black);
+}
+
+.brutalist-text {
+  @apply font-mono leading-relaxed;
+}
+
+/* Layout utilities */
+.brutalist-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.brutalist-section {
+  @apply py-16 lg:py-24;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .brutalist-shadow {
+    box-shadow: 2px 2px 0px var(--brutalist-black);
+  }
+  
+  .brutalist-btn:hover,
+  .brutalist-card:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--brutalist-black);
+  }
+}
