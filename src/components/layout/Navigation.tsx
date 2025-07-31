@@ -68,7 +68,7 @@ export default function Navigation({ className = "" }: NavigationProps) {
             {/* Logo */}
             <Link
               href="/"
-              className="font-mono font-black text-xl lg:text-2xl uppercase tracking-wider hover:text-[#ffff00] transition-colors duration-200"
+              className="font-mono font-black text-xl lg:text-2xl uppercase tracking-wider hover:text-brutalist-yellow transition-colors duration-200"
             >
               DEV.PORTFOLIO
             </Link>
@@ -79,9 +79,9 @@ export default function Navigation({ className = "" }: NavigationProps) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`font-mono font-bold text-sm uppercase tracking-wider transition-all duration-200 hover:text-[#ffff00] relative ${
+                  className={`font-mono font-bold text-sm uppercase tracking-wider transition-all duration-200 hover:text-brutalist-yellow relative ${
                     pathname === item.href
-                      ? "text-[#ffff00] after:absolute after:bottom-[-8px] after:left-0 after:right-0 after:h-[3px] after:bg-[#ffff00]"
+                      ? "text-brutalist-yellow after:absolute after:bottom-[-8px] after:left-0 after:right-0 after:h-[3px] after:bg-brutalist-yellow"
                       : "text-black"
                   }`}
                 >
@@ -103,7 +103,7 @@ export default function Navigation({ className = "" }: NavigationProps) {
 
         {/* Scroll Progress Bar */}
         <div
-          className="absolute bottom-0 left-0 h-[3px] bg-[#ffff00] transition-all duration-100 ease-out"
+          className="absolute bottom-0 left-0 h-[3px] bg-brutalist-yellow transition-all duration-100 ease-out"
           style={{ width: `${scrollProgress}%` }}
         />
       </nav>

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Play, Quote } from "lucide-react";
 import { TESTIMONIALS } from "@/lib/constants";
-import { Testimonial } from "@/lib/types";
+
 import { cn } from "@/lib/utils";
 
 interface TestimonialsCarouselProps {
@@ -121,7 +121,7 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({
 
                 {/* Testimonial Content */}
                 <blockquote className="text-lg md:text-xl font-mono font-medium text-center leading-relaxed">
-                  "{currentTestimonial.content}"
+                  &ldquo;{currentTestimonial.content}&rdquo;
                 </blockquote>
 
                 {/* Star Rating */}
@@ -256,7 +256,7 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({
                 </div>
 
                 <p className="text-sm font-mono font-medium mb-4 line-clamp-3">
-                  "{testimonial.content}"
+                  &ldquo;{testimonial.content}&rdquo;
                 </p>
 
                 <div className="space-y-2">

@@ -307,6 +307,64 @@ export const FEATURED_PROJECTS = [
   },
 ];
 
+// Pricing tiers data
+export const PRICING_TIERS = [
+  {
+    id: "starter",
+    name: "Starter",
+    price: "$2,500",
+    description: "Perfect for small businesses and personal projects",
+    features: [
+      "Responsive Design",
+      "5 Pages Maximum",
+      "Basic SEO Setup",
+      "Contact Form",
+      "Mobile Optimization",
+      "2 Rounds of Revisions",
+      "30 Days Support",
+    ],
+    cta: "Get Started",
+    delivery: "2-3 weeks",
+  },
+  {
+    id: "professional",
+    name: "Professional",
+    price: "$5,000",
+    description: "Ideal for growing businesses with advanced needs",
+    features: [
+      "Everything in Starter",
+      "Up to 10 Pages",
+      "Advanced SEO & Analytics",
+      "CMS Integration",
+      "E-commerce Ready",
+      "Performance Optimization",
+      "5 Rounds of Revisions",
+      "90 Days Support",
+    ],
+    popular: true,
+    cta: "Most Popular",
+    delivery: "3-4 weeks",
+  },
+  {
+    id: "enterprise",
+    name: "Enterprise",
+    price: "$10,000+",
+    description: "Custom solutions for large-scale applications",
+    features: [
+      "Everything in Professional",
+      "Unlimited Pages",
+      "Custom Integrations",
+      "Advanced Analytics",
+      "Multi-language Support",
+      "Priority Support",
+      "Unlimited Revisions",
+      "6 Months Support",
+    ],
+    cta: "Contact Us",
+    delivery: "4-8 weeks",
+  },
+];
+
 // Sample testimonials data
 export const TESTIMONIALS = [
   {

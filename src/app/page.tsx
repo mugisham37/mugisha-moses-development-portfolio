@@ -3,6 +3,7 @@ import {
   ServicesGrid,
   SkillsDisplay,
   ProjectShowcase,
+  ContactSection,
 } from "@/components/sections";
 
 export default function Home() {
@@ -17,16 +18,8 @@ export default function Home() {
         <ProjectShowcase />
       </section>
 
-      <section
-        id="contact"
-        className="min-h-screen bg-brutalist-black flex items-center justify-center"
-      >
-        <div className="text-center">
-          <h2 className="text-4xl font-mono font-black text-brutalist-yellow mb-4">
-            CONTACT SECTION
-          </h2>
-          <p className="text-brutalist-gray font-mono">Coming soon...</p>
-        </div>
+      <section id="contact" className="bg-brutalist-white">
+        <ContactSection />
       </section>
     </main>
   );

@@ -47,3 +47,15 @@ export interface Service {
   starting_price: string;
   delivery_time: string;
 }
+
+// Pricing tier interface
+export interface PricingTier {
+  id: string;
+  name: string;
+  price: string;
+  description: string;
+  features: string[];
+  popular?: boolean;
+  cta: string;
+  delivery: string;
+}

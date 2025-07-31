@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navigation, Footer } from "@/components/layout";
 import { ThemeProvider } from "@/components/providers";
 import { CursorTrail, ScrollProgress } from "@/components/interactive";
+import StickyContactButton from "@/components/ui/StickyContactButton";
 
 const spaceMono = Space_Mono({
   weight: ["400", "700"],
@@ -58,6 +59,7 @@ export default function RootLayout({
           <Navigation />
           <main className="flex-1 pt-16 lg:pt-20">{children}</main>
           <Footer />
+          <StickyContactButton />
         </ThemeProvider>
       </body>
     </html>

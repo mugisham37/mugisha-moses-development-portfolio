@@ -7,3 +7,4 @@ export { default as SocialProofBar } from "./SocialProofBar";
 export { default as TestimonialsCarousel } from "./TestimonialsCarousel";
 export { default as AboutSection } from "./AboutSection";
 export { default as ProcessTimeline } from "./ProcessTimeline";
+export { default as ContactSection } from "./ContactSection";

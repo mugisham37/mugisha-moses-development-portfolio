@@ -109,7 +109,7 @@ const SocialProofBar: React.FC<SocialProofBarProps> = ({ className }) => {
               {/* Testimonial Content */}
               <div className="max-w-md">
                 <p className="text-white font-mono text-sm font-medium leading-relaxed">
-                  "{testimonial.content.substring(0, 120)}..."
+                  &ldquo;{testimonial.content.substring(0, 120)}...&rdquo;
                 </p>
                 <div className="flex items-center mt-2 space-x-2">
                   <span className="text-brutalist-yellow font-mono font-bold text-xs">
