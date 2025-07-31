@@ -46,7 +46,12 @@ export default function Footer({ className = "" }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className={`bg-white border-t-[5px] border-black ${className}`}>
+    <footer
+      id="footer"
+      className={`bg-white border-t-[5px] border-black ${className}`}
+      role="contentinfo"
+      aria-label="Site footer"
+    >
       <div className="brutalist-container">
         {/* Main Footer Content */}
         <div className="py-12 lg:py-16">
@@ -56,6 +61,7 @@ export default function Footer({ className = "" }: FooterProps) {
               <Link
                 href="/"
                 className="inline-block font-mono font-black text-2xl lg:text-3xl uppercase tracking-wider hover:text-[#ffff00] transition-colors duration-200 mb-4"
+                aria-label="Developer Portfolio - Home"
               >
                 DEV.PORTFOLIO
               </Link>
@@ -66,8 +72,15 @@ export default function Footer({ className = "" }: FooterProps) {
               </p>
 
               {/* Availability Status */}
-              <div className="inline-flex items-center space-x-3 px-4 py-2 bg-[#ffff00] border-[3px] border-black">
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+              <div
+                className="inline-flex items-center space-x-3 px-4 py-2 bg-[#ffff00] border-[3px] border-black"
+                role="status"
+                aria-label="Current availability status"
+              >
+                <div
+                  className="w-3 h-3 bg-green-500 rounded-full animate-pulse"
+                  aria-hidden="true"
+                ></div>
                 <span className="font-mono font-bold text-sm uppercase tracking-wider">
                   Available for Projects
                 </span>
@@ -75,7 +88,7 @@ export default function Footer({ className = "" }: FooterProps) {
             </div>
 
             {/* Quick Links */}
-            <div>
+            <nav aria-label="Footer navigation">
               <h3 className="font-mono font-bold text-lg uppercase tracking-wider mb-6 border-b-[3px] border-black pb-2">
                 Quick Links
               </h3>
@@ -90,15 +103,16 @@ export default function Footer({ className = "" }: FooterProps) {
                       <ExternalLink
                         size={12}
                         className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                        aria-hidden="true"
                       />
                     </Link>
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
 
             {/* Social Links */}
-            <div>
+            <nav aria-label="Social media links">
               <h3 className="font-mono font-bold text-lg uppercase tracking-wider mb-6 border-b-[3px] border-black pb-2">
                 Connect
               </h3>
@@ -112,10 +126,12 @@ export default function Footer({ className = "" }: FooterProps) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="font-mono text-sm hover:text-[#ffff00] transition-all duration-200 inline-flex items-center group hover:translate-x-1"
+                        aria-label={`${social.label} - ${social.username}`}
                       >
                         <IconComponent
                           size={16}
                           className="mr-3 group-hover:scale-110 transition-transform duration-200"
+                          aria-hidden="true"
                         />
                         <div>
                           <div className="font-bold uppercase tracking-wider">
@@ -130,7 +146,7 @@ export default function Footer({ className = "" }: FooterProps) {
                   );
                 })}
               </ul>
-            </div>
+            </nav>
           </div>
         </div>
 
@@ -149,7 +165,10 @@ export default function Footer({ className = "" }: FooterProps) {
             </div>
 
             {/* Legal Links */}
-            <div className="flex items-center space-x-6">
+            <nav
+              className="flex items-center space-x-6"
+              aria-label="Legal and site information"
+            >
               <Link
                 href="/privacy"
                 className="font-mono text-sm uppercase tracking-wider hover:text-[#ffff00] transition-colors duration-200"
@@ -168,7 +187,7 @@ export default function Footer({ className = "" }: FooterProps) {
               >
                 Sitemap
               </Link>
-            </div>
+            </nav>
           </div>
         </div>
 

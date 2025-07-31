@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styling Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ["Space Mono", "monospace"],
+                        sans: ["Space Mono", "monospace"],
+                    },
+                    colors: {
+                        brutalist: {
+                            black: "#000000",
+                            white: "#ffffff",
+                            yellow: "#ffff00",
+                            gray: "#808080",
+                        },
+                    },
+                    borderWidth: {
+                        "3": "3px",
+                        "5": "5px",
+                    },
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="bg-white font-mono">
+    <div class="container mx-auto p-8">
+        <h1 class="text-4xl font-black uppercase tracking-wider mb-8">Brutalist Styling Test</h1>
+
+        <!-- Test Brutalist Colors -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Color Test</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-brutalist-black text-brutalist-white p-4 border-3 border-black">
+                    <p class="font-mono">Black Background</p>
+                </div>
+                <div class="bg-brutalist-white text-brutalist-black p-4 border-3 border-black">
+                    <p class="font-mono">White Background</p>
+                </div>
+                <div class="bg-brutalist-yellow text-brutalist-black p-4 border-3 border-black">
+                    <p class="font-mono">Yellow Background</p>
+                </div>
+                <div class="bg-brutalist-gray text-brutalist-white p-4 border-3 border-black">
+                    <p class="font-mono">Gray Background</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Test Brutalist Button -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Button Test</h2>
+            <button
+                class="bg-brutalist-yellow text-brutalist-black border-5 border-black px-6 py-3 font-mono font-bold uppercase tracking-wider hover:bg-black hover:text-brutalist-yellow transition-all duration-300">
+                Brutalist Button
+            </button>
+        </div>
+
+        <!-- Test Brutalist Card -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Card Test</h2>
+            <div class="bg-white border-5 border-black p-6 max-w-md">
+                <h3 class="text-xl font-black uppercase tracking-wider mb-4">Brutalist Card</h3>
+                <p class="font-mono leading-relaxed">This is a test card with brutalist styling. It should have thick
+                    borders and bold typography.</p>
+            </div>
+        </div>
+
+        <!-- Test Typography -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Typography Test</h2>
+            <h1 class="text-6xl font-black uppercase tracking-wider text-brutalist-black mb-4">LARGE HEADING</h1>
+            <h2 class="text-4xl font-bold uppercase tracking-wider text-brutalist-yellow mb-4">MEDIUM HEADING</h2>
+            <p class="text-lg font-mono leading-relaxed text-brutalist-gray">This is body text using the Space Mono
+                font. It should be readable and maintain the brutalist aesthetic.</p>
+        </div>
+    </div>
+</body>
+
+</html>
