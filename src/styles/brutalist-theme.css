@@ -1,9 +1,36 @@
 /* Brutalist Theme Variables */
 :root {
+  /* Base Brutalist Colors */
   --brutalist-black: #000000;
   --brutalist-white: #ffffff;
   --brutalist-yellow: #ffff00;
   --brutalist-gray: #808080;
+
+  /* New Contrast-Safe Colors */
+  --brutalist-dark-gray: #2a2a2a;
+  --brutalist-light-gray: #f5f5f5;
+  --brutalist-medium-gray: #666666;
+
+  /* Semantic Color Assignments */
+  --text-on-white: var(--brutalist-black);
+  --text-on-yellow: var(--brutalist-black);
+  --text-on-black: var(--brutalist-white);
+  --text-on-gray: var(--brutalist-black);
+  --text-on-light-gray: var(--brutalist-black);
+  --text-on-dark-gray: var(--brutalist-white);
+
+  /* Interactive States */
+  --hover-bg-from-white: var(--brutalist-black);
+  --hover-text-from-white: var(--brutalist-white);
+  --hover-bg-from-yellow: var(--brutalist-black);
+  --hover-text-from-yellow: var(--brutalist-yellow);
+  --hover-bg-from-black: var(--brutalist-white);
+  --hover-text-from-black: var(--brutalist-black);
+
+  /* Focus States */
+  --focus-outline-color: var(--brutalist-yellow);
+  --focus-outline-width: 3px;
+  --focus-outline-offset: 2px;
 
   /* Spacing */
   --brutalist-border-thick: 5px;
@@ -26,12 +53,38 @@
 [data-theme="dark"] {
   --background: var(--brutalist-black);
   --foreground: var(--brutalist-white);
+
+  /* Dark mode semantic colors */
+  --text-on-white: var(--brutalist-black);
+  --text-on-yellow: var(--brutalist-black);
+  --text-on-black: var(--brutalist-white);
+  --text-on-gray: var(--brutalist-white);
+  --text-on-light-gray: var(--brutalist-black);
+  --text-on-dark-gray: var(--brutalist-white);
+
+  /* Dark mode shadows */
+  --brutalist-shadow-small: 3px 3px 0px var(--brutalist-white);
+  --brutalist-shadow-medium: 5px 5px 0px var(--brutalist-white);
+  --brutalist-shadow-large: 8px 8px 0px var(--brutalist-white);
 }
 
 /* Light mode variables */
 [data-theme="light"] {
   --background: var(--brutalist-white);
   --foreground: var(--brutalist-black);
+
+  /* Light mode semantic colors */
+  --text-on-white: var(--brutalist-black);
+  --text-on-yellow: var(--brutalist-black);
+  --text-on-black: var(--brutalist-white);
+  --text-on-gray: var(--brutalist-black);
+  --text-on-light-gray: var(--brutalist-black);
+  --text-on-dark-gray: var(--brutalist-white);
+
+  /* Light mode shadows */
+  --brutalist-shadow-small: 3px 3px 0px var(--brutalist-black);
+  --brutalist-shadow-medium: 5px 5px 0px var(--brutalist-black);
+  --brutalist-shadow-large: 8px 8px 0px var(--brutalist-black);
 }
 
 /* Brutalist utility classes */
@@ -803,6 +856,134 @@
 
 .brutalist-toggle:focus {
   animation: toggle-glow 1s ease-in-out;
+}
+
+/* Safe Color Combination Utility Classes */
+
+/* White backgrounds */
+.bg-white-safe {
+  background: var(--brutalist-white);
+}
+.bg-white-safe .text-primary {
+  color: var(--text-on-white);
+}
+.bg-white-safe .text-secondary {
+  color: var(--brutalist-medium-gray);
+}
+
+/* Yellow backgrounds */
+.bg-yellow-safe {
+  background: var(--brutalist-yellow);
+}
+.bg-yellow-safe .text-primary {
+  color: var(--text-on-yellow);
+}
+.bg-yellow-safe .text-secondary {
+  color: var(--brutalist-dark-gray);
+}
+
+/* Black backgrounds */
+.bg-black-safe {
+  background: var(--brutalist-black);
+}
+.bg-black-safe .text-primary {
+  color: var(--text-on-black);
+}
+.bg-black-safe .text-secondary {
+  color: var(--brutalist-light-gray);
+}
+
+/* Light gray backgrounds */
+.bg-light-gray-safe {
+  background: var(--brutalist-light-gray);
+}
+.bg-light-gray-safe .text-primary {
+  color: var(--text-on-light-gray);
+}
+.bg-light-gray-safe .text-secondary {
+  color: var(--brutalist-medium-gray);
+}
+
+/* Dark gray backgrounds */
+.bg-dark-gray-safe {
+  background: var(--brutalist-dark-gray);
+}
+.bg-dark-gray-safe .text-primary {
+  color: var(--text-on-dark-gray);
+}
+.bg-dark-gray-safe .text-secondary {
+  color: var(--brutalist-light-gray);
+}
+
+/* Text color utilities with guaranteed contrast */
+.text-safe-on-white {
+  color: var(--text-on-white);
+}
+.text-safe-on-yellow {
+  color: var(--text-on-yellow);
+}
+.text-safe-on-black {
+  color: var(--text-on-black);
+}
+.text-safe-on-gray {
+  color: var(--text-on-gray);
+}
+.text-safe-on-light-gray {
+  color: var(--text-on-light-gray);
+}
+.text-safe-on-dark-gray {
+  color: var(--text-on-dark-gray);
+}
+
+/* Interactive state utilities */
+.hover-safe-from-white:hover {
+  background: var(--hover-bg-from-white);
+  color: var(--hover-text-from-white);
+}
+.hover-safe-from-yellow:hover {
+  background: var(--hover-bg-from-yellow);
+  color: var(--hover-text-from-yellow);
+}
+.hover-safe-from-black:hover {
+  background: var(--hover-bg-from-black);
+  color: var(--hover-text-from-black);
+}
+
+/* Focus state utilities */
+.focus-safe {
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* Contrast-safe button variants */
+.btn-safe-white {
+  background: var(--brutalist-white);
+  color: var(--text-on-white);
+  border: var(--brutalist-border-medium) solid var(--brutalist-black);
+}
+.btn-safe-white:hover {
+  background: var(--hover-bg-from-white);
+  color: var(--hover-text-from-white);
+}
+
+.btn-safe-yellow {
+  background: var(--brutalist-yellow);
+  color: var(--text-on-yellow);
+  border: var(--brutalist-border-medium) solid var(--brutalist-black);
+}
+.btn-safe-yellow:hover {
+  background: var(--hover-bg-from-yellow);
+  color: var(--hover-text-from-yellow);
+}
+
+.btn-safe-black {
+  background: var(--brutalist-black);
+  color: var(--text-on-black);
+  border: var(--brutalist-border-medium) solid var(--brutalist-white);
+}
+.btn-safe-black:hover {
+  background: var(--hover-bg-from-black);
+  color: var(--hover-text-from-black);
 }
 
 /* Responsive utilities */
