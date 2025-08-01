@@ -986,6 +986,80 @@
   color: var(--hover-text-from-black);
 }
 
+/* Navigation theme-aware styles */
+.nav-theme-aware {
+  /* Ensure proper contrast for navigation background */
+  background: var(--background);
+  color: var(--foreground);
+  border-color: var(--foreground);
+}
+
+.nav-theme-aware .text-safe-on-white {
+  color: var(--text-on-white);
+}
+
+[data-theme="dark"] .nav-theme-aware .text-safe-on-white {
+  color: var(--text-on-black);
+}
+
+.mobile-menu-theme-aware {
+  /* Ensure mobile menu has proper contrast */
+  background: var(--background);
+  color: var(--foreground);
+  border-color: var(--foreground);
+}
+
+.mobile-menu-theme-aware .text-safe-on-white {
+  color: var(--text-on-white);
+}
+
+[data-theme="dark"] .mobile-menu-theme-aware .text-safe-on-white {
+  color: var(--text-on-black);
+}
+
+/* Enhanced scroll progress bar visibility */
+.scroll-progress-enhanced {
+  background: var(--brutalist-yellow);
+  border-top: 1px solid var(--foreground);
+  box-shadow: 0 -1px 0 var(--foreground);
+}
+
+[data-theme="dark"] .scroll-progress-enhanced {
+  box-shadow: 0 -1px 0 var(--brutalist-white);
+  border-color: var(--brutalist-white);
+}
+
+/* Focus states for navigation elements */
+.nav-focus-safe:focus {
+  outline: 3px solid var(--brutalist-yellow);
+  outline-offset: 2px;
+  background: var(--brutalist-yellow);
+  color: var(--text-on-yellow);
+}
+
+[data-theme="dark"] .nav-focus-safe:focus {
+  background: var(--brutalist-yellow);
+  color: var(--text-on-yellow);
+}
+
+/* Hover states with proper contrast */
+.nav-hover-safe:hover {
+  color: var(--brutalist-yellow);
+}
+
+.nav-hover-safe:hover:focus {
+  color: var(--text-on-yellow);
+}
+
+/* Mobile menu backdrop with proper opacity */
+.mobile-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .mobile-backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+
 /* Responsive utilities */
 @media (max-width: 768px) {
   .brutalist-shadow {
@@ -1005,5 +1079,14 @@
 
   [data-theme="dark"] .brutalist-toggle:hover {
     box-shadow: 3px 3px 0px var(--brutalist-white);
+  }
+
+  /* Mobile navigation adjustments */
+  .nav-theme-aware {
+    border-bottom-width: 3px;
+  }
+
+  .mobile-menu-theme-aware {
+    border-left-width: 3px;
   }
 }

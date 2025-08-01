@@ -5,6 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import dynamic from "next/dynamic";
+import { useTheme } from "@/components/providers";
+import { validateNavigationColors } from "@/utils/colorUtils";
+import { runNavigationColorCheck } from "@/utils/verifyNavigation";
 
 const DarkModeToggle = dynamic(() => import("@/components/ui/DarkModeToggle"), {
   ssr: false,
@@ -33,6 +36,16 @@ export default function Navigation({ className = "" }: NavigationProps) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const pathname = usePathname();
 
+  // Safely get theme with fallback
+  let theme: "light" | "dark" = "light";
+  try {
+    const themeContext = useTheme();
+    theme = themeContext.theme;
+  } catch {
+    // Fallback to light theme if ThemeProvider is not available
+    theme = "light";
+  }
+
   // Handle scroll progress
   useEffect(() => {
     const handleScroll = () => {
@@ -50,6 +63,14 @@ export default function Navigation({ className = "" }: NavigationProps) {
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
+
+  // Validate color combinations in development
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      validateNavigationColors(theme);
+      runNavigationColorCheck();
+    }
+  }, [theme]);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -73,7 +94,7 @@ export default function Navigation({ className = "" }: NavigationProps) {
       {/* Navigation Bar */}
       <nav
         id="navigation"
-        className={`fixed top-0 left-0 right-0 z-50 bg-background border-b-[5px] border-foreground transition-colors duration-300 ${className}`}
+        className={`fixed top-0 left-0 right-0 z-50 bg-background border-b-[5px] border-foreground transition-colors duration-300 nav-theme-aware ${className}`}
         role="navigation"
         aria-label="Main navigation"
       >
@@ -82,7 +103,7 @@ export default function Navigation({ className = "" }: NavigationProps) {
             {/* Logo */}
             <Link
               href="/"
-              className="font-mono font-black text-xl lg:text-2xl uppercase tracking-wider hover:text-brutalist-yellow transition-colors duration-200"
+              className="font-mono font-black text-xl lg:text-2xl uppercase tracking-wider text-safe-on-white hover:text-brutalist-yellow transition-colors duration-200 focus:outline-none focus:ring-3 focus:ring-brutalist-yellow focus:ring-offset-2"
               aria-label="Developer Portfolio - Home"
             >
               DEV.PORTFOLIO
@@ -97,10 +118,10 @@ export default function Navigation({ className = "" }: NavigationProps) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`font-mono font-bold text-sm uppercase tracking-wider transition-all duration-200 hover:text-brutalist-yellow relative ${
+                  className={`font-mono font-bold text-sm uppercase tracking-wider transition-all duration-200 hover:text-brutalist-yellow relative focus:outline-none focus:ring-3 focus:ring-brutalist-yellow focus:ring-offset-2 ${
                     pathname === item.href
                       ? "text-brutalist-yellow after:absolute after:bottom-[-8px] after:left-0 after:right-0 after:h-[3px] after:bg-brutalist-yellow"
-                      : "text-foreground"
+                      : "text-safe-on-white"
                   }`}
                   role="menuitem"
                   aria-current={pathname === item.href ? "page" : undefined}
@@ -121,7 +142,7 @@ export default function Navigation({ className = "" }: NavigationProps) {
               {/* Mobile Menu Button */}
               <button
                 onClick={toggleMenu}
-                className="p-2 border-[3px] border-foreground bg-background hover:bg-foreground hover:text-background transition-all duration-200"
+                className="p-2 border-[3px] border-foreground bg-background text-safe-on-white hover:bg-foreground hover:text-background transition-all duration-200 focus:outline-none focus:ring-3 focus:ring-brutalist-yellow focus:ring-offset-2"
                 aria-label={
                   isOpen ? "Close navigation menu" : "Open navigation menu"
                 }
@@ -137,8 +158,11 @@ export default function Navigation({ className = "" }: NavigationProps) {
 
         {/* Scroll Progress Bar */}
         <div
-          className="absolute bottom-0 left-0 h-[3px] bg-brutalist-yellow transition-all duration-100 ease-out"
-          style={{ width: `${scrollProgress}%` }}
+          className="absolute bottom-0 left-0 h-[3px] bg-brutalist-yellow border-t border-foreground transition-all duration-100 ease-out"
+          style={{
+            width: `${scrollProgress}%`,
+            boxShadow: "0 -1px 0 var(--foreground)",
+          }}
           role="progressbar"
           aria-label="Page scroll progress"
           aria-valuenow={Math.round(scrollProgress)}
@@ -152,14 +176,14 @@ export default function Navigation({ className = "" }: NavigationProps) {
         <div className="fixed inset-0 z-40 lg:hidden">
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-black bg-opacity-50"
+            className="absolute inset-0 mobile-backdrop"
             onClick={toggleMenu}
           />
 
           {/* Menu Panel */}
           <div
             id="mobile-menu"
-            className="absolute top-0 right-0 h-full w-80 max-w-[80vw] bg-background border-l-[5px] border-foreground transform transition-all duration-300 ease-in-out"
+            className="absolute top-0 right-0 h-full w-80 max-w-[80vw] bg-background border-l-[5px] border-foreground transform transition-all duration-300 ease-in-out mobile-menu-theme-aware"
             role="menu"
             aria-label="Mobile navigation menu"
           >
@@ -174,10 +198,10 @@ export default function Navigation({ className = "" }: NavigationProps) {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`font-mono font-bold text-lg uppercase tracking-wider transition-all duration-200 hover:text-brutalist-yellow hover:translate-x-2 ${
+                    className={`font-mono font-bold text-lg uppercase tracking-wider transition-all duration-200 hover:text-brutalist-yellow hover:translate-x-2 focus:outline-none focus:ring-3 focus:ring-brutalist-yellow focus:ring-offset-2 ${
                       pathname === item.href
                         ? "text-brutalist-yellow border-l-[5px] border-brutalist-yellow pl-4"
-                        : "text-foreground"
+                        : "text-safe-on-white"
                     }`}
                     style={{
                       animationDelay: `${index * 100}ms`,
@@ -193,12 +217,12 @@ export default function Navigation({ className = "" }: NavigationProps) {
               {/* Mobile Menu Footer */}
               <div className="mt-auto pb-8">
                 <div className="border-t-[3px] border-foreground pt-6">
-                  <p className="font-mono text-sm uppercase tracking-wider opacity-60">
+                  <p className="font-mono text-sm uppercase tracking-wider text-safe-on-white opacity-60">
                     Available for Projects
                   </p>
                   <Link
                     href="/contact"
-                    className="inline-block mt-3 px-4 py-2 bg-brutalist-yellow border-[3px] border-foreground font-mono font-bold text-sm uppercase tracking-wider hover:bg-foreground hover:text-brutalist-yellow transition-all duration-200"
+                    className="inline-block mt-3 px-4 py-2 bg-brutalist-yellow text-safe-on-yellow border-[3px] border-foreground font-mono font-bold text-sm uppercase tracking-wider hover:bg-foreground hover:text-brutalist-yellow transition-all duration-200 focus:outline-none focus:ring-3 focus:ring-brutalist-yellow focus:ring-offset-2"
                   >
                     Get Quote
                   </Link>
