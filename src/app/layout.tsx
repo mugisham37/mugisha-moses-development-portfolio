@@ -15,6 +15,12 @@ import AccessibilityProvider from "@/components/providers/AccessibilityProvider"
 import SkipLinks from "@/components/ui/SkipLinks";
 import AccessibilityToolbar from "@/components/ui/AccessibilityToolbar";
 
+// Import hover state validation and testing in development
+if (process.env.NODE_ENV === "development") {
+  import("@/utils/validateHoverStates");
+  import("@/utils/testHoverStates");
+}
+
 const spaceMono = Space_Mono({
   weight: ["400", "700"],
   subsets: ["latin"],

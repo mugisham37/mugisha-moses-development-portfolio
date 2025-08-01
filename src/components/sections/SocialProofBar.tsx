@@ -23,7 +23,10 @@ const SocialProofBar: React.FC<SocialProofBarProps> = ({ className }) => {
 
   return (
     <section
-      className={cn("py-12 bg-white border-y-5 border-black", className)}
+      className={cn(
+        "py-12 bg-brutalist-light-gray border-y-5 border-black",
+        className
+      )}
     >
       {/* Trust Statement */}
       <div className="container mx-auto px-4 mb-8">
@@ -102,7 +105,7 @@ const SocialProofBar: React.FC<SocialProofBarProps> = ({ className }) => {
               className="flex-shrink-0 flex items-center space-x-4 px-4"
             >
               {/* Company Logo */}
-              <div className="w-12 h-12 border-2 border-brutalist-yellow bg-white flex items-center justify-center">
+              <div className="w-12 h-12 border-2 border-brutalist-yellow bg-brutalist-light-gray flex items-center justify-center">
                 <div className="w-8 h-8 bg-brutalist-yellow border border-black"></div>
               </div>
 
@@ -164,7 +167,7 @@ const SocialProofBar: React.FC<SocialProofBarProps> = ({ className }) => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ scale: 1.1 }}
-              className="aspect-square border-3 border-black bg-white flex items-center justify-center p-4 hover:bg-brutalist-yellow transition-colors duration-300"
+              className="aspect-square border-3 border-black bg-brutalist-light-gray flex items-center justify-center p-4 hover:bg-brutalist-yellow transition-colors duration-300"
             >
               <div className="text-center">
                 <div className="w-8 h-8 bg-black mx-auto mb-2"></div>

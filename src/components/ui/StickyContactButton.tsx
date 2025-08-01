@@ -106,13 +106,11 @@ const StickyContactButton: React.FC<StickyContactButtonProps> = ({
                   <motion.button
                     key={option.label}
                     className={cn(
-                      "flex items-center gap-3 px-4 py-3 border-3 border-black font-mono font-black uppercase text-sm tracking-wider",
-                      "transition-all duration-300 hover:scale-105",
-                      "shadow-[4px_4px_0px_#000000] hover:shadow-[6px_6px_0px_#000000]",
-                      option.color,
+                      "sticky-contact-option flex items-center gap-3 px-4 py-3 border-3 border-black font-mono font-black uppercase text-sm tracking-wider",
+                      "shadow-[4px_4px_0px_#000000] hover:shadow-[6px_6px_0px_#000000] focus-contrast-safe",
                       option.color === "bg-brutalist-white"
-                        ? "text-black hover:bg-black hover:text-white"
-                        : "text-black hover:bg-black hover:text-brutalist-yellow"
+                        ? "hover-contact-white"
+                        : "hover-contact-yellow"
                     )}
                     onClick={option.action}
                     initial={{ opacity: 0, x: 50 }}
@@ -132,12 +130,11 @@ const StickyContactButton: React.FC<StickyContactButtonProps> = ({
           {/* Main Button */}
           <motion.button
             className={cn(
-              "relative flex items-center justify-center w-16 h-16 border-5 border-black font-mono font-black",
-              "transition-all duration-300",
-              "shadow-[6px_6px_0px_#000000] hover:shadow-[8px_8px_0px_#000000]",
+              "sticky-contact relative flex items-center justify-center w-16 h-16 border-5 border-black font-mono font-black",
+              "shadow-[6px_6px_0px_#000000] hover:shadow-[8px_8px_0px_#000000] focus-contrast-safe",
               isExpanded
                 ? "bg-brutalist-black text-brutalist-yellow"
-                : "bg-brutalist-yellow text-black hover:bg-black hover:text-brutalist-yellow"
+                : "hover-contact-yellow"
             )}
             onClick={() => {
               if (isExpanded) {
@@ -182,10 +179,9 @@ const StickyContactButton: React.FC<StickyContactButtonProps> = ({
             {isExpanded && (
               <motion.button
                 className={cn(
-                  "px-6 py-3 border-5 border-black bg-brutalist-yellow text-black font-mono font-black uppercase text-sm tracking-wider",
-                  "transition-all duration-300 hover:bg-black hover:text-brutalist-yellow",
-                  "shadow-[6px_6px_0px_#000000] hover:shadow-[8px_8px_0px_#000000]",
-                  "whitespace-nowrap"
+                  "px-6 py-3 border-5 border-black font-mono font-black uppercase text-sm tracking-wider",
+                  "shadow-[6px_6px_0px_#000000] hover:shadow-[8px_8px_0px_#000000] focus-contrast-safe",
+                  "whitespace-nowrap hover-contact-yellow"
                 )}
                 onClick={() => {
                   handleClick("quote");

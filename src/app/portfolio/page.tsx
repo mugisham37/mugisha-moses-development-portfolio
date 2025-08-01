@@ -109,7 +109,7 @@ export default function Portfolio() {
               <div className="bg-brutalist-yellow border-3 border-white px-6 py-3 font-mono font-bold text-black">
                 100+ Projects Completed
               </div>
-              <div className="bg-white border-3 border-brutalist-yellow px-6 py-3 font-mono font-bold text-black">
+              <div className="bg-brutalist-light-gray border-3 border-brutalist-yellow px-6 py-3 font-mono font-bold text-black">
                 98% Client Satisfaction
               </div>
               <div className="bg-brutalist-yellow border-3 border-white px-6 py-3 font-mono font-bold text-black">
@@ -120,7 +120,7 @@ export default function Portfolio() {
         </section>
 
         {/* Featured Projects Section */}
-        <section className="bg-white py-20 border-b-5 border-black">
+        <section className="bg-brutalist-light-gray py-20 border-b-5 border-black">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-black font-mono uppercase tracking-wider mb-6">
@@ -152,7 +152,7 @@ export default function Portfolio() {
         </section>
 
         {/* Project Categories Overview */}
-        <section className="bg-white py-20 border-b-5 border-black">
+        <section className="bg-brutalist-light-gray py-20 border-b-5 border-black">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-black font-mono uppercase tracking-wider mb-6">

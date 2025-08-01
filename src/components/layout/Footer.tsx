@@ -48,7 +48,7 @@ export default function Footer({ className = "" }: FooterProps) {
   return (
     <footer
       id="footer"
-      className={`bg-white border-t-[5px] border-black ${className}`}
+      className={`bg-brutalist-light-gray border-t-[5px] border-black ${className}`}
       role="contentinfo"
       aria-label="Site footer"
     >
@@ -60,7 +60,7 @@ export default function Footer({ className = "" }: FooterProps) {
             <div className="lg:col-span-2">
               <Link
                 href="/"
-                className="inline-block font-mono font-black text-2xl lg:text-3xl uppercase tracking-wider hover:text-[#ffff00] transition-colors duration-200 mb-4"
+                className="inline-block font-mono font-black text-2xl lg:text-3xl uppercase tracking-wider hover-footer-link mb-4"
                 aria-label="Developer Portfolio - Home"
               >
                 DEV.PORTFOLIO
@@ -97,7 +97,7 @@ export default function Footer({ className = "" }: FooterProps) {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="font-mono text-sm uppercase tracking-wider hover:text-[#ffff00] hover:translate-x-1 transition-all duration-200 inline-flex items-center group"
+                      className="font-mono text-sm uppercase tracking-wider hover-footer-link inline-flex items-center group"
                     >
                       {link.label}
                       <ExternalLink
@@ -125,7 +125,7 @@ export default function Footer({ className = "" }: FooterProps) {
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-mono text-sm hover:text-[#ffff00] transition-all duration-200 inline-flex items-center group hover:translate-x-1"
+                        className="font-mono text-sm hover-social-link inline-flex items-center group"
                         aria-label={`${social.label} - ${social.username}`}
                       >
                         <IconComponent
@@ -137,7 +137,7 @@ export default function Footer({ className = "" }: FooterProps) {
                           <div className="font-bold uppercase tracking-wider">
                             {social.label}
                           </div>
-                          <div className="text-xs text-gray-600">
+                          <div className="text-xs text-contrast-safe-medium">
                             {social.username}
                           </div>
                         </div>
@@ -171,19 +171,19 @@ export default function Footer({ className = "" }: FooterProps) {
             >
               <Link
                 href="/privacy"
-                className="font-mono text-sm uppercase tracking-wider hover:text-[#ffff00] transition-colors duration-200"
+                className="font-mono text-sm uppercase tracking-wider hover-footer-link"
               >
                 Privacy
               </Link>
               <Link
                 href="/terms"
-                className="font-mono text-sm uppercase tracking-wider hover:text-[#ffff00] transition-colors duration-200"
+                className="font-mono text-sm uppercase tracking-wider hover-footer-link"
               >
                 Terms
               </Link>
               <Link
                 href="/sitemap"
-                className="font-mono text-sm uppercase tracking-wider hover:text-[#ffff00] transition-colors duration-200"
+                className="font-mono text-sm uppercase tracking-wider hover-footer-link"
               >
                 Sitemap
               </Link>
@@ -194,7 +194,7 @@ export default function Footer({ className = "" }: FooterProps) {
         {/* Back to Top Button */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-6 right-6 p-3 bg-[#ffff00] border-[3px] border-black hover:bg-black hover:text-[#ffff00] transition-all duration-200 hover:translate-y-[-2px] z-40 group"
+          className="fixed bottom-6 right-6 p-3 border-[3px] border-black hover-back-to-top z-40 group focus-contrast-safe"
           aria-label="Back to top"
         >
           <svg

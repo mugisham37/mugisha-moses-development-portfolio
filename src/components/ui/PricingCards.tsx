@@ -23,7 +23,7 @@ const PricingCard: React.FC<{
   return (
     <motion.div
       className={cn(
-        "relative bg-white border-5 border-black p-8 font-mono",
+        "relative bg-brutalist-light-gray border-5 border-black p-8 font-mono",
         "transition-all duration-300 hover:transform hover:-translate-y-2",
         "hover:shadow-[8px_8px_0px_#000000]",
         isPopular && "border-brutalist-yellow bg-brutalist-yellow",
@@ -85,7 +85,7 @@ const PricingCard: React.FC<{
       </div>
 
       {/* Delivery time */}
-      <div className="mb-6 p-4 border-3 border-current bg-white/50">
+      <div className="mb-6 p-4 border-3 border-current bg-brutalist-light-gray/80">
         <div className="text-xs font-black uppercase tracking-wider opacity-60 mb-1">
           Delivery Time
         </div>

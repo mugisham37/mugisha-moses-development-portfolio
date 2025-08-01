@@ -176,7 +176,7 @@ const PricingCalculator: React.FC<PricingCalculatorProps> = ({
                     "hover:bg-brutalist-yellow hover:transform hover:-translate-y-1",
                     selectedOption === option.id
                       ? "bg-brutalist-yellow border-black"
-                      : "bg-white"
+                      : "bg-brutalist-light-gray"
                   )}
                   onClick={() => setSelectedOption(option.id)}
                 >
@@ -196,7 +196,9 @@ const PricingCalculator: React.FC<PricingCalculatorProps> = ({
                       <div
                         className={cn(
                           "w-6 h-6 border-2 border-black rounded-full flex items-center justify-center mt-2",
-                          selectedOption === option.id ? "bg-black" : "bg-white"
+                          selectedOption === option.id
+                            ? "bg-black"
+                            : "bg-brutalist-light-gray"
                         )}
                       >
                         {selectedOption === option.id && (
@@ -228,7 +230,7 @@ const PricingCalculator: React.FC<PricingCalculatorProps> = ({
                     "hover:bg-gray-50 hover:transform hover:-translate-y-1",
                     selectedAddons.includes(addon.id)
                       ? "bg-brutalist-yellow border-black"
-                      : "bg-white"
+                      : "bg-brutalist-light-gray"
                   )}
                   onClick={() => handleAddonToggle(addon.id)}
                 >
@@ -248,7 +250,7 @@ const PricingCalculator: React.FC<PricingCalculatorProps> = ({
                           "w-6 h-6 border-2 border-black flex items-center justify-center",
                           selectedAddons.includes(addon.id)
                             ? "bg-black text-brutalist-yellow"
-                            : "bg-white text-black"
+                            : "bg-brutalist-light-gray text-black"
                         )}
                       >
                         {selectedAddons.includes(addon.id) ? (

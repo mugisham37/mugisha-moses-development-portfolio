@@ -97,7 +97,7 @@ export default function About() {
         <AboutSection className="border-t-0" />
 
         {/* Expanded Personal Story Section */}
-        <section className="bg-white py-20 border-t-5 border-black">
+        <section className="bg-brutalist-light-gray py-20 border-t-5 border-black">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
@@ -260,7 +260,7 @@ export default function About() {
         <SkillsDisplay />
 
         {/* Detailed Process Section */}
-        <section className="bg-white py-20 border-t-5 border-black">
+        <section className="bg-brutalist-light-gray py-20 border-t-5 border-black">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-black font-mono uppercase tracking-wider mb-6">
@@ -277,7 +277,7 @@ export default function About() {
             {/* Methodology Details */}
             <div className="mt-16 grid md:grid-cols-2 gap-12">
               <div className="space-y-8">
-                <div className="border-5 border-black p-6 bg-white">
+                <div className="border-5 border-black p-6 bg-brutalist-light-gray">
                   <h3 className="text-xl font-black font-mono uppercase tracking-wider mb-4">
                     Quality Assurance
                   </h3>
@@ -351,7 +351,7 @@ export default function About() {
                   </ul>
                 </div>
 
-                <div className="border-5 border-black p-6 bg-white">
+                <div className="border-5 border-black p-6 bg-brutalist-light-gray">
                   <h3 className="text-xl font-black font-mono uppercase tracking-wider mb-4">
                     Project Management
                   </h3>
@@ -424,7 +424,7 @@ export default function About() {
               ].map((value, index) => (
                 <div
                   key={index}
-                  className="border-3 border-brutalist-yellow bg-white p-6 text-center hover:bg-brutalist-yellow transition-colors duration-300 group"
+                  className="border-3 border-brutalist-yellow bg-brutalist-light-gray p-6 text-center hover:bg-brutalist-yellow transition-colors duration-300 group"
                 >
                   <div className="text-4xl mb-4">{value.icon}</div>
                   <h3 className="text-lg font-black font-mono uppercase tracking-wider mb-3 group-hover:text-black">

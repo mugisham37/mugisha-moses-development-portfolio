@@ -32,30 +32,34 @@ const BrutalistButton: React.FC<BrutalistButtonProps> = ({
     switch (variant) {
       case "primary":
         // Black background with white text - excellent contrast (21:1)
+        // Hover: White background with black text - maintains excellent contrast
         logContrastWarning(
           BRUTALIST_COLORS.white,
           BRUTALIST_COLORS.black,
           "BrutalistButton primary"
         );
-        return "bg-brutalist-black text-brutalist-white border-brutalist-black hover:bg-brutalist-white hover:text-brutalist-black";
+        return "bg-brutalist-black text-brutalist-white border-brutalist-black hover:bg-brutalist-white hover:text-brutalist-black hover-contrast-safe";
       case "secondary":
         // White background with black text - excellent contrast (21:1)
+        // Hover: Black background with white text - maintains excellent contrast
         logContrastWarning(
           BRUTALIST_COLORS.black,
           BRUTALIST_COLORS.white,
           "BrutalistButton secondary"
         );
-        return "bg-brutalist-white text-brutalist-black border-brutalist-black hover:bg-brutalist-black hover:text-brutalist-white";
+        return "bg-brutalist-white text-brutalist-black border-brutalist-black hover:bg-brutalist-black hover:text-brutalist-white hover-contrast-safe";
       case "accent":
         // Yellow background with black text - good contrast (19.56:1)
+        // Hover: Black background with yellow text - maintains excellent contrast
+        // CRITICAL: Never allow white text on yellow background
         logContrastWarning(
           BRUTALIST_COLORS.black,
           BRUTALIST_COLORS.yellow,
           "BrutalistButton accent"
         );
-        return "bg-brutalist-yellow text-brutalist-black border-brutalist-black hover:bg-brutalist-black hover:text-brutalist-yellow";
+        return "bg-brutalist-yellow text-brutalist-black border-brutalist-black hover:bg-brutalist-black hover:text-brutalist-yellow hover-contrast-safe";
       default:
-        return "bg-brutalist-black text-brutalist-white border-brutalist-black";
+        return "bg-brutalist-black text-brutalist-white border-brutalist-black hover:bg-brutalist-white hover:text-brutalist-black";
     }
   };
 

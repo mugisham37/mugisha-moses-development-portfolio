@@ -32,7 +32,7 @@ export const AnimatedTextDemo = () => {
             Typing Animation
           </h2>
           <div className="space-y-4">
-            <div className="border-5 border-black p-6 bg-white">
+            <div className="border-5 border-black p-6 bg-brutalist-light-gray">
               <h3 className="font-mono text-lg font-bold mb-4">
                 Basic Typing:
               </h3>
@@ -46,7 +46,7 @@ export const AnimatedTextDemo = () => {
               </div>
             </div>
 
-            <div className="border-5 border-black p-6 bg-white">
+            <div className="border-5 border-black p-6 bg-brutalist-light-gray">
               <h3 className="font-mono text-lg font-bold mb-4">
                 Typing with Delay:
               </h3>
@@ -61,7 +61,7 @@ export const AnimatedTextDemo = () => {
               </div>
             </div>
 
-            <div className="border-5 border-black p-6 bg-white">
+            <div className="border-5 border-black p-6 bg-brutalist-light-gray">
               <h3 className="font-mono text-lg font-bold mb-4">
                 Looping Typing:
               </h3>
@@ -84,7 +84,7 @@ export const AnimatedTextDemo = () => {
             Reveal Animation
           </h2>
           <div className="space-y-4">
-            <div className="border-5 border-black p-6 bg-white">
+            <div className="border-5 border-black p-6 bg-brutalist-light-gray">
               <h3 className="font-mono text-lg font-bold mb-4">
                 Basic Reveal:
               </h3>
@@ -98,7 +98,7 @@ export const AnimatedTextDemo = () => {
               </div>
             </div>
 
-            <div className="border-5 border-black p-6 bg-white">
+            <div className="border-5 border-black p-6 bg-brutalist-light-gray">
               <h3 className="font-mono text-lg font-bold mb-4">
                 Staggered Reveals:
               </h3>

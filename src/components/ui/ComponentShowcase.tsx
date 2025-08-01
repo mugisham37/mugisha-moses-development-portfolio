@@ -119,7 +119,7 @@ export const ComponentShowcase = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Button Variants */}
-            <div className="border-5 border-black p-6 bg-white">
+            <div className="border-5 border-black p-6 bg-brutalist-light-gray">
               <h3 className="font-mono text-xl font-bold uppercase mb-4">
                 Button Variants
               </h3>

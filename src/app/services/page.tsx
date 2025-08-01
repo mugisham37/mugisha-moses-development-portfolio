@@ -119,7 +119,7 @@ export default function Services() {
               <div className="bg-brutalist-yellow border-3 border-white px-6 py-3 font-mono font-bold text-black">
                 Free Consultation
               </div>
-              <div className="bg-white border-3 border-brutalist-yellow px-6 py-3 font-mono font-bold text-black">
+              <div className="bg-brutalist-light-gray border-3 border-brutalist-yellow px-6 py-3 font-mono font-bold text-black">
                 4-Hour Response Time
               </div>
               <div className="bg-brutalist-yellow border-3 border-white px-6 py-3 font-mono font-bold text-black">
@@ -130,7 +130,7 @@ export default function Services() {
         </section>
 
         {/* Main Services Grid */}
-        <section className="bg-white py-20 border-b-5 border-black">
+        <section className="bg-brutalist-light-gray py-20 border-b-5 border-black">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-black font-mono uppercase tracking-wider mb-6">
@@ -160,7 +160,7 @@ export default function Services() {
 
             <div className="grid lg:grid-cols-3 gap-8">
               {/* React Development */}
-              <div className="border-5 border-brutalist-yellow bg-white p-8">
+              <div className="border-5 border-brutalist-yellow bg-brutalist-light-gray p-8">
                 <div className="text-center mb-6">
                   <div className="w-16 h-16 mx-auto bg-brutalist-yellow border-3 border-black flex items-center justify-center mb-4">
                     <span className="text-2xl">⚛️</span>
@@ -300,7 +300,7 @@ export default function Services() {
               </div>
 
               {/* SaaS Development */}
-              <div className="border-5 border-brutalist-yellow bg-white p-8">
+              <div className="border-5 border-brutalist-yellow bg-brutalist-light-gray p-8">
                 <div className="text-center mb-6">
                   <div className="w-16 h-16 mx-auto bg-brutalist-yellow border-3 border-black flex items-center justify-center mb-4">
                     <span className="text-2xl">☁️</span>
@@ -373,7 +373,7 @@ export default function Services() {
         </section>
 
         {/* Pricing Packages */}
-        <section className="bg-white py-20 border-b-5 border-black">
+        <section className="bg-brutalist-light-gray py-20 border-b-5 border-black">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-black font-mono uppercase tracking-wider mb-6">
@@ -408,7 +408,7 @@ export default function Services() {
         </section>
 
         {/* FAQ Section */}
-        <section className="bg-white py-20 border-b-5 border-black">
+        <section className="bg-brutalist-light-gray py-20 border-b-5 border-black">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-black font-mono uppercase tracking-wider mb-6">
@@ -464,7 +464,7 @@ export default function Services() {
               ].map((faq, index) => (
                 <div
                   key={index}
-                  className="border-5 border-black bg-white p-6 hover:bg-brutalist-yellow transition-colors duration-300 group"
+                  className="border-5 border-black bg-brutalist-light-gray p-6 hover:bg-brutalist-yellow transition-colors duration-300 group"
                 >
                   <h3 className="text-lg font-black font-mono uppercase tracking-wider mb-4 group-hover:text-black">
                     {faq.question}
@@ -491,7 +491,7 @@ export default function Services() {
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-full border-5 border-brutalist-yellow bg-white">
+              <table className="w-full border-5 border-brutalist-yellow bg-brutalist-light-gray">
                 <thead>
                   <tr className="bg-brutalist-yellow">
                     <th className="border-3 border-black p-4 font-mono font-black text-left">

@@ -27,7 +27,7 @@ export default function TestButtonPage() {
         </h1>
 
         {/* Contrast Ratio Information */}
-        <div className="bg-white border-3 border-black p-6 mb-8">
+        <div className="bg-brutalist-light-gray border-3 border-black p-6 mb-8">
           <h2 className="text-2xl font-mono font-bold mb-4">
             Color Contrast Ratios
           </h2>
@@ -145,7 +145,7 @@ export default function TestButtonPage() {
             </h2>
 
             {/* White Background */}
-            <div className="bg-white p-6 border-3 border-black mb-4">
+            <div className="bg-brutalist-light-gray p-6 border-3 border-black mb-4">
               <h3 className="font-mono font-bold text-black mb-4">
                 On White Background
               </h3>

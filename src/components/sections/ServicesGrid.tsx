@@ -141,7 +141,7 @@ const ServicesGrid: React.FC = () => {
             SERVICES
           </h2>
           <div className="w-24 h-2 bg-brutalist-yellow mx-auto mb-6"></div>
-          <p className="text-lg font-mono text-brutalist-gray max-w-2xl mx-auto">
+          <p className="text-lg font-mono text-contrast-safe-medium max-w-2xl mx-auto">
             COMPREHENSIVE DIGITAL SOLUTIONS TO TRANSFORM YOUR BUSINESS
           </p>
         </motion.div>
@@ -171,7 +171,7 @@ const ServicesGrid: React.FC = () => {
                   className="h-full relative overflow-hidden group-hover:border-brutalist-yellow transition-all duration-300"
                 >
                   {/* Icon */}
-                  <div className="flex items-center justify-center w-16 h-16 bg-brutalist-black text-brutalist-yellow mb-4 border-3 border-brutalist-black group-hover:bg-brutalist-yellow group-hover:text-brutalist-black transition-all duration-300">
+                  <div className="service-icon flex items-center justify-center w-16 h-16 border-3 border-brutalist-black hover-service-icon mb-4">
                     {service.icon}
                   </div>
 
@@ -180,7 +180,7 @@ const ServicesGrid: React.FC = () => {
                     {service.features.map((feature, index) => (
                       <div
                         key={index}
-                        className="flex items-center text-xs font-mono text-brutalist-gray"
+                        className="flex items-center text-xs font-mono text-contrast-safe-medium"
                       >
                         <div className="w-2 h-2 bg-brutalist-yellow mr-2 border border-brutalist-black"></div>
                         {feature}
@@ -192,7 +192,7 @@ const ServicesGrid: React.FC = () => {
                   <div className="border-t-3 border-brutalist-black pt-4 mt-4">
                     <div className="flex justify-between items-center">
                       <div>
-                        <p className="text-xs font-mono text-brutalist-gray uppercase">
+                        <p className="text-xs font-mono text-contrast-safe-medium uppercase">
                           Starting at
                         </p>
                         <p className="text-lg font-black text-brutalist-black">
@@ -200,7 +200,7 @@ const ServicesGrid: React.FC = () => {
                         </p>
                       </div>
                       <div className="text-right">
-                        <p className="text-xs font-mono text-brutalist-gray uppercase">
+                        <p className="text-xs font-mono text-contrast-safe-medium uppercase">
                           Timeline
                         </p>
                         <p className="text-sm font-bold text-brutalist-black">
@@ -225,11 +225,11 @@ const ServicesGrid: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <p className="text-lg font-mono text-brutalist-gray mb-6">
+          <p className="text-lg font-mono text-contrast-safe-medium mb-6">
             DON&apos;T SEE WHAT YOU NEED? LET&apos;S DISCUSS YOUR PROJECT
           </p>
           <motion.button
-            className="bg-brutalist-black text-brutalist-yellow px-8 py-4 border-5 border-brutalist-black font-mono font-black uppercase tracking-wider hover:bg-brutalist-yellow hover:text-brutalist-black transition-all duration-300"
+            className="px-8 py-4 border-5 border-brutalist-black font-mono font-black uppercase tracking-wider hover-accent-button focus-contrast-safe"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

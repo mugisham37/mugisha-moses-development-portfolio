@@ -157,7 +157,7 @@
 /* Brutalist button styles */
 .brutalist-btn {
   @apply font-mono font-bold uppercase tracking-wider;
-  @apply border-3 border-black bg-white text-black;
+  @apply border-3 border-black bg-brutalist-light-gray text-black;
   @apply px-6 py-3 transition-all duration-200;
   @apply hover:bg-black hover:text-white;
   box-shadow: var(--brutalist-shadow-medium);
@@ -178,7 +178,7 @@
 
 /* Brutalist card styles */
 .brutalist-card {
-  @apply bg-white border-3 border-black;
+  @apply bg-brutalist-light-gray border-3 border-black;
   box-shadow: var(--brutalist-shadow-medium);
   transition: all 0.2s ease;
 }
@@ -214,16 +214,32 @@
 /* Dark Mode Toggle Styles */
 .brutalist-toggle {
   @apply relative inline-flex items-center justify-center;
-  @apply border-3 border-black bg-white;
+  @apply border-3 border-black bg-brutalist-light-gray;
   @apply transition-all duration-300 ease-in-out;
-  @apply hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-brutalist-yellow focus:ring-opacity-50;
+  @apply hover:shadow-lg focus:outline-none;
   box-shadow: var(--brutalist-shadow-medium);
   cursor: pointer;
+}
+
+.brutalist-toggle:focus {
+  /* Enhanced focus visibility with proper contrast */
+  outline: 3px solid var(--brutalist-yellow);
+  outline-offset: 2px;
+  box-shadow: var(--brutalist-shadow-medium), 0 0 0 6px rgba(255, 255, 0, 0.4);
+  /* Add glow effect for better visibility */
+  animation: toggle-glow 1s ease-in-out;
 }
 
 .brutalist-toggle:hover {
   transform: translate(-1px, -1px);
   box-shadow: var(--brutalist-shadow-large);
+}
+
+.brutalist-toggle:hover .brutalist-toggle-thumb {
+  /* Enhanced thumb visibility on hover */
+  box-shadow: 2px 2px 0px var(--brutalist-black);
+  /* Add subtle glow to thumb on hover */
+  filter: drop-shadow(0 0 3px rgba(255, 255, 0, 0.5));
 }
 
 .brutalist-toggle-sm {
@@ -242,6 +258,9 @@
   @apply relative w-full h-full bg-transparent;
   @apply border-2 border-black;
   @apply overflow-hidden;
+  /* Ensure track visibility */
+  position: relative;
+  z-index: 1;
 }
 
 .brutalist-toggle-thumb {
@@ -250,6 +269,9 @@
   @apply transition-all duration-300 ease-in-out;
   @apply flex items-center justify-center;
   box-shadow: 1px 1px 0px var(--brutalist-black);
+  /* Ensure thumb visibility with enhanced contrast */
+  position: relative;
+  z-index: 2;
 }
 
 .brutalist-toggle-sm .brutalist-toggle-thumb {
@@ -289,6 +311,10 @@
 .brutalist-toggle-icon {
   @apply flex items-center justify-center;
   @apply text-black transition-all duration-300;
+  /* Enhanced icon visibility with proper contrast */
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.8))
+    drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+  font-weight: bold;
 }
 
 .brutalist-toggle-sun {
@@ -303,12 +329,18 @@
 .brutalist-toggle-bg-icons {
   @apply absolute inset-0 flex items-center justify-between px-1;
   @apply pointer-events-none;
+  /* Ensure background icons are behind the thumb */
+  z-index: 0;
 }
 
 .brutalist-toggle-bg-sun,
 .brutalist-toggle-bg-moon {
   @apply transition-opacity duration-300;
   @apply text-black;
+  /* Enhanced background icon visibility with better contrast */
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.6))
+    drop-shadow(0 0 2px rgba(0, 0, 0, 0.4));
+  font-weight: bold;
 }
 
 .brutalist-toggle-skeleton {
@@ -322,23 +354,57 @@
   box-shadow: 3px 3px 0px var(--brutalist-white);
 }
 
+[data-theme="dark"] .brutalist-toggle:focus {
+  /* Enhanced focus visibility in dark mode */
+  outline: 3px solid var(--brutalist-yellow);
+  outline-offset: 2px;
+  box-shadow: 3px 3px 0px var(--brutalist-white),
+    0 0 0 6px rgba(255, 255, 0, 0.4);
+  /* Add glow effect for better visibility in dark mode */
+  animation: toggle-glow-dark 1s ease-in-out;
+}
+
 [data-theme="dark"] .brutalist-toggle:hover {
   box-shadow: 5px 5px 0px var(--brutalist-white);
 }
 
+[data-theme="dark"] .brutalist-toggle:hover .brutalist-toggle-thumb {
+  /* Enhanced thumb visibility on hover in dark mode */
+  box-shadow: 2px 2px 0px var(--brutalist-white);
+  /* Add subtle glow to thumb on hover in dark mode */
+  filter: drop-shadow(0 0 3px rgba(255, 255, 0, 0.5));
+}
+
 [data-theme="dark"] .brutalist-toggle-track {
   @apply border-white;
+  /* Ensure track visibility in dark mode */
+  position: relative;
+  z-index: 1;
 }
 
 [data-theme="dark"] .brutalist-toggle-thumb {
   @apply border-white;
   box-shadow: 1px 1px 0px var(--brutalist-white);
+  /* Ensure thumb visibility in dark mode */
+  position: relative;
+  z-index: 2;
 }
 
-[data-theme="dark"] .brutalist-toggle-icon,
+[data-theme="dark"] .brutalist-toggle-icon {
+  @apply text-white;
+  /* Enhanced icon visibility in dark mode with proper contrast */
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.8))
+    drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+  font-weight: bold;
+}
+
 [data-theme="dark"] .brutalist-toggle-bg-sun,
 [data-theme="dark"] .brutalist-toggle-bg-moon {
   @apply text-white;
+  /* Enhanced background icon visibility in dark mode with better contrast */
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
+  font-weight: bold;
 }
 
 [data-theme="dark"] .brutalist-toggle-skeleton {
@@ -779,6 +845,92 @@
   box-shadow: 2px 2px 0px var(--brutalist-white);
 }
 
+/* High contrast mode support for toggle */
+@media (prefers-contrast: high) {
+  .brutalist-toggle {
+    border-width: 4px;
+    /* Ensure maximum contrast in high contrast mode */
+    background: Canvas;
+    color: CanvasText;
+    border-color: CanvasText;
+  }
+
+  .brutalist-toggle-track {
+    border-width: 3px;
+    border-color: CanvasText;
+  }
+
+  .brutalist-toggle-thumb {
+    border-width: 3px;
+    background: Highlight;
+    border-color: HighlightText;
+  }
+
+  .brutalist-toggle-icon,
+  .brutalist-toggle-bg-sun,
+  .brutalist-toggle-bg-moon {
+    filter: none;
+    font-weight: bold;
+    color: HighlightText;
+  }
+
+  .brutalist-toggle:focus {
+    outline: 4px solid Highlight;
+    outline-offset: 3px;
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .brutalist-toggle {
+    background: ButtonFace;
+    border-color: ButtonText;
+    color: ButtonText;
+  }
+
+  .brutalist-toggle-track {
+    border-color: ButtonText;
+  }
+
+  .brutalist-toggle-thumb {
+    background: Highlight;
+    border-color: HighlightText;
+  }
+
+  .brutalist-toggle-icon,
+  .brutalist-toggle-bg-sun,
+  .brutalist-toggle-bg-moon {
+    color: HighlightText;
+    filter: none;
+  }
+
+  .brutalist-toggle:focus {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
+/* Enhanced toggle visibility utilities */
+.toggle-enhanced-visibility .brutalist-toggle-icon {
+  /* Additional visibility enhancement for problematic environments */
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8), 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+.toggle-enhanced-visibility .brutalist-toggle-bg-sun,
+.toggle-enhanced-visibility .brutalist-toggle-bg-moon {
+  /* Additional visibility enhancement for background icons */
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.6), 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .toggle-enhanced-visibility .brutalist-toggle-icon {
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8), 0 0 4px rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="dark"] .toggle-enhanced-visibility .brutalist-toggle-bg-sun,
+[data-theme="dark"] .toggle-enhanced-visibility .brutalist-toggle-bg-moon {
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6), 0 0 4px rgba(255, 255, 255, 0.4);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .playground-main {
@@ -847,15 +999,24 @@
 @keyframes toggle-glow {
   0%,
   100% {
-    box-shadow: var(--brutalist-shadow-medium);
+    box-shadow: var(--brutalist-shadow-medium), 0 0 0 6px rgba(255, 255, 0, 0.4);
   }
   50% {
-    box-shadow: var(--brutalist-shadow-medium), 0 0 10px var(--brutalist-yellow);
+    box-shadow: var(--brutalist-shadow-medium), 0 0 15px var(--brutalist-yellow),
+      0 0 0 6px rgba(255, 255, 0, 0.6);
   }
 }
 
-.brutalist-toggle:focus {
-  animation: toggle-glow 1s ease-in-out;
+@keyframes toggle-glow-dark {
+  0%,
+  100% {
+    box-shadow: 3px 3px 0px var(--brutalist-white),
+      0 0 0 6px rgba(255, 255, 0, 0.4);
+  }
+  50% {
+    box-shadow: 3px 3px 0px var(--brutalist-white),
+      0 0 15px var(--brutalist-yellow), 0 0 0 6px rgba(255, 255, 0, 0.6);
+  }
 }
 
 /* Safe Color Combination Utility Classes */
@@ -1051,6 +1212,271 @@
   color: var(--text-on-yellow);
 }
 
+/* Comprehensive hover state fixes for all interactive elements */
+
+/* Button hover states - ensure no white text on yellow backgrounds */
+.brutalist-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--brutalist-shadow-large);
+  /* Ensure proper contrast in hover state */
+  background: var(--brutalist-black);
+  color: var(--brutalist-white);
+}
+
+.brutalist-btn-accent:hover {
+  /* Yellow accent button: black background with yellow text on hover */
+  background: var(--brutalist-black) !important;
+  color: var(--brutalist-yellow) !important;
+  /* Never allow white text on yellow background */
+}
+
+/* Card hover states - maintain proper contrast */
+.brutalist-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--brutalist-shadow-large);
+}
+
+.brutalist-card-invert:hover {
+  background: var(--brutalist-black) !important;
+  color: var(--brutalist-white) !important;
+  /* Ensure inverted cards maintain proper contrast */
+}
+
+/* Link hover states - prevent visibility issues */
+.brutalist-link:hover {
+  color: var(--brutalist-yellow);
+  /* Ensure links remain visible on all backgrounds */
+}
+
+.brutalist-link:hover:focus {
+  background: var(--brutalist-yellow);
+  color: var(--text-on-yellow);
+  /* Focus state maintains proper contrast */
+}
+
+/* Interactive element hover states */
+.interactive-element:hover {
+  /* Base hover state for all interactive elements */
+  transition: all 0.3s ease;
+}
+
+/* Prevent white text on yellow backgrounds in hover states */
+.hover-contrast-safe:hover {
+  /* Utility class to ensure safe hover contrast */
+}
+
+.hover-contrast-safe.bg-brutalist-yellow:hover {
+  background: var(--brutalist-black) !important;
+  color: var(--brutalist-yellow) !important;
+}
+
+.hover-contrast-safe.bg-brutalist-white:hover {
+  background: var(--brutalist-black) !important;
+  color: var(--brutalist-white) !important;
+}
+
+.hover-contrast-safe.bg-brutalist-black:hover {
+  background: var(--brutalist-white) !important;
+  color: var(--brutalist-black) !important;
+}
+
+/* Service grid hover states */
+.service-card:hover {
+  border-color: var(--brutalist-yellow);
+  transform: translateY(-4px);
+}
+
+.service-card:hover .service-icon {
+  background: var(--brutalist-yellow) !important;
+  color: var(--text-on-yellow) !important;
+}
+
+.service-card:hover .service-text {
+  /* Ensure text remains visible on hover */
+  color: var(--text-on-white);
+}
+
+/* Navigation hover states */
+.nav-item:hover {
+  color: var(--brutalist-yellow);
+  /* Navigation items use yellow on hover for visibility */
+}
+
+.nav-item.active {
+  color: var(--brutalist-yellow);
+  border-bottom-color: var(--brutalist-yellow);
+}
+
+/* Mobile menu hover states */
+.mobile-nav-item:hover {
+  color: var(--brutalist-yellow);
+  transform: translateX(8px);
+}
+
+/* Button group hover states */
+.btn-group .btn:hover {
+  z-index: 10;
+  /* Ensure hovered button appears above others */
+}
+
+/* Form element hover states */
+.form-input:hover {
+  border-color: var(--brutalist-yellow);
+}
+
+.form-input:focus {
+  border-color: var(--brutalist-yellow);
+  box-shadow: 0 0 0 3px rgba(255, 255, 0, 0.3);
+}
+
+/* Sticky contact button hover states */
+.sticky-contact:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0px var(--foreground);
+}
+
+.sticky-contact-option:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 6px 6px 0px var(--brutalist-black);
+}
+
+/* Hero section hover states */
+.hero-cta:hover {
+  /* Hero CTA buttons maintain proper contrast */
+}
+
+.hero-cta.accent:hover {
+  background: var(--brutalist-black) !important;
+  color: var(--brutalist-yellow) !important;
+}
+
+.hero-cta.secondary:hover {
+  background: var(--brutalist-black) !important;
+  color: var(--brutalist-white) !important;
+}
+
+/* Portfolio item hover states */
+.portfolio-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--brutalist-shadow-large);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--brutalist-white);
+}
+
+/* Testimonial card hover states */
+.testimonial-card:hover {
+  border-color: var(--brutalist-yellow);
+  transform: scale(1.02);
+}
+
+/* Social link hover states */
+.social-link:hover {
+  color: var(--brutalist-yellow);
+  transform: scale(1.1);
+}
+
+/* Footer link hover states */
+.footer-link:hover {
+  color: var(--brutalist-yellow);
+  text-decoration: underline;
+  text-decoration-color: var(--brutalist-yellow);
+}
+
+/* Pricing card hover states */
+.pricing-card:hover {
+  border-color: var(--brutalist-yellow);
+  transform: translateY(-8px);
+}
+
+.pricing-card:hover .pricing-cta {
+  background: var(--brutalist-yellow) !important;
+  color: var(--text-on-yellow) !important;
+}
+
+/* Skills item hover states */
+.skill-item:hover {
+  background: var(--brutalist-yellow);
+  color: var(--text-on-yellow);
+  transform: scale(1.05);
+}
+
+/* Process step hover states */
+.process-step:hover {
+  border-color: var(--brutalist-yellow);
+}
+
+.process-step:hover .step-number {
+  background: var(--brutalist-yellow);
+  color: var(--text-on-yellow);
+}
+
+/* Contact form hover states */
+.contact-form .form-button:hover {
+  background: var(--brutalist-black) !important;
+  color: var(--brutalist-white) !important;
+}
+
+/* Dark mode hover state adjustments */
+[data-theme="dark"] .brutalist-btn:hover {
+  background: var(--brutalist-white);
+  color: var(--brutalist-black);
+}
+
+[data-theme="dark"] .brutalist-btn-accent:hover {
+  background: var(--brutalist-white) !important;
+  color: var(--brutalist-black) !important;
+}
+
+[data-theme="dark"] .brutalist-card-invert:hover {
+  background: var(--brutalist-white) !important;
+  color: var(--brutalist-black) !important;
+}
+
+[data-theme="dark"] .hero-cta.secondary:hover {
+  background: var(--brutalist-white) !important;
+  color: var(--brutalist-black) !important;
+}
+
+[data-theme="dark"] .contact-form .form-button:hover {
+  background: var(--brutalist-white) !important;
+  color: var(--brutalist-black) !important;
+}
+
+/* High contrast mode hover states */
+@media (prefers-contrast: high) {
+  .brutalist-btn:hover,
+  .brutalist-card:hover,
+  .interactive-element:hover {
+    border-width: 4px;
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
+/* Forced colors mode hover states */
+@media (forced-colors: active) {
+  .brutalist-btn:hover {
+    background: Highlight !important;
+    color: HighlightText !important;
+    border-color: HighlightText !important;
+  }
+
+  .brutalist-card:hover {
+    border-color: Highlight !important;
+  }
+
+  .nav-item:hover,
+  .mobile-nav-item:hover,
+  .social-link:hover,
+  .footer-link:hover {
+    color: Highlight !important;
+  }
+}
+
 /* Mobile menu backdrop with proper opacity */
 .mobile-backdrop {
   background: rgba(0, 0, 0, 0.5);
@@ -1088,5 +1514,327 @@
 
   .mobile-menu-theme-aware {
     border-left-width: 3px;
+  }
+}
+
+/* Comprehensive Hover State Fixes */
+
+/* Primary button hover pattern */
+.hover-primary-button {
+  background: var(--brutalist-black);
+  color: var(--brutalist-white);
+  transition: all 0.3s ease;
+}
+
+.hover-primary-button:hover {
+  background: var(--brutalist-white);
+  color: var(--brutalist-black);
+  transform: translate(-2px, -2px);
+}
+
+/* Secondary button hover pattern */
+.hover-secondary-button {
+  background: var(--brutalist-white);
+  color: var(--brutalist-black);
+  transition: all 0.3s ease;
+}
+
+.hover-secondary-button:hover {
+  background: var(--brutalist-black);
+  color: var(--brutalist-white);
+  transform: translate(-2px, -2px);
+}
+
+/* Accent button hover pattern - CRITICAL: Never white text on yellow */
+.hover-accent-button {
+  background: var(--brutalist-yellow);
+  color: var(--brutalist-black);
+  transition: all 0.3s ease;
+}
+
+.hover-accent-button:hover {
+  background: var(--brutalist-black);
+  color: var(--brutalist-yellow);
+  transform: translate(-2px, -2px);
+}
+
+/* Navigation link hover patterns */
+.hover-nav-link {
+  color: var(--text-on-white);
+  transition: all 0.3s ease;
+}
+
+.hover-nav-link:hover {
+  color: var(--brutalist-yellow);
+  transform: translateX(2px);
+}
+
+[data-theme="dark"] .hover-nav-link {
+  color: var(--text-on-black);
+}
+
+[data-theme="dark"] .hover-nav-link:hover {
+  color: var(--brutalist-yellow);
+}
+
+/* Card hover patterns */
+.hover-default-card {
+  background: var(--brutalist-light-gray);
+  color: var(--brutalist-black);
+  transition: all 0.3s ease;
+}
+
+.hover-default-card:hover {
+  background: var(--brutalist-black);
+  color: var(--brutalist-white);
+  transform: translate(-2px, -2px);
+}
+
+.hover-accent-card {
+  background: var(--brutalist-yellow);
+  color: var(--brutalist-black);
+  transition: all 0.3s ease;
+}
+
+.hover-accent-card:hover {
+  background: var(--brutalist-black);
+  color: var(--brutalist-yellow);
+  transform: translate(-2px, -2px);
+}
+
+/* Service icon hover pattern */
+.hover-service-icon {
+  background: var(--brutalist-black);
+  color: var(--brutalist-yellow);
+  transition: all 0.3s ease;
+}
+
+.hover-service-icon:hover {
+  background: var(--brutalist-yellow);
+  color: var(--brutalist-black);
+  transform: scale(1.05);
+}
+
+/* Footer link hover patterns */
+.hover-footer-link {
+  color: var(--brutalist-black);
+  transition: all 0.3s ease;
+}
+
+.hover-footer-link:hover {
+  color: var(--brutalist-yellow);
+  transform: translateX(4px);
+}
+
+/* Social link hover patterns */
+.hover-social-link {
+  color: var(--brutalist-black);
+  transition: all 0.3s ease;
+}
+
+.hover-social-link:hover {
+  color: var(--brutalist-yellow);
+  transform: translateX(4px) scale(1.05);
+}
+
+/* Contact button hover patterns */
+.hover-contact-yellow {
+  background: var(--brutalist-yellow);
+  color: var(--brutalist-black);
+  transition: all 0.3s ease;
+}
+
+.hover-contact-yellow:hover {
+  background: var(--brutalist-black);
+  color: var(--brutalist-yellow);
+  transform: translate(-2px, -2px);
+}
+
+.hover-contact-white {
+  background: var(--brutalist-white);
+  color: var(--brutalist-black);
+  transition: all 0.3s ease;
+}
+
+.hover-contact-white:hover {
+  background: var(--brutalist-black);
+  color: var(--brutalist-white);
+  transform: translate(-2px, -2px);
+}
+
+/* Back to top button hover pattern */
+.hover-back-to-top {
+  background: var(--brutalist-yellow);
+  color: var(--brutalist-black);
+  transition: all 0.3s ease;
+}
+
+.hover-back-to-top:hover {
+  background: var(--brutalist-black);
+  color: var(--brutalist-yellow);
+  transform: translateY(-4px) scale(1.1);
+}
+
+/* Generic hover-contrast-safe utility */
+.hover-contrast-safe {
+  transition: all 0.3s ease;
+}
+
+/* Ensure no problematic combinations */
+.hover-contrast-safe.bg-brutalist-yellow:hover {
+  background: var(--brutalist-black) !important;
+  color: var(--brutalist-yellow) !important;
+}
+
+.hover-contrast-safe.bg-brutalist-white:hover {
+  background: var(--brutalist-black) !important;
+  color: var(--brutalist-white) !important;
+}
+
+.hover-contrast-safe.bg-brutalist-black:hover {
+  background: var(--brutalist-white) !important;
+  color: var(--brutalist-black) !important;
+}
+
+/* Focus states with proper contrast */
+.focus-contrast-safe:focus {
+  outline: 3px solid var(--brutalist-yellow);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px rgba(255, 255, 0, 0.3);
+}
+
+/* Interactive element hover enhancements */
+.interactive-hover {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.interactive-hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 0, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.interactive-hover:hover::before {
+  left: 100%;
+}
+
+/* Prevent problematic hover combinations globally */
+.bg-yellow-400:hover,
+.bg-brutalist-yellow:hover {
+  color: var(--brutalist-black) !important;
+}
+
+.text-white.bg-yellow-400:hover,
+.text-white.bg-brutalist-yellow:hover {
+  color: var(--brutalist-black) !important;
+  background: var(--brutalist-black) !important;
+}
+
+/* Enhanced visibility for hover states */
+.hover-enhanced-visibility:hover {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 0, 0.5));
+  z-index: 10;
+  position: relative;
+}
+
+/* Hover state animations */
+@keyframes hover-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(255, 255, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.6);
+  }
+}
+
+.hover-glow:hover {
+  animation: hover-glow 1.5s ease-in-out infinite;
+}
+
+/* Hover state for mobile touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .hover-primary-button:active,
+  .hover-secondary-button:active,
+  .hover-accent-button:active {
+    transform: scale(0.95);
+  }
+
+  .hover-nav-link:active {
+    color: var(--brutalist-yellow);
+  }
+
+  .hover-default-card:active,
+  .hover-accent-card:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Dark mode hover state adjustments */
+[data-theme="dark"] .hover-footer-link {
+  color: var(--brutalist-white);
+}
+
+[data-theme="dark"] .hover-footer-link:hover {
+  color: var(--brutalist-yellow);
+}
+
+[data-theme="dark"] .hover-social-link {
+  color: var(--brutalist-white);
+}
+
+[data-theme="dark"] .hover-social-link:hover {
+  color: var(--brutalist-yellow);
+}
+
+[data-theme="dark"] .hover-default-card {
+  background: var(--brutalist-black);
+  color: var(--brutalist-white);
+}
+
+[data-theme="dark"] .hover-default-card:hover {
+  background: var(--brutalist-white);
+  color: var(--brutalist-black);
+}
+
+/* High contrast mode hover states */
+@media (prefers-contrast: high) {
+  .hover-primary-button:hover,
+  .hover-secondary-button:hover,
+  .hover-accent-button:hover {
+    border-width: 4px;
+    transform: translate(-3px, -3px);
+  }
+
+  .hover-nav-link:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+  }
+}
+
+/* Forced colors mode hover states */
+@media (forced-colors: active) {
+  .hover-primary-button:hover,
+  .hover-secondary-button:hover,
+  .hover-accent-button:hover {
+    background: Highlight !important;
+    color: HighlightText !important;
+    border-color: HighlightText !important;
+  }
+
+  .hover-nav-link:hover {
+    color: Highlight !important;
   }
 }

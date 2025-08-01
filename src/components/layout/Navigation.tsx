@@ -103,7 +103,7 @@ export default function Navigation({ className = "" }: NavigationProps) {
             {/* Logo */}
             <Link
               href="/"
-              className="font-mono font-black text-xl lg:text-2xl uppercase tracking-wider text-safe-on-white hover:text-brutalist-yellow transition-colors duration-200 focus:outline-none focus:ring-3 focus:ring-brutalist-yellow focus:ring-offset-2"
+              className="font-mono font-black text-xl lg:text-2xl uppercase tracking-wider hover-nav-link focus-contrast-safe"
               aria-label="Developer Portfolio - Home"
             >
               DEV.PORTFOLIO
@@ -118,9 +118,9 @@ export default function Navigation({ className = "" }: NavigationProps) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`font-mono font-bold text-sm uppercase tracking-wider transition-all duration-200 hover:text-brutalist-yellow relative focus:outline-none focus:ring-3 focus:ring-brutalist-yellow focus:ring-offset-2 ${
+                  className={`nav-item font-mono font-bold text-sm uppercase tracking-wider hover-nav-link relative focus-contrast-safe ${
                     pathname === item.href
-                      ? "text-brutalist-yellow after:absolute after:bottom-[-8px] after:left-0 after:right-0 after:h-[3px] after:bg-brutalist-yellow"
+                      ? "active text-brutalist-yellow after:absolute after:bottom-[-8px] after:left-0 after:right-0 after:h-[3px] after:bg-brutalist-yellow"
                       : "text-safe-on-white"
                   }`}
                   role="menuitem"
@@ -142,7 +142,7 @@ export default function Navigation({ className = "" }: NavigationProps) {
               {/* Mobile Menu Button */}
               <button
                 onClick={toggleMenu}
-                className="p-2 border-[3px] border-foreground bg-background text-safe-on-white hover:bg-foreground hover:text-background transition-all duration-200 focus:outline-none focus:ring-3 focus:ring-brutalist-yellow focus:ring-offset-2"
+                className="p-2 border-[3px] border-foreground bg-background text-safe-on-white hover-secondary-button focus-contrast-safe"
                 aria-label={
                   isOpen ? "Close navigation menu" : "Open navigation menu"
                 }
@@ -198,7 +198,7 @@ export default function Navigation({ className = "" }: NavigationProps) {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`font-mono font-bold text-lg uppercase tracking-wider transition-all duration-200 hover:text-brutalist-yellow hover:translate-x-2 focus:outline-none focus:ring-3 focus:ring-brutalist-yellow focus:ring-offset-2 ${
+                    className={`mobile-nav-item font-mono font-bold text-lg uppercase tracking-wider hover-nav-link focus-contrast-safe ${
                       pathname === item.href
                         ? "text-brutalist-yellow border-l-[5px] border-brutalist-yellow pl-4"
                         : "text-safe-on-white"
@@ -222,7 +222,7 @@ export default function Navigation({ className = "" }: NavigationProps) {
                   </p>
                   <Link
                     href="/contact"
-                    className="inline-block mt-3 px-4 py-2 bg-brutalist-yellow text-safe-on-yellow border-[3px] border-foreground font-mono font-bold text-sm uppercase tracking-wider hover:bg-foreground hover:text-brutalist-yellow transition-all duration-200 focus:outline-none focus:ring-3 focus:ring-brutalist-yellow focus:ring-offset-2"
+                    className="inline-block mt-3 px-4 py-2 border-[3px] border-foreground font-mono font-bold text-sm uppercase tracking-wider hover-contact-yellow focus-contrast-safe"
                   >
                     Get Quote
                   </Link>

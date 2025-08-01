@@ -144,7 +144,7 @@ export default function Home() {
         {/* Services Section */}
         <section
           id="services"
-          className="scroll-mt-20 bg-white border-t-5 border-black"
+          className="scroll-mt-20 bg-brutalist-light-gray border-t-5 border-black"
         >
           <ServicesGrid />
         </section>
@@ -160,7 +160,7 @@ export default function Home() {
         {/* Portfolio Section */}
         <section
           id="portfolio"
-          className="scroll-mt-20 bg-white border-t-5 border-black"
+          className="scroll-mt-20 bg-brutalist-light-gray border-t-5 border-black"
         >
           <div className="container mx-auto px-4 py-16">
             <div className="text-center mb-12">
@@ -194,7 +194,7 @@ export default function Home() {
         {/* Testimonials Section */}
         <section
           id="testimonials"
-          className="scroll-mt-20 bg-white border-t-5 border-black"
+          className="scroll-mt-20 bg-brutalist-light-gray border-t-5 border-black"
         >
           <TestimonialsCarousel />
         </section>
@@ -210,7 +210,7 @@ export default function Home() {
         {/* Process Section */}
         <section
           id="process"
-          className="scroll-mt-20 bg-white border-t-5 border-black"
+          className="scroll-mt-20 bg-brutalist-light-gray border-t-5 border-black"
         >
           <div className="container mx-auto px-4 py-16">
             <div className="text-center mb-12">

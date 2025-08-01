@@ -80,12 +80,44 @@ export const BrutalistCardDemo = () => {
               title="Clickable Card"
               description="This card is clickable and shows cursor pointer on hover."
               hover="glow"
+              onClick={() => alert("Card clicked!")}
             />
             <BrutalistCard
               title="Custom Styling"
               description="This card demonstrates custom className usage."
               className="border-red-500 bg-red-100"
               hover="lift"
+            />
+          </div>
+        </section>
+
+        {/* Enhanced Color Features */}
+        <section className="space-y-4">
+          <h2 className="font-mono text-2xl font-bold uppercase">
+            Enhanced Color Features
+          </h2>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            <BrutalistCard
+              title="High Contrast Mode"
+              description="This card uses high contrast mode for better accessibility."
+              highContrast
+              hover="lift"
+            />
+            <BrutalistCard
+              title="Custom Colors"
+              description="This card demonstrates custom color combinations with accessibility validation."
+              customColors={{
+                background: "#2a2a2a",
+                text: "#ffffff",
+                border: "#ffff00",
+              }}
+              hover="glow"
+            />
+            <BrutalistCard
+              title="Theme Aware"
+              description="This card automatically adapts to light/dark theme with enhanced contrast."
+              accent
+              hover="invert"
             />
           </div>
         </section>

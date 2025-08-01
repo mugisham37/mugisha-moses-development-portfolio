@@ -84,7 +84,7 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({
   );
 
   return (
-    <section className={cn("py-16 bg-white", className)}>
+    <section className={cn("py-16 bg-brutalist-light-gray", className)}>
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -104,7 +104,7 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({
 
         {/* Main Carousel */}
         <div className="relative max-w-4xl mx-auto">
-          <div className="border-5 border-black bg-white p-8 md:p-12 relative overflow-hidden">
+          <div className="border-5 border-black bg-brutalist-light-gray p-8 md:p-12 relative overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
@@ -163,7 +163,7 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({
                   </div>
 
                   {/* Company Logo */}
-                  <div className="w-16 h-16 border-3 border-black bg-white flex items-center justify-center">
+                  <div className="w-16 h-16 border-3 border-black bg-brutalist-light-gray flex items-center justify-center">
                     <div className="w-12 h-12 bg-brutalist-yellow border border-black"></div>
                   </div>
                 </div>
@@ -194,14 +194,14 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({
             {/* Navigation Arrows */}
             <button
               onClick={prevTestimonial}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 border-3 border-black bg-white hover:bg-brutalist-yellow transition-colors duration-300 flex items-center justify-center group"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 border-3 border-black bg-brutalist-light-gray hover:bg-brutalist-yellow transition-colors duration-300 flex items-center justify-center group"
             >
               <ChevronLeft className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
             </button>
 
             <button
               onClick={nextTestimonial}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 border-3 border-black bg-white hover:bg-brutalist-yellow transition-colors duration-300 flex items-center justify-center group"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 border-3 border-black bg-brutalist-light-gray hover:bg-brutalist-yellow transition-colors duration-300 flex items-center justify-center group"
             >
               <ChevronRight className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
             </button>
@@ -217,7 +217,7 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({
                   "w-4 h-4 border-2 border-black transition-all duration-300",
                   index === currentIndex
                     ? "bg-brutalist-yellow scale-125"
-                    : "bg-white hover:bg-gray-200"
+                    : "bg-brutalist-light-gray hover:bg-gray-200"
                 )}
               />
             ))}
@@ -246,7 +246,7 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({
                 whileHover={{ y: -5 }}
                 onClick={() => goToTestimonial(index)}
                 className={cn(
-                  "border-3 border-black bg-white p-6 cursor-pointer transition-all duration-300",
+                  "border-3 border-black bg-brutalist-light-gray p-6 cursor-pointer transition-all duration-300",
                   index === currentIndex && "bg-brutalist-yellow"
                 )}
               >
@@ -291,7 +291,7 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
                 exit={{ scale: 0.8 }}
-                className="bg-white border-5 border-brutalist-yellow p-8 max-w-2xl mx-4"
+                className="bg-brutalist-light-gray border-5 border-brutalist-yellow p-8 max-w-2xl mx-4"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="aspect-video bg-black border-3 border-brutalist-yellow flex items-center justify-center mb-4">

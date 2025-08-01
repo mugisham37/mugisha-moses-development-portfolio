@@ -172,7 +172,7 @@ const defaultExamples: CodeExample[] = [
 <style>
 .brutalist-card {
   position: relative;
-  background: white;
+  background: #f5f5f5;
   border: 4px solid black;
   padding: 1.5rem;
   box-shadow: 4px 4px 0px black;

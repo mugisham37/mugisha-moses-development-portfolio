@@ -116,7 +116,7 @@ export default function AccessibleModal({
       <div
         ref={modalRef}
         className={cn(
-          "relative bg-white border-5 border-black shadow-lg w-full",
+          "relative bg-brutalist-light-gray border-5 border-black shadow-lg w-full",
           sizeClasses[size],
           "max-h-[90vh] overflow-y-auto",
           className

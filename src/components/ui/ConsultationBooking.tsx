@@ -183,7 +183,7 @@ const ConsultationBooking: React.FC<ConsultationBookingProps> = ({
                     "hover:bg-brutalist-yellow hover:transform hover:-translate-y-1",
                     selectedDate === date.value
                       ? "bg-brutalist-yellow border-black"
-                      : "bg-white hover:bg-gray-50"
+                      : "bg-brutalist-light-gray hover:bg-gray-50"
                   )}
                 >
                   {date.label}
@@ -212,7 +212,7 @@ const ConsultationBooking: React.FC<ConsultationBookingProps> = ({
                     selectedTime === slot.id
                       ? "bg-brutalist-yellow border-black"
                       : slot.available
-                      ? "bg-white hover:bg-gray-50"
+                      ? "bg-brutalist-light-gray hover:bg-gray-50"
                       : "bg-gray-100"
                   )}
                 >

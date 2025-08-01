@@ -3,6 +3,10 @@
 import { useTheme } from "@/components/providers";
 import { Sun, Moon } from "lucide-react";
 import { useEffect, useState } from "react";
+import {
+  validateToggleVisibility,
+  validateToggleFocusStates,
+} from "@/utils/colorUtils";
 
 interface DarkModeToggleProps {
   className?: string;
@@ -20,6 +24,14 @@ export default function DarkModeToggle({
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Validate toggle visibility in development
+  useEffect(() => {
+    if (mounted && typeof window !== "undefined") {
+      validateToggleVisibility(theme);
+      validateToggleFocusStates(theme);
+    }
+  }, [theme, mounted]);
 
   if (!mounted) {
     return (
@@ -40,12 +52,15 @@ export default function DarkModeToggle({
       onClick={toggleTheme}
       className={`
         brutalist-toggle
+        toggle-enhanced-visibility
         ${getSizeClasses(size)}
         ${isDark ? "brutalist-toggle-dark" : "brutalist-toggle-light"}
         ${className}
       `}
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
       title={`Switch to ${isDark ? "light" : "dark"} mode`}
+      aria-checked={isDark}
+      role="switch"
     >
       {/* Toggle Track */}
       <div className="brutalist-toggle-track">
@@ -66,9 +81,14 @@ export default function DarkModeToggle({
               <Moon
                 size={getIconSize(size)}
                 className="brutalist-toggle-moon"
+                data-testid="moon-icon"
               />
             ) : (
-              <Sun size={getIconSize(size)} className="brutalist-toggle-sun" />
+              <Sun
+                size={getIconSize(size)}
+                className="brutalist-toggle-sun"
+                data-testid="sun-icon"
+              />
             )}
           </div>
         </div>
@@ -79,14 +99,16 @@ export default function DarkModeToggle({
         <Sun
           size={getIconSize(size)}
           className={`brutalist-toggle-bg-sun ${
-            !isDark ? "opacity-0" : "opacity-30"
+            !isDark ? "opacity-0" : "opacity-80"
           }`}
+          data-testid="bg-sun-icon"
         />
         <Moon
           size={getIconSize(size)}
           className={`brutalist-toggle-bg-moon ${
-            isDark ? "opacity-0" : "opacity-30"
+            isDark ? "opacity-0" : "opacity-80"
           }`}
+          data-testid="bg-moon-icon"
         />
       </div>
     </button>

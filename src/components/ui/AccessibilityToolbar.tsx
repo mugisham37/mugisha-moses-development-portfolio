@@ -65,7 +65,7 @@ export default function AccessibilityToolbar() {
         <div
           id="accessibility-toolbar"
           className={cn(
-            "fixed top-16 right-4 z-40 bg-white border-4 border-black p-6 shadow-lg",
+            "fixed top-16 right-4 z-40 bg-brutalist-light-gray border-4 border-black p-6 shadow-lg",
             "w-80 max-w-[calc(100vw-2rem)]"
           )}
           role="dialog"
@@ -90,7 +90,9 @@ export default function AccessibilityToolbar() {
                     "p-2 border-2 border-black font-mono text-xs font-bold uppercase",
                     "hover:bg-yellow-400 transition-colors duration-200",
                     "focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2",
-                    fontSize === size ? "bg-yellow-400" : "bg-white"
+                    fontSize === size
+                      ? "bg-yellow-400"
+                      : "bg-brutalist-light-gray"
                   )}
                   aria-pressed={fontSize === size}
                 >
@@ -112,7 +114,7 @@ export default function AccessibilityToolbar() {
                 "w-full p-3 border-2 border-black font-mono text-sm font-bold uppercase",
                 "hover:bg-yellow-400 transition-colors duration-200",
                 "focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2",
-                "bg-white"
+                "bg-brutalist-light-gray"
               )}
             >
               Toggle High Contrast
@@ -131,7 +133,7 @@ export default function AccessibilityToolbar() {
                 "w-full p-3 border-2 border-black font-mono text-sm font-bold uppercase",
                 "hover:bg-yellow-400 transition-colors duration-200",
                 "focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2",
-                "bg-white"
+                "bg-brutalist-light-gray"
               )}
             >
               Toggle Reduced Motion

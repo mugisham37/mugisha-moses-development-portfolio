@@ -96,7 +96,7 @@ export function ProjectModal({
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="relative bg-white border-4 border-black max-w-6xl w-full max-h-[90vh] overflow-hidden"
+            className="relative bg-brutalist-light-gray border-4 border-black max-w-6xl w-full max-h-[90vh] overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
@@ -111,7 +111,7 @@ export function ProjectModal({
               </div>
               <button
                 onClick={onClose}
-                className="bg-black text-white p-2 border-2 border-black hover:bg-white hover:text-black transition-colors"
+                className="bg-black text-white p-2 border-2 border-black hover:bg-brutalist-light-gray hover:text-black transition-colors"
               >
                 <X size={24} />
               </button>
@@ -132,7 +132,7 @@ export function ProjectModal({
                     className={`flex-1 py-4 px-6 font-mono font-bold border-r-4 border-black last:border-r-0 transition-colors ${
                       activeTab === tab.id
                         ? "bg-black text-white"
-                        : "bg-white text-black hover:bg-yellow-400"
+                        : "bg-brutalist-light-gray text-black hover:bg-yellow-400"
                     }`}
                   >
                     {tab.label}
@@ -522,7 +522,7 @@ function ResultsTab({ project, testimonials }: ResultsTabProps) {
             {testimonials.slice(0, 2).map((testimonial) => (
               <div
                 key={testimonial.id}
-                className="bg-white border-4 border-black p-6"
+                className="bg-brutalist-light-gray border-4 border-black p-6"
               >
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
