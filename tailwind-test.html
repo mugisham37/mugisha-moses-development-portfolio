@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Config Test</title>
+</head>
+
+<body>
+    <!-- Test new color system -->
+    <div class="bg-brutalist-white text-text-on-white p-4 m-4">
+        <h1>White Background with Safe Text</h1>
+    </div>
+
+    <div class="bg-brutalist-yellow text-text-on-yellow p-4 m-4">
+        <h1>Yellow Background with Safe Text</h1>
+    </div>
+
+    <div class="bg-brutalist-black text-text-on-black p-4 m-4">
+        <h1>Black Background with Safe Text</h1>
+    </div>
+
+    <!-- Test standard Tailwind classes with our colors -->
+    <div class="bg-background text-foreground p-4 m-4 border-3 border-foreground">
+        <h2>Theme-aware background and text</h2>
+    </div>
+
+    <div class="text-brutalist-yellow bg-brutalist-black p-4 m-4">
+        <h2>Yellow text on black background</h2>
+    </div>
+
+    <div class="text-brutalist-black bg-brutalist-yellow p-4 m-4">
+        <h2>Black text on yellow background</h2>
+    </div>
+</body>
+
+</html>
