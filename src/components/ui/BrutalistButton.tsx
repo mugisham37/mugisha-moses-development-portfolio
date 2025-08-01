@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { logContrastWarning, BRUTALIST_COLORS } from "@/lib/colorUtils";
 
 export interface BrutalistButtonProps {
   variant: "primary" | "secondary" | "accent";
@@ -30,10 +31,28 @@ const BrutalistButton: React.FC<BrutalistButtonProps> = ({
   const getVariantClasses = () => {
     switch (variant) {
       case "primary":
+        // Black background with white text - excellent contrast (21:1)
+        logContrastWarning(
+          BRUTALIST_COLORS.white,
+          BRUTALIST_COLORS.black,
+          "BrutalistButton primary"
+        );
         return "bg-brutalist-black text-brutalist-white border-brutalist-black hover:bg-brutalist-white hover:text-brutalist-black";
       case "secondary":
+        // White background with black text - excellent contrast (21:1)
+        logContrastWarning(
+          BRUTALIST_COLORS.black,
+          BRUTALIST_COLORS.white,
+          "BrutalistButton secondary"
+        );
         return "bg-brutalist-white text-brutalist-black border-brutalist-black hover:bg-brutalist-black hover:text-brutalist-white";
       case "accent":
+        // Yellow background with black text - good contrast (19.56:1)
+        logContrastWarning(
+          BRUTALIST_COLORS.black,
+          BRUTALIST_COLORS.yellow,
+          "BrutalistButton accent"
+        );
         return "bg-brutalist-yellow text-brutalist-black border-brutalist-black hover:bg-brutalist-black hover:text-brutalist-yellow";
       default:
         return "bg-brutalist-black text-brutalist-white border-brutalist-black";
@@ -78,16 +97,37 @@ const BrutalistButton: React.FC<BrutalistButtonProps> = ({
     return baseVariants;
   };
 
+  const getFocusClasses = () => {
+    // Ensure focus indicators have proper contrast on all variants
+    const baseFocus =
+      "focus:outline-none focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2";
+
+    switch (variant) {
+      case "primary":
+        // Black background - use yellow outline for maximum visibility
+        return `${baseFocus} focus-visible:outline-brutalist-yellow focus:ring-4 focus:ring-brutalist-yellow focus:ring-opacity-75`;
+      case "secondary":
+        // White background - use yellow outline for maximum visibility
+        return `${baseFocus} focus-visible:outline-brutalist-yellow focus:ring-4 focus:ring-brutalist-yellow focus:ring-opacity-75`;
+      case "accent":
+        // Yellow background - use black outline for maximum contrast
+        return `${baseFocus} focus-visible:outline-brutalist-black focus:ring-4 focus:ring-brutalist-black focus:ring-opacity-75`;
+      default:
+        return `${baseFocus} focus-visible:outline-brutalist-yellow focus:ring-4 focus:ring-brutalist-yellow focus:ring-opacity-75`;
+    }
+  };
+
   const baseClasses = cn(
     // Base brutalist styling
     "border-5 font-mono font-black uppercase tracking-wider",
     "transition-all duration-300 ease-out",
-    "focus:outline-none focus:ring-4 focus:ring-brutalist-yellow focus:ring-opacity-50",
     "active:transform active:scale-95",
     // Variant classes
     getVariantClasses(),
     // Size classes
     getSizeClasses(),
+    // Focus classes with proper contrast
+    getFocusClasses(),
     // Disabled state
     disabled && "opacity-50 cursor-not-allowed hover:scale-100",
     // Glow effect

@@ -34,6 +34,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
       className={cn("relative min-h-screen flex items-center", className)}
     >
       <VantaBackground className="absolute inset-0">
+        {/* Dark overlay to ensure text contrast */}
+        <div className="absolute inset-0 bg-black bg-opacity-60 z-5" />
         <div className="relative z-10 container mx-auto px-4 py-20">
           <div className="max-w-6xl mx-auto">
             {/* Main Hero Content */}
@@ -48,7 +50,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
                 {/* Main Heading */}
                 <div className="space-y-4">
                   <motion.h1
-                    className="font-mono font-black text-4xl md:text-5xl lg:text-7xl xl:text-8xl leading-none text-white uppercase tracking-tight"
+                    className="font-mono font-black text-4xl md:text-5xl lg:text-7xl xl:text-8xl leading-none text-safe-on-dark-gray uppercase tracking-tight"
+                    style={{
+                      textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)",
+                      color: "var(--brutalist-white)",
+                    }}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
@@ -56,7 +62,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
                     I BUILD
                   </motion.h1>
                   <motion.h1
-                    className="font-mono font-black text-4xl md:text-5xl lg:text-7xl xl:text-8xl leading-none text-brutalist-yellow uppercase tracking-tight"
+                    className="font-mono font-black text-4xl md:text-5xl lg:text-7xl xl:text-8xl leading-none uppercase tracking-tight"
+                    style={{
+                      textShadow: "2px 2px 4px rgba(0, 0, 0, 0.9)",
+                      color: "var(--brutalist-yellow)",
+                      WebkitTextStroke: "1px rgba(0, 0, 0, 0.5)",
+                    }}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
@@ -64,7 +75,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
                     DIGITAL
                   </motion.h1>
                   <motion.h1
-                    className="font-mono font-black text-4xl md:text-5xl lg:text-7xl xl:text-8xl leading-none text-white uppercase tracking-tight"
+                    className="font-mono font-black text-4xl md:text-5xl lg:text-7xl xl:text-8xl leading-none text-safe-on-dark-gray uppercase tracking-tight"
+                    style={{
+                      textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)",
+                      color: "var(--brutalist-white)",
+                    }}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
@@ -72,7 +87,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
                     EXPERIENCES
                   </motion.h1>
                   <motion.h1
-                    className="font-mono font-black text-4xl md:text-5xl lg:text-7xl xl:text-8xl leading-none text-brutalist-yellow uppercase tracking-tight"
+                    className="font-mono font-black text-4xl md:text-5xl lg:text-7xl xl:text-8xl leading-none uppercase tracking-tight"
+                    style={{
+                      textShadow: "2px 2px 4px rgba(0, 0, 0, 0.9)",
+                      color: "var(--brutalist-yellow)",
+                      WebkitTextStroke: "1px rgba(0, 0, 0, 0.5)",
+                    }}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.8 }}
@@ -83,7 +103,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
 
                 {/* Animated Specialties */}
                 <motion.div
-                  className="text-xl md:text-2xl lg:text-3xl font-mono text-brutalist-gray"
+                  className="text-xl md:text-2xl lg:text-3xl font-mono"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 1.2 }}
@@ -93,13 +113,21 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
                     variant="typing"
                     delay={1500}
                     speed={80}
-                    className="text-white"
+                    className="text-safe-on-dark-gray"
+                    style={{
+                      textShadow: "1px 1px 2px rgba(0, 0, 0, 0.8)",
+                      color: "var(--brutalist-white)",
+                    }}
                   />
                 </motion.div>
 
                 {/* Description */}
                 <motion.p
-                  className="text-lg md:text-xl text-brutalist-gray max-w-2xl font-mono leading-relaxed"
+                  className="text-lg md:text-xl max-w-2xl font-mono leading-relaxed text-safe-on-dark-gray"
+                  style={{
+                    textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)",
+                    color: "var(--brutalist-light-gray)",
+                  }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 1.0 }}
@@ -224,26 +252,65 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
             >
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 <div className="space-y-2">
-                  <div className="text-3xl md:text-4xl font-mono font-black text-brutalist-yellow">
+                  <div
+                    className="text-3xl md:text-4xl font-mono font-black"
+                    style={{
+                      textShadow: "2px 2px 4px rgba(0, 0, 0, 0.9)",
+                      color: "var(--brutalist-yellow)",
+                      WebkitTextStroke: "1px rgba(0, 0, 0, 0.3)",
+                    }}
+                  >
                     2+
                   </div>
-                  <div className="text-sm font-mono text-brutalist-gray uppercase tracking-wider">
+                  <div
+                    className="text-sm font-mono uppercase tracking-wider text-safe-on-dark-gray"
+                    style={{
+                      textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)",
+                      color: "var(--brutalist-light-gray)",
+                    }}
+                  >
                     Years Experience
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <div className="text-3xl md:text-4xl font-mono font-black text-brutalist-yellow">
+                  <div
+                    className="text-3xl md:text-4xl font-mono font-black"
+                    style={{
+                      textShadow: "2px 2px 4px rgba(0, 0, 0, 0.9)",
+                      color: "var(--brutalist-yellow)",
+                      WebkitTextStroke: "1px rgba(0, 0, 0, 0.3)",
+                    }}
+                  >
                     100+
                   </div>
-                  <div className="text-sm font-mono text-brutalist-gray uppercase tracking-wider">
+                  <div
+                    className="text-sm font-mono uppercase tracking-wider text-safe-on-dark-gray"
+                    style={{
+                      textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)",
+                      color: "var(--brutalist-light-gray)",
+                    }}
+                  >
                     Projects Completed
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <div className="text-3xl md:text-4xl font-mono font-black text-brutalist-yellow">
+                  <div
+                    className="text-3xl md:text-4xl font-mono font-black"
+                    style={{
+                      textShadow: "2px 2px 4px rgba(0, 0, 0, 0.9)",
+                      color: "var(--brutalist-yellow)",
+                      WebkitTextStroke: "1px rgba(0, 0, 0, 0.3)",
+                    }}
+                  >
                     98%
                   </div>
-                  <div className="text-sm font-mono text-brutalist-gray uppercase tracking-wider">
+                  <div
+                    className="text-sm font-mono uppercase tracking-wider text-safe-on-dark-gray"
+                    style={{
+                      textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)",
+                      color: "var(--brutalist-light-gray)",
+                    }}
+                  >
                     Client Satisfaction
                   </div>
                 </div>
@@ -272,7 +339,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
             >
               {/* Scroll Text */}
               <motion.span
-                className="font-mono text-xs uppercase tracking-wider text-brutalist-gray group-hover:text-brutalist-yellow transition-colors duration-300"
+                className="font-mono text-xs uppercase tracking-wider group-hover:text-brutalist-yellow transition-colors duration-300"
+                style={{
+                  textShadow: "1px 1px 2px rgba(0, 0, 0, 0.8)",
+                  color: "var(--brutalist-light-gray)",
+                }}
                 animate={{ opacity: [0.5, 1, 0.5] }}
                 transition={{
                   duration: 2,
@@ -299,10 +370,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
                 >
                   {/* Animated Dot */}
                   <motion.div
-                    className="w-1 h-1 bg-brutalist-yellow rounded-full mt-2"
+                    className="w-1 h-1 rounded-full mt-2"
+                    style={{
+                      backgroundColor: "var(--brutalist-yellow)",
+                      boxShadow: "0 0 4px rgba(255, 255, 0, 0.8)",
+                    }}
                     animate={{
                       y: [0, 16, 0],
-                      backgroundColor: ["#ffff00", "#ffffff", "#ffff00"],
+                      backgroundColor: [
+                        "var(--brutalist-yellow)",
+                        "var(--brutalist-white)",
+                        "var(--brutalist-yellow)",
+                      ],
                     }}
                     transition={{
                       duration: 1.5,
@@ -322,8 +401,20 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
                     ease: "easeInOut",
                   }}
                 >
-                  <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[8px] border-l-transparent border-r-transparent border-t-brutalist-yellow group-hover:border-t-white transition-colors duration-300" />
-                  <div className="w-0 h-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-brutalist-yellow group-hover:border-t-white transition-colors duration-300 -mt-1" />
+                  <div
+                    className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[8px] border-l-transparent border-r-transparent group-hover:border-t-white transition-colors duration-300"
+                    style={{
+                      borderTopColor: "var(--brutalist-yellow)",
+                      filter: "drop-shadow(0 0 2px rgba(255, 255, 0, 0.6))",
+                    }}
+                  />
+                  <div
+                    className="w-0 h-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent group-hover:border-t-white transition-colors duration-300 -mt-1"
+                    style={{
+                      borderTopColor: "var(--brutalist-yellow)",
+                      filter: "drop-shadow(0 0 2px rgba(255, 255, 0, 0.6))",
+                    }}
+                  />
                 </motion.div>
               </div>
 
