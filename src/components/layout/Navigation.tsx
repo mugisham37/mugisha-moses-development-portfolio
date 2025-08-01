@@ -103,7 +103,7 @@ export default function Navigation({ className = "" }: NavigationProps) {
             {/* Logo */}
             <Link
               href="/"
-              className="font-mono font-black text-xl lg:text-2xl uppercase tracking-wider hover-nav-link focus-contrast-safe"
+              className="font-mono font-black text-xl lg:text-2xl uppercase tracking-wider hover-nav-link nav-focus-safe"
               aria-label="Developer Portfolio - Home"
             >
               DEV.PORTFOLIO
@@ -118,7 +118,7 @@ export default function Navigation({ className = "" }: NavigationProps) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`nav-item font-mono font-bold text-sm uppercase tracking-wider hover-nav-link relative focus-contrast-safe ${
+                  className={`nav-item font-mono font-bold text-sm uppercase tracking-wider hover-nav-link relative nav-focus-safe ${
                     pathname === item.href
                       ? "active text-brutalist-yellow after:absolute after:bottom-[-8px] after:left-0 after:right-0 after:h-[3px] after:bg-brutalist-yellow"
                       : "text-safe-on-white"
@@ -142,7 +142,7 @@ export default function Navigation({ className = "" }: NavigationProps) {
               {/* Mobile Menu Button */}
               <button
                 onClick={toggleMenu}
-                className="p-2 border-[3px] border-foreground bg-background text-safe-on-white hover-secondary-button focus-contrast-safe"
+                className="p-2 border-[3px] border-foreground bg-background text-safe-on-white hover-secondary-button nav-focus-safe"
                 aria-label={
                   isOpen ? "Close navigation menu" : "Open navigation menu"
                 }
@@ -198,7 +198,7 @@ export default function Navigation({ className = "" }: NavigationProps) {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`mobile-nav-item font-mono font-bold text-lg uppercase tracking-wider hover-nav-link focus-contrast-safe ${
+                    className={`mobile-nav-item font-mono font-bold text-lg uppercase tracking-wider hover-nav-link mobile-nav-item ${
                       pathname === item.href
                         ? "text-brutalist-yellow border-l-[5px] border-brutalist-yellow pl-4"
                         : "text-safe-on-white"
@@ -222,7 +222,7 @@ export default function Navigation({ className = "" }: NavigationProps) {
                   </p>
                   <Link
                     href="/contact"
-                    className="inline-block mt-3 px-4 py-2 border-[3px] border-foreground font-mono font-bold text-sm uppercase tracking-wider hover-contact-yellow focus-contrast-safe"
+                    className="inline-block mt-3 px-4 py-2 border-[3px] border-foreground font-mono font-bold text-sm uppercase tracking-wider hover-contact-yellow nav-focus-safe"
                   >
                     Get Quote
                   </Link>

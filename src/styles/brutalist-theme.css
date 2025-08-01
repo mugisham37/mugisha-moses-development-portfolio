@@ -221,13 +221,17 @@
   cursor: pointer;
 }
 
-.brutalist-toggle:focus {
+.brutalist-toggle:focus-visible {
   /* Enhanced focus visibility with proper contrast */
   outline: 3px solid var(--brutalist-yellow);
   outline-offset: 2px;
-  box-shadow: var(--brutalist-shadow-medium), 0 0 0 6px rgba(255, 255, 0, 0.4);
+  box-shadow: var(--brutalist-shadow-medium), 0 0 0 1px var(--background),
+    0 0 0 6px var(--brutalist-yellow), 0 0 12px rgba(255, 255, 0, 0.6);
   /* Add glow effect for better visibility */
-  animation: toggle-glow 1s ease-in-out;
+  animation: toggle-glow 1.5s ease-in-out infinite;
+  /* Add subtle transform for attention */
+  transform: translateY(-1px) scale(1.02);
+  transition: all 0.2s ease;
 }
 
 .brutalist-toggle:hover {
@@ -354,14 +358,18 @@
   box-shadow: 3px 3px 0px var(--brutalist-white);
 }
 
-[data-theme="dark"] .brutalist-toggle:focus {
+[data-theme="dark"] .brutalist-toggle:focus-visible {
   /* Enhanced focus visibility in dark mode */
   outline: 3px solid var(--brutalist-yellow);
   outline-offset: 2px;
   box-shadow: 3px 3px 0px var(--brutalist-white),
-    0 0 0 6px rgba(255, 255, 0, 0.4);
+    0 0 0 1px var(--brutalist-black), 0 0 0 6px var(--brutalist-yellow),
+    0 0 12px rgba(255, 255, 0, 0.6);
   /* Add glow effect for better visibility in dark mode */
-  animation: toggle-glow-dark 1s ease-in-out;
+  animation: toggle-glow-dark 1.5s ease-in-out infinite;
+  /* Add subtle transform for attention */
+  transform: translateY(-1px) scale(1.02);
+  transition: all 0.2s ease;
 }
 
 [data-theme="dark"] .brutalist-toggle:hover {
@@ -999,11 +1007,12 @@
 @keyframes toggle-glow {
   0%,
   100% {
-    box-shadow: var(--brutalist-shadow-medium), 0 0 0 6px rgba(255, 255, 0, 0.4);
+    box-shadow: var(--brutalist-shadow-medium), 0 0 0 1px var(--background),
+      0 0 0 6px var(--brutalist-yellow), 0 0 12px rgba(255, 255, 0, 0.6);
   }
   50% {
-    box-shadow: var(--brutalist-shadow-medium), 0 0 15px var(--brutalist-yellow),
-      0 0 0 6px rgba(255, 255, 0, 0.6);
+    box-shadow: var(--brutalist-shadow-medium), 0 0 0 1px var(--background),
+      0 0 0 6px var(--brutalist-yellow), 0 0 16px rgba(255, 255, 0, 0.8);
   }
 }
 
@@ -1011,11 +1020,13 @@
   0%,
   100% {
     box-shadow: 3px 3px 0px var(--brutalist-white),
-      0 0 0 6px rgba(255, 255, 0, 0.4);
+      0 0 0 1px var(--brutalist-black), 0 0 0 6px var(--brutalist-yellow),
+      0 0 12px rgba(255, 255, 0, 0.6);
   }
   50% {
     box-shadow: 3px 3px 0px var(--brutalist-white),
-      0 0 15px var(--brutalist-yellow), 0 0 0 6px rgba(255, 255, 0, 0.6);
+      0 0 0 1px var(--brutalist-black), 0 0 0 6px var(--brutalist-yellow),
+      0 0 16px rgba(255, 255, 0, 0.8);
   }
 }
 

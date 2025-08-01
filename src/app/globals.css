@@ -78,10 +78,30 @@ body {
   background: #000000;
 }
 
-/* Focus styles */
+/* Enhanced Focus styles for better visibility with improved contrast */
 *:focus {
   outline: 3px solid var(--safe-accent);
   outline-offset: 2px;
+  /* Enhanced contrasting background ring for maximum visibility on all backgrounds */
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
+    0 0 8px rgba(255, 255, 0, 0.4);
+}
+
+/* Focus-visible for modern browsers - only show focus on keyboard navigation */
+*:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  /* Enhanced visibility with glow effect and contrasting ring */
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
+    0 0 8px rgba(255, 255, 0, 0.4);
+  /* Add subtle animation for better attention */
+  animation: focus-visibility-pulse 1.5s ease-in-out infinite;
+}
+
+/* Remove focus outline for mouse users */
+*:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
 }
 
 /* Reduced motion */
@@ -110,10 +130,20 @@ body {
   border: 0;
 }
 
-/* Focus visible styles */
+/* Enhanced focus visible styles with better contrast */
 .focus-visible {
   outline: 3px solid var(--safe-accent) !important;
   outline-offset: 2px !important;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent) !important;
+}
+
+/* Focus styles for specific interactive elements */
+.focus-contrast-safe:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  /* Add subtle glow for enhanced visibility */
+  filter: drop-shadow(0 0 4px rgba(255, 255, 0, 0.6));
 }
 
 /* High contrast mode */
@@ -171,7 +201,7 @@ body {
   font-size: 20px;
 }
 
-/* Keyboard navigation styles */
+/* Enhanced keyboard navigation styles with maximum visibility */
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
@@ -179,7 +209,69 @@ textarea:focus-visible,
 select:focus-visible {
   outline: 3px solid var(--safe-accent);
   outline-offset: 2px;
-  box-shadow: 0 0 0 2px var(--foreground);
+  /* Maximum visibility with enhanced glow and contrasting ring */
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
+    0 0 12px rgba(255, 255, 0, 0.5), 0 0 20px rgba(255, 255, 0, 0.2);
+  /* Enhanced animation for better attention */
+  animation: focus-visibility-pulse 1.5s ease-in-out infinite;
+}
+
+/* Enhanced focus visibility pulse animation */
+@keyframes focus-visibility-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
+      0 0 8px rgba(255, 255, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
+      0 0 12px rgba(255, 255, 0, 0.6);
+  }
+}
+
+/* Legacy focus pulse animation for backward compatibility */
+@keyframes focus-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
+      0 0 8px rgba(255, 255, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
+      0 0 12px rgba(255, 255, 0, 0.6);
+  }
+}
+
+/* Enhanced focus styles for different element types with maximum visibility */
+button:focus-visible {
+  /* Buttons get enhanced emphasis with better visibility */
+  transform: translateY(-2px) scale(1.02);
+  transition: transform 0.2s ease;
+  /* Additional glow for button focus */
+  filter: drop-shadow(0 0 6px rgba(255, 255, 0, 0.6));
+}
+
+a:focus-visible {
+  /* Links get enhanced underline emphasis with better visibility */
+  text-decoration: underline;
+  text-decoration-color: var(--safe-accent);
+  text-decoration-thickness: 4px;
+  text-underline-offset: 4px;
+  /* Add background highlight for better visibility */
+  background: rgba(255, 255, 0, 0.1);
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  /* Form elements get enhanced border emphasis with better visibility */
+  border-color: var(--safe-accent);
+  border-width: 3px;
+  /* Add inner glow for form elements */
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
+    0 0 12px rgba(255, 255, 0, 0.5), inset 0 0 8px rgba(255, 255, 0, 0.1);
 }
 
 /* Skip links */
@@ -650,4 +742,429 @@ select:focus {
   color: var(--safe-text-light);
   padding: 0.5rem 1rem;
   border: 2px solid var(--safe-text-light);
+}
+/* Enhanced focus states for navigation elements */
+.nav-focus-safe:focus-visible {
+  outline: 3px solid var(--brutalist-yellow);
+  outline-offset: 2px;
+  background: var(--brutalist-yellow);
+  color: var(--text-on-yellow);
+  /* Enhanced visibility with contrasting ring */
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--brutalist-yellow),
+    0 0 8px rgba(255, 255, 0, 0.5);
+  /* Add subtle transform for better attention */
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
+[data-theme="dark"] .nav-focus-safe:focus-visible {
+  background: var(--brutalist-yellow);
+  color: var(--text-on-yellow);
+  box-shadow: 0 0 0 1px var(--brutalist-black),
+    0 0 0 5px var(--brutalist-yellow), 0 0 8px rgba(255, 255, 0, 0.5);
+}
+
+/* Mobile navigation focus styles */
+.mobile-nav-item:focus-visible {
+  outline: 3px solid var(--brutalist-yellow);
+  outline-offset: 2px;
+  background: var(--brutalist-yellow);
+  color: var(--text-on-yellow);
+  padding-left: 1rem;
+  border-left: 5px solid var(--brutalist-black);
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--brutalist-yellow);
+  transform: translateX(4px);
+  transition: all 0.2s ease;
+}
+
+/* Enhanced focus styles for interactive cards */
+.brutalist-card:focus-visible {
+  outline: 3px solid var(--brutalist-yellow);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--brutalist-yellow),
+    0 0 12px rgba(255, 255, 0, 0.6);
+  transform: translateY(-2px);
+  transition: all 0.2s ease;
+}
+
+/* Enhanced focus styles for buttons with different variants */
+.brutalist-btn:focus-visible {
+  outline: 3px solid var(--brutalist-yellow);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--brutalist-yellow),
+    0 0 8px rgba(255, 255, 0, 0.5);
+  transform: translateY(-1px) scale(1.02);
+  transition: all 0.2s ease;
+}
+
+/* Focus styles for sticky contact button */
+.sticky-contact:focus-visible,
+.sticky-contact-option:focus-visible {
+  outline: 3px solid var(--brutalist-yellow);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--brutalist-yellow),
+    0 0 12px rgba(255, 255, 0, 0.7);
+  transform: translateY(-2px) scale(1.05);
+  transition: all 0.2s ease;
+}
+
+/* Focus styles for form elements with enhanced visibility */
+.form-field:focus-visible {
+  outline: 3px solid var(--brutalist-yellow);
+  outline-offset: 2px;
+  border-color: var(--brutalist-yellow);
+  border-width: 3px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--brutalist-yellow),
+    inset 0 0 8px rgba(255, 255, 0, 0.1);
+}
+
+/* Focus styles for skip links with maximum visibility */
+.skip-link:focus {
+  outline: 3px solid var(--brutalist-yellow);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--brutalist-black),
+    0 0 0 5px var(--brutalist-yellow), 0 0 16px rgba(255, 255, 0, 0.8);
+  transform: scale(1.05);
+  animation: skip-link-attention 0.5s ease-in-out;
+}
+
+@keyframes skip-link-attention {
+  0%,
+  100% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* High contrast mode enhancements */
+@media (prefers-contrast: high) {
+  *:focus-visible {
+    outline-width: 4px;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 2px Canvas, 0 0 0 7px Highlight, 0 0 12px Highlight;
+  }
+
+  button:focus-visible,
+  a:focus-visible {
+    transform: translateY(-2px) scale(1.03);
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  *:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+    box-shadow: none;
+    background: Highlight;
+    color: HighlightText;
+  }
+
+  .nav-focus-safe:focus-visible,
+  .mobile-nav-item:focus-visible {
+    background: Highlight;
+    color: HighlightText;
+    border-color: HighlightText;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *:focus-visible {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+
+  .focus-pulse,
+  .skip-link-attention {
+    animation: none;
+  }
+}
+
+/* Focus styles for dark mode toggle with enhanced visibility */
+.brutalist-toggle:focus-visible {
+  outline: 3px solid var(--brutalist-yellow);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--brutalist-yellow),
+    0 0 12px rgba(255, 255, 0, 0.6);
+  animation: toggle-focus-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes toggle-focus-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--brutalist-yellow),
+      0 0 12px rgba(255, 255, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--brutalist-yellow),
+      0 0 16px rgba(255, 255, 0, 0.8);
+  }
+}
+
+[data-theme="dark"] .brutalist-toggle:focus-visible {
+  box-shadow: 0 0 0 1px var(--brutalist-black),
+    0 0 0 5px var(--brutalist-yellow), 0 0 12px rgba(255, 255, 0, 0.6);
+}
+/* Enhanced high contrast mode for maximum accessibility */
+@media (prefers-contrast: high) {
+  *:focus-visible {
+    outline-width: 5px;
+    outline-offset: 4px;
+    /* Maximum contrast with enhanced visibility */
+    box-shadow: 0 0 0 2px Canvas, 0 0 0 8px Highlight, 0 0 16px Highlight,
+      0 0 24px rgba(255, 255, 255, 0.3);
+    /* Enhanced animation for high contrast */
+    animation: focus-high-contrast-pulse 1.2s ease-in-out infinite;
+  }
+
+  button:focus-visible,
+  a:focus-visible {
+    transform: translateY(-3px) scale(1.05);
+    /* Additional emphasis in high contrast mode */
+    filter: drop-shadow(0 0 8px Highlight);
+  }
+
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    border-width: 4px;
+    /* Enhanced inner glow for high contrast */
+    box-shadow: 0 0 0 2px Canvas, 0 0 0 8px Highlight, 0 0 16px Highlight,
+      inset 0 0 12px rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* High contrast pulse animation */
+@keyframes focus-high-contrast-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 2px Canvas, 0 0 0 8px Highlight, 0 0 16px Highlight,
+      0 0 24px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 2px Canvas, 0 0 0 8px Highlight, 0 0 20px Highlight,
+      0 0 32px rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* Enhanced forced colors mode (Windows High Contrast) for maximum visibility */
+@media (forced-colors: active) {
+  *:focus-visible {
+    outline: 4px solid Highlight;
+    outline-offset: 3px;
+    /* Use system colors for maximum compatibility */
+    box-shadow: 0 0 0 1px Canvas, 0 0 0 7px Highlight;
+    background: Highlight;
+    color: HighlightText;
+    /* Remove animations in forced colors mode for better performance */
+    animation: none;
+  }
+
+  button:focus-visible,
+  a:focus-visible {
+    background: Highlight;
+    color: HighlightText;
+    border-color: HighlightText;
+    transform: translateY(-2px) scale(1.03);
+  }
+
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    background: Field;
+    color: FieldText;
+    border-color: Highlight;
+    border-width: 3px;
+  }
+
+  /* Ensure navigation elements are visible in forced colors */
+  .nav-focus-safe:focus-visible,
+  .mobile-nav-item:focus-visible {
+    background: Highlight;
+    color: HighlightText;
+    border-color: HighlightText;
+  }
+
+  /* Ensure brutalist components are visible in forced colors */
+  .brutalist-btn:focus-visible,
+  .brutalist-card:focus-visible,
+  .brutalist-toggle:focus-visible {
+    background: Highlight;
+    color: HighlightText;
+    border-color: HighlightText;
+  }
+}
+
+/* Enhanced focus styles for reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *:focus-visible {
+    /* Remove animations but maintain visibility */
+    animation: none;
+    /* Ensure static focus indicators are still highly visible */
+    box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
+      0 0 12px rgba(255, 255, 0, 0.6);
+  }
+
+  button:focus-visible,
+  a:focus-visible {
+    /* Remove transform animations but maintain emphasis */
+    transform: none;
+    /* Use static visual emphasis instead */
+    filter: drop-shadow(0 0 4px rgba(255, 255, 0, 0.8));
+  }
+
+  .focus-pulse,
+  .focus-visibility-pulse,
+  .focus-high-contrast-pulse {
+    animation: none;
+  }
+}
+
+/* Enhanced focus styles for specific component classes */
+.brutalist-btn:focus-visible {
+  /* Enhanced button focus with maximum visibility */
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 6px var(--safe-accent),
+    0 0 16px rgba(255, 255, 0, 0.6), 0 0 24px rgba(255, 255, 0, 0.3);
+  transform: translateY(-2px) scale(1.03);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 0, 0.7));
+}
+
+.brutalist-card:focus-visible {
+  /* Enhanced card focus with maximum visibility */
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 6px var(--safe-accent),
+    0 0 20px rgba(255, 255, 0, 0.6), 0 0 32px rgba(255, 255, 0, 0.3);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.nav-focus-safe:focus-visible,
+.mobile-nav-item:focus-visible {
+  /* Enhanced navigation focus with maximum visibility */
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  background: var(--safe-accent);
+  color: var(--text-on-yellow);
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 6px var(--safe-accent),
+    0 0 16px rgba(255, 255, 0, 0.7);
+  transform: translateY(-1px) scale(1.02);
+}
+
+.form-field:focus-visible {
+  /* Enhanced form field focus with maximum visibility */
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  border-color: var(--safe-accent);
+  border-width: 3px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 6px var(--safe-accent),
+    0 0 12px rgba(255, 255, 0, 0.5), inset 0 0 8px rgba(255, 255, 0, 0.1);
+}
+
+.skip-link:focus {
+  /* Enhanced skip link focus with maximum visibility and attention */
+  outline: 4px solid var(--safe-accent);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 1px var(--brutalist-black), 0 0 0 7px var(--safe-accent),
+    0 0 20px rgba(255, 255, 0, 0.8), 0 0 32px rgba(255, 255, 0, 0.5);
+  transform: scale(1.05);
+  animation: skip-link-enhanced-attention 0.6s ease-in-out;
+}
+
+@keyframes skip-link-enhanced-attention {
+  0%,
+  100% {
+    transform: scale(1.05);
+  }
+  25% {
+    transform: scale(1.08);
+  }
+  75% {
+    transform: scale(1.12);
+  }
+}
+
+/* Enhanced focus styles for sticky contact button */
+.sticky-contact:focus-visible,
+.sticky-contact-option:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 6px var(--safe-accent),
+    0 0 20px rgba(255, 255, 0, 0.7), 0 0 32px rgba(255, 255, 0, 0.4);
+  transform: translateY(-3px) scale(1.08);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 0, 0.8));
+}
+
+/* Enhanced focus styles for dark mode toggle */
+.brutalist-toggle:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 6px var(--safe-accent),
+    0 0 16px rgba(255, 255, 0, 0.6), 0 0 24px rgba(255, 255, 0, 0.3);
+  transform: translateY(-1px) scale(1.03);
+  animation: toggle-enhanced-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes toggle-enhanced-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px var(--background), 0 0 0 6px var(--safe-accent),
+      0 0 16px rgba(255, 255, 0, 0.6), 0 0 24px rgba(255, 255, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 1px var(--background), 0 0 0 6px var(--safe-accent),
+      0 0 20px rgba(255, 255, 0, 0.8), 0 0 32px rgba(255, 255, 0, 0.5);
+  }
+}
+
+/* Focus trap styles for modals and overlays */
+.focus-trap:focus-within {
+  /* Ensure focus trap containers are clearly defined */
+  outline: 2px dashed var(--safe-accent);
+  outline-offset: 4px;
+}
+
+/* Enhanced focus styles for interactive elements in different contexts */
+[role="button"]:focus-visible,
+[role="link"]:focus-visible,
+[role="menuitem"]:focus-visible,
+[role="tab"]:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
+    0 0 12px rgba(255, 255, 0, 0.5);
+  animation: focus-visibility-pulse 1.5s ease-in-out infinite;
+}
+
+/* Ensure minimum touch target size for focused elements */
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible,
+[role="link"]:focus-visible {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Enhanced focus styles for table elements */
+th:focus-visible,
+td:focus-visible {
+  outline: 2px solid var(--safe-accent);
+  outline-offset: 1px;
+  background: rgba(255, 255, 0, 0.1);
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 4px var(--safe-accent);
+}
+
+/* Enhanced focus styles for list items that are interactive */
+li[tabindex]:focus-visible,
+li[role="button"]:focus-visible,
+li[role="menuitem"]:focus-visible {
+  outline: 2px solid var(--safe-accent);
+  outline-offset: 2px;
+  background: rgba(255, 255, 0, 0.1);
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 4px var(--safe-accent);
 }
