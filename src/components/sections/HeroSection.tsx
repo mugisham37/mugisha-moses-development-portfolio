@@ -35,7 +35,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
     >
       <VantaBackground className="absolute inset-0">
         {/* Dark overlay to ensure text contrast */}
-        <div className="absolute inset-0 bg-black bg-opacity-60 z-5" />
+        <div
+          className="absolute inset-0 z-5"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.7) 100%)",
+            backdropFilter: "brightness(0.8)",
+          }}
+        />
         <div className="relative z-10 container mx-auto px-4 py-20">
           <div className="max-w-6xl mx-auto">
             {/* Main Hero Content */}
@@ -429,9 +436,27 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
                   delay: 0.5,
                 }}
               >
-                <div className="w-1 h-1 bg-brutalist-yellow" />
-                <div className="w-1 h-1 bg-brutalist-white" />
-                <div className="w-1 h-1 bg-brutalist-yellow" />
+                <div
+                  className="w-1 h-1"
+                  style={{
+                    backgroundColor: "var(--brutalist-yellow)",
+                    boxShadow: "0 0 2px rgba(255, 255, 0, 0.8)",
+                  }}
+                />
+                <div
+                  className="w-1 h-1"
+                  style={{
+                    backgroundColor: "var(--brutalist-white)",
+                    boxShadow: "0 0 2px rgba(255, 255, 255, 0.8)",
+                  }}
+                />
+                <div
+                  className="w-1 h-1"
+                  style={{
+                    backgroundColor: "var(--brutalist-yellow)",
+                    boxShadow: "0 0 2px rgba(255, 255, 0, 0.8)",
+                  }}
+                />
               </motion.div>
             </motion.button>
           </motion.div>

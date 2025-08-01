@@ -9,6 +9,7 @@ export interface AnimatedTextProps {
   variant: "typing" | "reveal" | "glitch";
   delay?: number;
   className?: string;
+  style?: React.CSSProperties;
   onComplete?: () => void;
   loop?: boolean;
   speed?: number; // For typing effect
@@ -19,6 +20,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
   variant = "typing",
   delay = 0,
   className,
+  style,
   onComplete,
   loop = false,
   speed = 100, // milliseconds per character
@@ -78,7 +80,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
   // Typing variant
   if (variant === "typing") {
     return (
-      <span className={baseClasses}>
+      <span className={baseClasses} style={style}>
         {displayText}
         {isAnimating && (
           <motion.span
@@ -100,6 +102,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
     return (
       <motion.span
         className={baseClasses}
+        style={style}
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -119,6 +122,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
     return (
       <motion.span
         className={baseClasses}
+        style={style}
         initial={{ opacity: 1 }}
         animate={{
           opacity: [1, 0.8, 1, 0.9, 1],
@@ -168,7 +172,11 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
     );
   }
 
-  return <span className={baseClasses}>{text}</span>;
+  return (
+    <span className={baseClasses} style={style}>
+      {text}
+    </span>
+  );
 };
 
 export default AnimatedText;

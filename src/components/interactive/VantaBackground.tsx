@@ -201,18 +201,18 @@ export default function VantaBackground({
       ref={vantaRef}
       className={`
         relative w-full h-full min-h-screen
-        ${!isLoaded ? "bg-black" : ""}
+        bg-black
         ${className}
       `}
       style={{
-        // Fallback background for when Vanta doesn't load
-        background: !isLoaded ? BRUTALIST_COLORS.black : undefined,
+        // Ensure consistent dark background for text contrast
+        background: BRUTALIST_COLORS.black,
       }}
     >
       {/* Fallback pattern for mobile or when Vanta fails to load */}
       {(isMobile || !isLoaded || !vantaEffect.current) && (
         <div
-          className="absolute inset-0 opacity-20 animate-pulse"
+          className="absolute inset-0 opacity-30 animate-pulse"
           style={{
             backgroundImage: `
               radial-gradient(circle at 25% 25%, ${BRUTALIST_COLORS.yellow} 2px, transparent 2px),
