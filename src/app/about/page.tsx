@@ -3,9 +3,13 @@ import {
   AboutSection,
   ProcessTimeline,
   TestimonialsCarousel,
-  SkillsDisplay,
   CTASection,
 } from "@/components/sections";
+import {
+  InteractiveTimeline,
+  SkillsProficiencyMatrix,
+  EnhancedMethodologySection,
+} from "@/components/enhanced";
 
 // SEO optimization for about page
 export const metadata: Metadata = {
@@ -256,128 +260,21 @@ export default function About() {
           </div>
         </section>
 
-        {/* Skills Section */}
-        <SkillsDisplay />
+        {/* Interactive Timeline Section */}
+        <InteractiveTimeline className="border-t-5 border-black" />
 
-        {/* Detailed Process Section */}
-        <section className="bg-brutalist-light-gray py-20 border-t-5 border-black">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black font-mono uppercase tracking-wider mb-6">
-                My Development Methodology
-              </h2>
-              <p className="text-lg font-mono font-bold opacity-80 max-w-3xl mx-auto">
-                A proven 5-phase process that ensures every project delivers
-                exceptional results, on time and within budget.
-              </p>
-            </div>
+        {/* Enhanced Skills Proficiency Matrix */}
+        <SkillsProficiencyMatrix
+          className="border-t-5 border-black"
+          enableFiltering={true}
+          enableSearch={true}
+          showLearningTrajectory={true}
+          showProjectConnections={true}
+          displayMode="grid"
+        />
 
-            <ProcessTimeline />
-
-            {/* Methodology Details */}
-            <div className="mt-16 grid md:grid-cols-2 gap-12">
-              <div className="space-y-8">
-                <div className="border-5 border-black p-6 bg-brutalist-light-gray">
-                  <h3 className="text-xl font-black font-mono uppercase tracking-wider mb-4">
-                    Quality Assurance
-                  </h3>
-                  <ul className="space-y-3 font-mono">
-                    <li className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-brutalist-yellow mt-2 flex-shrink-0"></div>
-                      <span>Comprehensive testing at every stage</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-brutalist-yellow mt-2 flex-shrink-0"></div>
-                      <span>Cross-browser and device compatibility</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-brutalist-yellow mt-2 flex-shrink-0"></div>
-                      <span>Performance optimization and monitoring</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-brutalist-yellow mt-2 flex-shrink-0"></div>
-                      <span>Security best practices implementation</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="border-5 border-black p-6 bg-brutalist-yellow">
-                  <h3 className="text-xl font-black font-mono uppercase tracking-wider mb-4">
-                    Communication Standards
-                  </h3>
-                  <ul className="space-y-3 font-mono">
-                    <li className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-black mt-2 flex-shrink-0"></div>
-                      <span>Daily progress updates and transparency</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-black mt-2 flex-shrink-0"></div>
-                      <span>Regular milestone reviews and feedback</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-black mt-2 flex-shrink-0"></div>
-                      <span>Clear documentation and handover</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-black mt-2 flex-shrink-0"></div>
-                      <span>4-hour response time guarantee</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="space-y-8">
-                <div className="border-5 border-black p-6 bg-brutalist-black text-white">
-                  <h3 className="text-xl font-black font-mono uppercase tracking-wider mb-4 text-brutalist-yellow">
-                    Technology Choices
-                  </h3>
-                  <ul className="space-y-3 font-mono">
-                    <li className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-brutalist-yellow mt-2 flex-shrink-0"></div>
-                      <span>Modern, scalable tech stack selection</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-brutalist-yellow mt-2 flex-shrink-0"></div>
-                      <span>Future-proof architecture planning</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-brutalist-yellow mt-2 flex-shrink-0"></div>
-                      <span>Performance-first development approach</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-brutalist-yellow mt-2 flex-shrink-0"></div>
-                      <span>SEO and accessibility compliance</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="border-5 border-black p-6 bg-brutalist-light-gray">
-                  <h3 className="text-xl font-black font-mono uppercase tracking-wider mb-4">
-                    Project Management
-                  </h3>
-                  <ul className="space-y-3 font-mono">
-                    <li className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-brutalist-yellow mt-2 flex-shrink-0"></div>
-                      <span>Agile development methodology</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-brutalist-yellow mt-2 flex-shrink-0"></div>
-                      <span>Realistic timeline estimation</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-brutalist-yellow mt-2 flex-shrink-0"></div>
-                      <span>Risk assessment and mitigation</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-brutalist-yellow mt-2 flex-shrink-0"></div>
-                      <span>Post-launch support and maintenance</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Enhanced Methodology Section */}
+        <EnhancedMethodologySection />
 
         {/* Additional Testimonials and Case Studies */}
         <TestimonialsCarousel className="border-t-0" />

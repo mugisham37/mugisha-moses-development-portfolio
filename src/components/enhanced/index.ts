@@ -45,3 +45,7 @@ export type {
   ModalBodyProps,
   ModalFooterProps,
 } from "./EnhancedModal";
+
+export { default as InteractiveTimeline } from "./InteractiveTimeline";
+export { default as SkillsProficiencyMatrix } from "./SkillsProficiencyMatrix";
+export { default as EnhancedMethodologySection } from "./EnhancedMethodologySection";
