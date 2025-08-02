@@ -2,7 +2,13 @@ import type { Metadata, Viewport } from "next";
 import { Space_Mono } from "next/font/google";
 import "./globals.css";
 import { Navigation, Footer } from "@/components/layout";
-import { ThemeProvider, ExitIntentProvider } from "@/components/providers";
+import {
+  ThemeProvider,
+  ExitIntentProvider,
+  NavigationProvider,
+  SearchProvider,
+  PreferencesProvider,
+} from "@/components/providers";
 import { CursorTrail, ScrollProgress } from "@/components/interactive";
 import StickyContactButton from "@/components/ui/StickyContactButton";
 import {
@@ -101,21 +107,27 @@ export default function RootLayout({
         <PerformanceMonitor />
         <AccessibilityProvider>
           <ThemeProvider>
-            <ExitIntentProvider>
-              <ScrollProgress height={6} showPercentage={false} />
-              <CursorTrail />
-              <Navigation />
-              <main
-                id="main-content"
-                className="flex-1 pt-16 lg:pt-20"
-                tabIndex={-1}
-              >
-                {children}
-              </main>
-              <Footer />
-              <StickyContactButton />
-              <AccessibilityToolbar />
-            </ExitIntentProvider>
+            <NavigationProvider>
+              <SearchProvider>
+                <PreferencesProvider>
+                  <ExitIntentProvider>
+                    <ScrollProgress height={6} showPercentage={false} />
+                    <CursorTrail />
+                    <Navigation />
+                    <main
+                      id="main-content"
+                      className="flex-1 pt-16 lg:pt-20"
+                      tabIndex={-1}
+                    >
+                      {children}
+                    </main>
+                    <Footer />
+                    <StickyContactButton />
+                    <AccessibilityToolbar />
+                  </ExitIntentProvider>
+                </PreferencesProvider>
+              </SearchProvider>
+            </NavigationProvider>
           </ThemeProvider>
         </AccessibilityProvider>
       </body>

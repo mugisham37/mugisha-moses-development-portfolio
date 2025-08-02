@@ -1,0 +1,150 @@
+/* Context-Aware Navigation Styles */
+
+.brutalist-breadcrumbs {
+  @apply font-mono;
+}
+
+.brutalist-breadcrumbs ol {
+  @apply flex items-center flex-wrap;
+}
+
+.brutalist-breadcrumbs li {
+  @apply flex items-center;
+}
+
+.brutalist-suggestions {
+  @apply space-y-4;
+}
+
+.brutalist-suggestions h3 {
+  @apply text-foreground;
+}
+
+.brutalist-next-steps {
+  @apply space-y-4;
+}
+
+.brutalist-next-steps h3 {
+  @apply text-foreground;
+}
+
+/* Suggestion Card Animations */
+.brutalist-suggestions a:hover {
+  @apply transform translate-x-1 translate-y-[-2px];
+  box-shadow: 4px 4px 0px var(--foreground);
+}
+
+/* Next Step Card Animations */
+.brutalist-next-steps a:hover,
+.brutalist-next-steps button:hover {
+  @apply transform translate-x-1 translate-y-[-2px];
+  box-shadow: 4px 4px 0px var(--foreground);
+}
+
+/* Context-aware navigation demo styles */
+.context-aware-navigation-demo {
+  @apply space-y-6;
+}
+
+.context-aware-navigation-demo button:hover {
+  @apply transform translate-y-[-2px];
+  box-shadow: 3px 3px 0px var(--foreground);
+}
+
+/* User journey visualization */
+.user-journey-debug {
+  @apply bg-background/95 backdrop-blur-sm;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .brutalist-breadcrumbs {
+    @apply text-xs;
+  }
+
+  .brutalist-suggestions,
+  .brutalist-next-steps {
+    @apply space-y-3;
+  }
+
+  .context-aware-navigation-demo .grid {
+    @apply grid-cols-1;
+  }
+}
+
+/* Animation for suggestion relevance indicators */
+.brutalist-suggestions .relevance-indicator {
+  @apply transition-all duration-300;
+}
+
+.brutalist-suggestions a:hover .relevance-indicator {
+  @apply scale-110;
+}
+
+/* Priority indicators for next steps */
+.priority-high {
+  @apply border-red-500 bg-red-50 dark:bg-red-950;
+}
+
+.priority-medium {
+  @apply border-yellow-500 bg-yellow-50 dark:bg-yellow-950;
+}
+
+.priority-low {
+  @apply border-green-500 bg-green-50 dark:bg-green-950;
+}
+
+/* Interactive demo button states */
+.demo-button {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+.demo-button:active {
+  @apply transform translate-x-1 translate-y-1;
+  box-shadow: 1px 1px 0px var(--foreground);
+}
+
+/* Journey path visualization */
+.journey-path-item {
+  @apply transition-all duration-200;
+}
+
+.journey-path-item.current {
+  @apply ring-2 ring-brutalist-yellow;
+}
+
+/* Accessibility improvements */
+.brutalist-breadcrumbs a:focus,
+.brutalist-suggestions a:focus,
+.brutalist-next-steps a:focus,
+.brutalist-next-steps button:focus {
+  @apply outline-none ring-2 ring-brutalist-yellow ring-offset-2 ring-offset-background;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .brutalist-suggestions a:hover,
+  .brutalist-next-steps a:hover,
+  .brutalist-next-steps button:hover {
+    box-shadow: 4px 4px 0px var(--brutalist-yellow);
+  }
+}
+
+/* Loading states */
+.navigation-loading {
+  @apply animate-pulse;
+}
+
+.navigation-loading .skeleton {
+  @apply bg-foreground/10 rounded-none;
+}
+
+/* Error states */
+.navigation-error {
+  @apply border-red-500 bg-red-50 dark:bg-red-950 text-red-700 dark:text-red-300;
+}
+
+/* Success states */
+.navigation-success {
+  @apply border-green-500 bg-green-50 dark:bg-green-950 text-green-700 dark:text-green-300;
+}

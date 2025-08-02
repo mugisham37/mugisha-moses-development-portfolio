@@ -10,6 +10,9 @@ import {
   SkillsProficiencyMatrix,
   EnhancedMethodologySection,
 } from "@/components/enhanced";
+import { ContextAwareNavigationDemo } from "@/components/navigation";
+import { GlobalSearchDemo } from "@/components/search";
+import { PreferencesDemo } from "@/components/preferences";
 
 // SEO optimization for about page
 export const metadata: Metadata = {
@@ -276,6 +279,23 @@ export default function About() {
         {/* Enhanced Methodology Section */}
         <EnhancedMethodologySection />
 
+        {/* Context-Aware Navigation Demo */}
+        <section className="py-20 border-t-5 border-black bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-black font-mono uppercase tracking-wider mb-6">
+                Smart Navigation System
+              </h2>
+              <p className="text-lg font-mono font-bold text-foreground/80 max-w-3xl mx-auto">
+                Experience how the navigation system adapts to your behavior and
+                provides contextual recommendations based on your journey
+                through the site.
+              </p>
+            </div>
+            <ContextAwareNavigationDemo showDebugInfo={false} />
+          </div>
+        </section>
+
         {/* Additional Testimonials and Case Studies */}
         <TestimonialsCarousel className="border-t-0" />
 
@@ -333,6 +353,20 @@ export default function About() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Global Search and Discovery Demo */}
+        <section className="py-20 border-t-5 border-black bg-brutalist-light-gray">
+          <div className="container mx-auto px-4">
+            <GlobalSearchDemo />
+          </div>
+        </section>
+
+        {/* User Preference Synchronization Demo */}
+        <section className="py-20 border-t-5 border-black bg-background">
+          <div className="container mx-auto px-4">
+            <PreferencesDemo />
           </div>
         </section>
 
