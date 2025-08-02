@@ -28,21 +28,84 @@ const nextConfig: NextConfig = {
   // Compression
   compress: true,
 
-  // Bundle analyzer (only in development)
-  ...(process.env.ANALYZE === "true" && {
-    webpack: (config: any) => {
-      if (process.env.NODE_ENV === "development") {
-        const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
-        config.plugins.push(
-          new BundleAnalyzerPlugin({
-            analyzerMode: "server",
-            openAnalyzer: true,
-          })
-        );
-      }
-      return config;
-    },
-  }),
+  // Webpack configuration with performance optimizations
+  webpack: (config: any, { dev, isServer }) => {
+    // Bundle analyzer (only in development)
+    if (process.env.ANALYZE === "true" && dev) {
+      const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+      config.plugins.push(
+        new BundleAnalyzerPlugin({
+          analyzerMode: "server",
+          openAnalyzer: true,
+        })
+      );
+    }
+
+    // Performance optimizations
+    if (!dev && !isServer) {
+      // Code splitting optimization
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: {
+          ...config.optimization.splitChunks,
+          chunks: "all",
+          cacheGroups: {
+            ...config.optimization.splitChunks.cacheGroups,
+            // Vendor chunk for React and core libraries
+            vendor: {
+              test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+              name: "vendor",
+              chunks: "all",
+              priority: 10,
+            },
+            // UI libraries chunk
+            ui: {
+              test: /[\\/]node_modules[\\/](framer-motion|lucide-react)[\\/]/,
+              name: "ui",
+              chunks: "all",
+              priority: 9,
+            },
+            // Form libraries chunk
+            forms: {
+              test: /[\\/]node_modules[\\/](react-hook-form|@hookform\/resolvers|zod)[\\/]/,
+              name: "forms",
+              chunks: "all",
+              priority: 8,
+            },
+            // Three.js chunk (large library)
+            three: {
+              test: /[\\/]node_modules[\\/](three|vanta)[\\/]/,
+              name: "three",
+              chunks: "all",
+              priority: 7,
+            },
+            // Common chunk for shared modules
+            common: {
+              name: "common",
+              minChunks: 2,
+              chunks: "all",
+              priority: 5,
+              reuseExistingChunk: true,
+            },
+          },
+        },
+      };
+
+      // Tree shaking optimization
+      config.optimization.usedExports = true;
+      config.optimization.sideEffects = false;
+    }
+
+    // Module resolution optimizations
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      // Optimize React imports
+      react: require.resolve("react"),
+      "react-dom": require.resolve("react-dom"),
+    };
+
+    return config;
+  },
 
   // Headers for security and performance
   async headers() {
