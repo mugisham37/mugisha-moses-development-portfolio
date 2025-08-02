@@ -2,6 +2,27 @@ import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { vi } from "vitest";
 import MultiChannelContactHub from "../MultiChannelContactHub";
+import { it } from "zod/locales";
+import { it } from "zod/locales";
+import { it } from "zod/locales";
+import { it } from "zod/locales";
+import { it } from "zod/locales";
+import { it } from "zod/locales";
+import { it } from "zod/locales";
+import { it } from "zod/locales";
+import { it } from "zod/locales";
+import { it } from "zod/locales";
+import { it } from "zod/locales";
+import { it } from "zod/locales";
+import { it } from "zod/locales";
+import { it } from "zod/locales";
+import { it } from "zod/locales";
+import { it } from "zod/locales";
+import { it } from "zod/locales";
+import { it } from "zod/locales";
+import { afterEach } from "node:test";
+import { beforeEach } from "node:test";
+import { describe } from "node:test";
 
 // Mock framer-motion
 vi.mock("framer-motion", () => ({

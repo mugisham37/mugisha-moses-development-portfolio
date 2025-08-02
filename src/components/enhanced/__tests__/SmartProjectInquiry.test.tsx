@@ -2,6 +2,35 @@ import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { vi } from "vitest";
 import SmartProjectInquiry from "../SmartProjectInquiry";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { it } from "node:test";
+import { beforeEach } from "node:test";
+import { describe } from "node:test";
 
 // Mock framer-motion
 vi.mock("framer-motion", () => ({

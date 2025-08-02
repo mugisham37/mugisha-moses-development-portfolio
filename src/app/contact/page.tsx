@@ -4,6 +4,7 @@ import ContactInfo from "@/components/sections/ContactInfo";
 import BookingSection from "@/components/sections/BookingSection";
 import MultiChannelContactHub from "@/components/enhanced/MultiChannelContactHub";
 import SmartProjectInquiry from "@/components/enhanced/SmartProjectInquiry";
+import CommunicationPreferencesCenter from "@/components/enhanced/CommunicationPreferencesCenter";
 import { Clock, MapPin, CheckCircle, Globe } from "lucide-react";
 import {
   generateMetadata as generateSEOMetadata,
@@ -210,6 +211,13 @@ export default function Contact() {
         <section className="py-16 lg:py-24 border-b-5 border-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SmartProjectInquiry />
+          </div>
+        </section>
+
+        {/* Communication Preferences Center */}
+        <section className="py-16 lg:py-24 bg-gray-50 border-b-5 border-black">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <CommunicationPreferencesCenter />
           </div>
         </section>
 
