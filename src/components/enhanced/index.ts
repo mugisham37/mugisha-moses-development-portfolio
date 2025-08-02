@@ -1,51 +1,13 @@
-// Enhanced component library exports
-
-export { EnhancedButton } from "./EnhancedButton";
-export type {
-  EnhancedButtonProps,
-  ButtonVariant,
-  ButtonSize,
-} from "./EnhancedButton";
-
-export {
-  EnhancedCard,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardFooter,
-} from "./EnhancedCard";
-export type {
-  EnhancedCardProps,
-  CardVariant,
-  CardSize,
-  CardHeaderProps,
-  CardTitleProps,
-  CardContentProps,
-  CardFooterProps,
-} from "./EnhancedCard";
-
-export { EnhancedInput, EnhancedTextarea } from "./EnhancedInput";
-export type {
-  EnhancedInputProps,
-  EnhancedTextareaProps,
-  InputVariant,
-  InputSize,
-} from "./EnhancedInput";
-
-export {
-  EnhancedModal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-} from "./EnhancedModal";
-export type {
-  EnhancedModalProps,
-  ModalSize,
-  ModalHeaderProps,
-  ModalBodyProps,
-  ModalFooterProps,
-} from "./EnhancedModal";
-
+export { InteractiveProjectGrid } from "./InteractiveProjectGrid";
+export { ProjectCard } from "./ProjectCard";
+export { ProjectCaseStudyModal } from "./ProjectCaseStudyModal";
+export { SimpleInteractiveProjectGrid } from "./SimpleInteractiveProjectGrid";
+export { TechnologyCategoryShowcase } from "./TechnologyCategoryShowcase";
+export { AdvancedSearchEngine } from "./AdvancedSearchEngine";
+export { default as InteractivePricingCalculator } from "./InteractivePricingCalculator";
+export { default as ServiceCustomizationBuilder } from "./ServiceCustomizationBuilder";
 export { default as InteractiveTimeline } from "./InteractiveTimeline";
 export { default as SkillsProficiencyMatrix } from "./SkillsProficiencyMatrix";
 export { default as EnhancedMethodologySection } from "./EnhancedMethodologySection";
+export { default as ProcessVisualizationTimeline } from "./ProcessVisualizationTimeline";
+export { AdvancedFAQSystem } from "./AdvancedFAQSystem";

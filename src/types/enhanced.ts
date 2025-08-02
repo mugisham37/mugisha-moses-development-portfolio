@@ -173,7 +173,7 @@ export interface EnhancedService {
   description: string;
   detailedDescription: string;
   features: ServiceFeature[];
-  pricing: PricingTier[];
+  pricing: EnhancedPricingTier[];
   timeline: string;
   deliverables: Deliverable[];
   process: ProcessStep[];

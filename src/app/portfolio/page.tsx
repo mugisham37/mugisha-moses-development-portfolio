@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { ProjectGrid, ProjectShowcase } from "@/components/sections";
+import { ProjectShowcase } from "@/components/sections";
 import { CTASection } from "@/components/sections";
+import { SimpleInteractiveProjectGrid } from "@/components/enhanced/SimpleInteractiveProjectGrid";
 
 // SEO optimization for portfolio page
 export const metadata: Metadata = {
@@ -135,7 +136,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* All Projects Grid with Filtering */}
+        {/* All Projects Grid with Enhanced Filtering */}
         <section className="bg-brutalist-black py-20 border-b-5 border-brutalist-yellow">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
@@ -143,11 +144,11 @@ export default function Portfolio() {
                 All Projects
               </h2>
               <p className="text-lg font-mono font-bold text-brutalist-gray max-w-3xl mx-auto">
-                Explore the complete portfolio with advanced filtering and
-                search capabilities.
+                Explore the complete portfolio with advanced filtering, search
+                capabilities, and multiple view modes.
               </p>
             </div>
-            <ProjectGrid />
+            <SimpleInteractiveProjectGrid />
           </div>
         </section>
 

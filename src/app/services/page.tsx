@@ -7,6 +7,12 @@ import {
 } from "@/components/sections";
 import { PricingCards } from "@/components/ui";
 import ServicesInteractive from "@/components/sections/ServicesInteractive";
+import {
+  InteractivePricingCalculator,
+  ServiceCustomizationBuilder,
+  ProcessVisualizationTimeline,
+  AdvancedFAQSystem,
+} from "@/components/enhanced";
 
 // SEO optimization for services page
 export const metadata: Metadata = {
@@ -388,8 +394,17 @@ export default function Services() {
           </div>
         </section>
 
+        {/* Interactive Pricing Calculator */}
+        <InteractivePricingCalculator />
+
+        {/* Service Customization Builder */}
+        <ServiceCustomizationBuilder />
+
         {/* Interactive Services Components */}
         <ServicesInteractive />
+
+        {/* Enhanced Process Visualization */}
+        <ProcessVisualizationTimeline />
 
         {/* Development Process */}
         <section className="bg-brutalist-black py-20 border-b-5 border-brutalist-yellow">
@@ -407,76 +422,8 @@ export default function Services() {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="bg-brutalist-light-gray py-20 border-b-5 border-black">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black font-mono uppercase tracking-wider mb-6">
-                Frequently Asked Questions
-              </h2>
-              <p className="text-lg font-mono font-bold opacity-80 max-w-3xl mx-auto">
-                Common questions about our web development services and process.
-              </p>
-            </div>
-
-            <div className="max-w-4xl mx-auto space-y-6">
-              {[
-                {
-                  question: "What technologies do you specialize in?",
-                  answer:
-                    "I specialize in modern web technologies including React, Next.js, TypeScript, Node.js, and various databases. I stay current with the latest frameworks and best practices to deliver cutting-edge solutions.",
-                },
-                {
-                  question: "How long does a typical project take?",
-                  answer:
-                    "Project timelines vary based on complexity. Simple React applications take 2-4 weeks, e-commerce platforms take 4-8 weeks, and complex SaaS solutions take 8-16 weeks. I provide detailed timelines during the discovery phase.",
-                },
-                {
-                  question: "Do you provide ongoing support and maintenance?",
-                  answer:
-                    "Yes, I offer comprehensive post-launch support including bug fixes, security updates, performance monitoring, and feature enhancements. Support packages are available monthly or annually.",
-                },
-                {
-                  question: "Can you work with existing codebases?",
-                  answer:
-                    "Absolutely. I can audit, optimize, and extend existing applications. Whether you need bug fixes, new features, or performance improvements, I can work with your current codebase.",
-                },
-                {
-                  question: "What is your payment structure?",
-                  answer:
-                    "I typically work with a 50% upfront payment and 50% upon completion for smaller projects. Larger projects are broken into milestones with payments tied to deliverables. All pricing is transparent with no hidden fees.",
-                },
-                {
-                  question: "Do you provide hosting and deployment services?",
-                  answer:
-                    "Yes, I handle the complete deployment process including hosting setup, domain configuration, SSL certificates, and ongoing monitoring. I work with platforms like Vercel, AWS, and other cloud providers.",
-                },
-                {
-                  question: "How do you ensure project quality?",
-                  answer:
-                    "Quality is ensured through comprehensive testing, code reviews, performance optimization, and adherence to best practices. Every project includes automated testing, cross-browser compatibility checks, and performance audits.",
-                },
-                {
-                  question: "Can you help with SEO and digital marketing?",
-                  answer:
-                    "Yes, all projects include basic SEO optimization, structured data, and performance optimization. For advanced digital marketing, I can recommend trusted partners or provide consultation on technical SEO aspects.",
-                },
-              ].map((faq, index) => (
-                <div
-                  key={index}
-                  className="border-5 border-black bg-brutalist-light-gray p-6 hover:bg-brutalist-yellow transition-colors duration-300 group"
-                >
-                  <h3 className="text-lg font-black font-mono uppercase tracking-wider mb-4 group-hover:text-black">
-                    {faq.question}
-                  </h3>
-                  <p className="font-mono leading-relaxed group-hover:text-black">
-                    {faq.answer}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Advanced FAQ System */}
+        <AdvancedFAQSystem />
 
         {/* Service Comparisons */}
         <section className="bg-brutalist-black py-20 border-b-5 border-brutalist-yellow">
