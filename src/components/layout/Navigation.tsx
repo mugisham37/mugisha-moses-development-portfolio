@@ -29,6 +29,7 @@ const navigationItems = [
   { href: "/portfolio", label: "PORTFOLIO" },
   { href: "/services", label: "SERVICES" },
   { href: "/contact", label: "CONTACT" },
+  { href: "/settings", label: "SETTINGS" },
 ];
 
 export default function Navigation({ className = "" }: NavigationProps) {
