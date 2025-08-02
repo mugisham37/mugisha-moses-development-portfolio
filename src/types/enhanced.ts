@@ -35,6 +35,7 @@ export type ContactChannel =
   | "email"
   | "phone"
   | "video"
+  | "chat"
   | "messaging"
   | "in-person";
 

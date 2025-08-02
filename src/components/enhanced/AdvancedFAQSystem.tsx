@@ -388,8 +388,8 @@ export const AdvancedFAQSystem: React.FC<AdvancedFAQSystemProps> = ({
           </h2>
           <p className="text-lg font-mono font-bold opacity-80 max-w-3xl mx-auto">
             Find answers to common questions about our web development services,
-            process, and support. Can't find what you're looking for? Contact us
-            directly.
+            process, and support. Can&apos;t find what you&apos;re looking for?
+            Contact us directly.
           </p>
         </div>
 
@@ -434,7 +434,7 @@ export const AdvancedFAQSystem: React.FC<AdvancedFAQSystemProps> = ({
                 No FAQs Found
               </h3>
               <p className="font-mono opacity-80 mb-6">
-                We couldn't find any FAQs matching your search criteria.
+                We couldn&apos;t find any FAQs matching your search criteria.
               </p>
               <EnhancedButton
                 onClick={() => {
@@ -595,8 +595,8 @@ export const AdvancedFAQSystem: React.FC<AdvancedFAQSystemProps> = ({
               Still Have Questions?
             </h3>
             <p className="font-mono font-bold mb-6">
-              Can't find the answer you're looking for? Get in touch and I'll be
-              happy to help.
+              Can&apos;t find the answer you&apos;re looking for? Get in touch
+              and I&apos;ll be happy to help.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <EnhancedButton
