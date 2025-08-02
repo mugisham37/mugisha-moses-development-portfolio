@@ -3,6 +3,7 @@ import ContactSection from "@/components/sections/ContactSection";
 import ContactInfo from "@/components/sections/ContactInfo";
 import BookingSection from "@/components/sections/BookingSection";
 import MultiChannelContactHub from "@/components/enhanced/MultiChannelContactHub";
+import SmartProjectInquiry from "@/components/enhanced/SmartProjectInquiry";
 import { Clock, MapPin, CheckCircle, Globe } from "lucide-react";
 import {
   generateMetadata as generateSEOMetadata,
@@ -204,6 +205,13 @@ export default function Contact() {
 
         {/* Calendar Booking Section */}
         <BookingSection />
+
+        {/* Smart Project Inquiry System */}
+        <section className="py-16 lg:py-24 border-b-5 border-black">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <SmartProjectInquiry />
+          </div>
+        </section>
 
         {/* Main Contact Form */}
         <ContactSection />
