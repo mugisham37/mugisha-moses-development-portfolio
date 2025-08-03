@@ -50,9 +50,18 @@ export default function VantaBackground({
   const vantaEffect = useRef<VantaEffect | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  // Ensure we're on the client side
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // Detect mobile devices
   useEffect(() => {
+    if (!isClient) return;
+
     const checkMobile = () => {
       const mobile =
         window.innerWidth < 768 ||
@@ -65,11 +74,37 @@ export default function VantaBackground({
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  }, [isClient]);
 
-  // Load Vanta.js dynamically
+  // Validate THREE.js availability
+  const validateThreeJS = () => {
+    try {
+      // Check if THREE.js is properly loaded
+      if (!THREE || typeof THREE !== 'object') {
+        console.warn("THREE.js not properly loaded");
+        return false;
+      }
+
+      // Check for essential THREE.js components
+      if (!THREE.PerspectiveCamera || !THREE.Scene || !THREE.WebGLRenderer) {
+        console.warn("THREE.js components not available");
+        return false;
+      }
+
+      return true;
+    } catch (error) {
+      console.warn("THREE.js validation failed:", error);
+      return false;
+    }
+  };
+
+  // Load Vanta.js dynamically with improved error handling
   useEffect(() => {
+    if (!isClient) return;
+
     let mounted = true;
+    let retryCount = 0;
+    const maxRetries = 3;
 
     const loadVanta = async () => {
       try {
@@ -84,8 +119,21 @@ export default function VantaBackground({
           return;
         }
 
+        // Validate THREE.js before proceeding
+        if (!validateThreeJS()) {
+          console.warn("THREE.js validation failed, using fallback");
+          setHasError(true);
+          setIsLoaded(true);
+          return;
+        }
+
         // Dynamically import Vanta.js to avoid SSR issues
         await import("vanta/dist/vanta.dots.min.js");
+
+        // Additional validation after import
+        if (!window.VANTA || !window.VANTA.DOTS) {
+          throw new Error("VANTA library not properly loaded");
+        }
 
         if (
           mounted &&
@@ -112,10 +160,22 @@ export default function VantaBackground({
           });
 
           setIsLoaded(true);
+          setHasError(false);
         }
       } catch (error) {
         console.warn("Failed to load Vanta.js:", error);
-        setIsLoaded(true); // Still set loaded to show fallback
+
+        // Retry logic for transient errors
+        if (retryCount < maxRetries && mounted) {
+          retryCount++;
+          console.warn(`Retrying Vanta.js load (${retryCount}/${maxRetries})`);
+          setTimeout(loadVanta, 1000 * retryCount); // Exponential backoff
+          return;
+        }
+
+        // Final fallback
+        setHasError(true);
+        setIsLoaded(true);
       }
     };
 
@@ -126,13 +186,17 @@ export default function VantaBackground({
       mounted = false;
       clearTimeout(timer);
     };
-  }, [isMobile]);
+  }, [isMobile, isClient]);
 
   // Cleanup effect
   useEffect(() => {
     return () => {
       if (vantaEffect.current) {
-        vantaEffect.current.destroy();
+        try {
+          vantaEffect.current.destroy();
+        } catch (error) {
+          console.warn("Error destroying Vanta effect:", error);
+        }
         vantaEffect.current = null;
       }
     };
@@ -140,19 +204,25 @@ export default function VantaBackground({
 
   // Handle resize
   useEffect(() => {
+    if (!isClient) return;
+
     const handleResize = () => {
       if (vantaEffect.current) {
-        vantaEffect.current.resize();
+        try {
+          vantaEffect.current.resize();
+        } catch (error) {
+          console.warn("Error resizing Vanta effect:", error);
+        }
       }
     };
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [isClient]);
 
   // Performance monitoring and optimization
   useEffect(() => {
-    if (!isLoaded) return;
+    if (!isLoaded || hasError || !isClient) return;
 
     let frameCount = 0;
     let lastTime = performance.now();
@@ -178,8 +248,13 @@ export default function VantaBackground({
           // Disable effect after 3 consecutive low FPS readings
           if (lowFpsCount >= 3 && vantaEffect.current) {
             console.warn("Disabling Vanta effect due to poor performance");
-            vantaEffect.current.destroy();
+            try {
+              vantaEffect.current.destroy();
+            } catch (error) {
+              console.warn("Error destroying Vanta effect:", error);
+            }
             vantaEffect.current = null;
+            setHasError(true);
             return;
           }
         } else {
@@ -194,7 +269,39 @@ export default function VantaBackground({
 
     const animationId = requestAnimationFrame(monitorPerformance);
     return () => cancelAnimationFrame(animationId);
-  }, [isLoaded, isMobile]);
+  }, [isLoaded, isMobile, hasError, isClient]);
+
+  // Server-side rendering fallback - always show the fallback pattern
+  if (!isClient) {
+    return (
+      <div
+        className={`
+          relative w-full h-full min-h-screen
+          bg-black
+          ${className}
+        `}
+        style={{
+          background: BRUTALIST_COLORS.black,
+        }}
+      >
+        {/* Fallback pattern for SSR */}
+        <div
+          className="absolute inset-0 opacity-30 animate-pulse"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 25% 25%, ${BRUTALIST_COLORS.yellow} 2px, transparent 2px),
+              radial-gradient(circle at 75% 75%, ${BRUTALIST_COLORS.yellow} 2px, transparent 2px)
+            `,
+            backgroundSize: "50px 50px",
+            backgroundPosition: "0 0, 25px 25px",
+            animation: "pulse 4s ease-in-out infinite",
+          }}
+        />
+        {/* Content overlay */}
+        <div className="relative z-10 w-full h-full">{children}</div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -209,8 +316,8 @@ export default function VantaBackground({
         background: BRUTALIST_COLORS.black,
       }}
     >
-      {/* Fallback pattern for mobile or when Vanta fails to load */}
-      {(isMobile || !isLoaded || !vantaEffect.current) && (
+      {/* Fallback pattern for mobile, when Vanta fails to load, or on error */}
+      {(isMobile || !isLoaded || !vantaEffect.current || hasError) && (
         <div
           className="absolute inset-0 opacity-30 animate-pulse"
           style={{
@@ -231,7 +338,7 @@ export default function VantaBackground({
       {/* Performance indicator (development only) */}
       {process.env.NODE_ENV === "development" && (
         <div className="fixed bottom-4 right-4 z-50 text-xs font-mono text-yellow-400 bg-black bg-opacity-75 px-2 py-1 rounded">
-          Vanta: {isLoaded ? "Loaded" : "Loading"} | Mobile:{" "}
+          Vanta: {hasError ? "Error" : isLoaded ? "Loaded" : "Loading"} | Mobile:{" "}
           {isMobile ? "Yes" : "No"}
         </div>
       )}

@@ -197,7 +197,8 @@ export default function ContentDiscovery({
 
       {/* Empty State Actions */}
       {discoveries.length === 0 && state.history.length === 0 && (
-        <div className="mt-6 text-center"></div>         <div className="text-sm font-mono text-foreground/60 mb-4">
+        <div className="mt-6 text-center">
+          <div className="text-sm font-mono text-foreground/60 mb-4">
             Start exploring to get personalized recommendations
           </div>
           

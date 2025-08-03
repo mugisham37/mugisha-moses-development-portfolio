@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import {
-  Sync,
+  RefreshCw,
   Download,
   Upload,
   Save,
@@ -133,7 +133,7 @@ export default function PreferencesSync({
           disabled={state.isSyncing}
           className="flex items-center justify-center space-x-2 p-3 border-2 border-foreground bg-background hover:bg-brutalist-yellow hover:text-black transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <Sync size={16} />
+          <RefreshCw size={16} />
           <span className="font-mono font-bold text-sm uppercase tracking-wider">
             Sync Now
           </span>

@@ -1,32 +1,40 @@
 declare module "vanta/dist/vanta.dots.min.js" {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const vanta: any;
-  export default vanta;
-}
+  import * as THREE from "three";
 
-declare module "vanta" {
-  export interface VantaEffect {
+  interface VantaEffect {
     destroy: () => void;
     resize: () => void;
   }
 
-  export interface VantaOptions {
+  interface VantaDotOptions {
     el: HTMLElement;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    THREE: any;
-    mouseControls: boolean;
-    touchControls: boolean;
-    gyroControls: boolean;
-    minHeight: number;
-    minWidth: number;
-    scale: number;
-    scaleMobile: number;
-    color: string;
-    backgroundColor: string;
-    size: number;
-    spacing: number;
-    showLines: boolean;
+    THREE: typeof THREE;
+    mouseControls?: boolean;
+    touchControls?: boolean;
+    gyroControls?: boolean;
+    minHeight?: number;
+    minWidth?: number;
+    scale?: number;
+    scaleMobile?: number;
+    color?: string;
+    backgroundColor?: string;
+    size?: number;
+    spacing?: number;
+    showLines?: boolean;
   }
 
-  export const DOTS: (options: Partial<VantaOptions>) => VantaEffect;
+  interface VantaGlobal {
+    DOTS: (options: Partial<VantaDotOptions>) => VantaEffect;
+  }
+
+  const VANTA: VantaGlobal;
+  export default VANTA;
+}
+
+declare global {
+  interface Window {
+    VANTA?: {
+      DOTS: (options: any) => any;
+    };
+  }
 }
