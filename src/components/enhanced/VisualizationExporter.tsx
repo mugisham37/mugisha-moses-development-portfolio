@@ -150,9 +150,8 @@ const VisualizationExporter: React.FC<VisualizationExporterProps> = ({
       ? `-${new Date().toISOString().split("T")[0]}`
       : "";
 
-    return `${baseTitle.toLowerCase().replace(/\s+/g, "-")}${timestamp}.${
-      exportOptions.format
-    }`;
+    return `${baseTitle.toLowerCase().replace(/\s+/g, "-")}${timestamp}.${exportOptions.format
+      }`;
   }, [exportOptions, title]);
 
   // Convert element to canvas
@@ -259,10 +258,10 @@ const VisualizationExporter: React.FC<VisualizationExporterProps> = ({
         : undefined,
       metadata: exportOptions.includeMetadata
         ? {
-            format: exportOptions.format,
-            quality: exportOptions.quality,
-            dimensions: exportOptions.dimensions,
-          }
+          format: exportOptions.format,
+          quality: exportOptions.quality,
+          dimensions: exportOptions.dimensions,
+        }
         : undefined,
     };
 
@@ -411,9 +410,8 @@ const VisualizationExporter: React.FC<VisualizationExporterProps> = ({
     if (!onShare) return;
 
     // Generate a shareable URL (this would typically involve uploading to a service)
-    const shareableUrl = `${
-      window.location.origin
-    }/shared-visualization/${Date.now()}`;
+    const shareableUrl = `${window.location.origin
+      }/shared-visualization/${Date.now()}`;
     setShareUrl(shareableUrl);
     onShare(shareableUrl, exportOptions);
   }, [onShare, exportOptions]);
@@ -710,6 +708,7 @@ const VisualizationExporter: React.FC<VisualizationExporterProps> = ({
                     onClick={handleExport}
                     disabled={isExporting}
                     size="sm"
+                    variant="primary"
                   >
                     {isExporting ? (
                       <>
@@ -741,7 +740,7 @@ const VisualizationExporter: React.FC<VisualizationExporterProps> = ({
                     className={cn(
                       "p-4 border-t-3 border-black flex items-center space-x-3",
                       exportStatus === "success" &&
-                        "bg-green-100 text-green-800",
+                      "bg-green-100 text-green-800",
                       exportStatus === "error" && "bg-red-100 text-red-800"
                     )}
                     initial={{ opacity: 0, height: 0 }}

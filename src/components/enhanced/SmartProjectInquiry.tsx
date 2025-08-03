@@ -409,13 +409,16 @@ const SmartProjectInquiry: React.FC<SmartProjectInquiryProps> = ({
     field: string,
     value: any
   ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [section]: {
-        ...prev[section],
-        [field]: value,
-      },
-    }));
+    setFormData((prev) => {
+      const currentSection = prev[section] as Record<string, any>;
+      return {
+        ...prev,
+        [section]: {
+          ...currentSection,
+          [field]: value,
+        },
+      };
+    });
 
     // Clear validation error for this field
     setValidationErrors((prev) => ({
@@ -430,7 +433,8 @@ const SmartProjectInquiry: React.FC<SmartProjectInquiryProps> = ({
     value: string
   ) => {
     setFormData((prev) => {
-      const currentArray = (prev[section] as any)?.[field] || [];
+      const currentSection = prev[section] as Record<string, any>;
+      const currentArray = currentSection?.[field] || [];
       const newArray = currentArray.includes(value)
         ? currentArray.filter((item: string) => item !== value)
         : [...currentArray, value];
@@ -438,7 +442,7 @@ const SmartProjectInquiry: React.FC<SmartProjectInquiryProps> = ({
       return {
         ...prev,
         [section]: {
-          ...prev[section],
+          ...currentSection,
           [field]: newArray,
         },
       };
@@ -518,8 +522,8 @@ const SmartProjectInquiry: React.FC<SmartProjectInquiryProps> = ({
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
       const inquiry: ProjectInquiry = {
-        id: `inquiry-${Date.now()}`,
         ...(formData as ProjectInquiry),
+        id: `inquiry-${Date.now()}`,
         status: "submitted",
         createdAt: new Date(),
       };
@@ -609,7 +613,7 @@ const SmartProjectInquiry: React.FC<SmartProjectInquiryProps> = ({
                     className={cn(
                       "w-full p-3 border-3 border-black font-mono focus:outline-none focus:bg-brutalist-yellow transition-colors duration-300",
                       validationErrors["clientInfo.name"] &&
-                        "border-red-500 bg-red-50"
+                      "border-red-500 bg-red-50"
                     )}
                     placeholder="Enter your full name"
                   />
@@ -635,7 +639,7 @@ const SmartProjectInquiry: React.FC<SmartProjectInquiryProps> = ({
                     className={cn(
                       "w-full p-3 border-3 border-black font-mono focus:outline-none focus:bg-brutalist-yellow transition-colors duration-300",
                       validationErrors["clientInfo.email"] &&
-                        "border-red-500 bg-red-50"
+                      "border-red-500 bg-red-50"
                     )}
                     placeholder="Enter your email address"
                   />
@@ -779,7 +783,7 @@ const SmartProjectInquiry: React.FC<SmartProjectInquiryProps> = ({
                   className={cn(
                     "w-full p-3 border-3 border-black font-mono focus:outline-none focus:bg-brutalist-yellow transition-colors duration-300 resize-none",
                     validationErrors["projectDetails.description"] &&
-                      "border-red-500 bg-red-50"
+                    "border-red-500 bg-red-50"
                   )}
                   placeholder="Describe your project goals, target audience, and key requirements..."
                 />
@@ -1098,6 +1102,7 @@ const SmartProjectInquiry: React.FC<SmartProjectInquiryProps> = ({
         <BrutalistButton
           onClick={prevStep}
           variant="secondary"
+          size="md"
           disabled={currentStep === 0}
           className={currentStep === 0 ? "opacity-50 cursor-not-allowed" : ""}
         >
@@ -1106,7 +1111,7 @@ const SmartProjectInquiry: React.FC<SmartProjectInquiryProps> = ({
         </BrutalistButton>
 
         {currentStep < steps.length - 1 ? (
-          <BrutalistButton onClick={nextStep} variant="accent" glow>
+          <BrutalistButton onClick={nextStep} variant="accent" size="md" glow>
             Next
             <ArrowRight size={16} className="ml-2" />
           </BrutalistButton>

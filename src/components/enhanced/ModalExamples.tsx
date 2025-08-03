@@ -419,6 +419,7 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
               onClick={openSettings}
               className="w-full flex items-center gap-2"
               size="sm"
+              variant="primary"
             >
               <Settings size={16} />
               Settings Panel
@@ -428,6 +429,7 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
               onClick={openContactForm}
               className="w-full flex items-center gap-2"
               size="sm"
+              variant="primary"
             >
               <MessageSquare size={16} />
               Contact Form
@@ -437,6 +439,7 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
               onClick={() => setShowAccessibleModal(true)}
               className="w-full flex items-center gap-2"
               size="sm"
+              variant="primary"
             >
               <Maximize2 size={16} />
               Accessible Modal
@@ -460,6 +463,7 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
               onClick={openNestedModal}
               className="w-full flex items-center gap-2"
               size="sm"
+              variant="primary"
             >
               <Layers size={16} />
               Nested Modals
@@ -469,6 +473,7 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
               onClick={showConfirmDialog}
               className="w-full flex items-center gap-2"
               size="sm"
+              variant="primary"
             >
               <AlertTriangle size={16} />
               Confirm Dialog
@@ -478,6 +483,7 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
               onClick={showAlertDialog}
               className="w-full flex items-center gap-2"
               size="sm"
+              variant="primary"
             >
               <Info size={16} />
               Alert Dialog
@@ -504,6 +510,7 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
             }}
             className="flex items-center gap-2"
             size="sm"
+            variant="primary"
           >
             <CheckCircle size={16} />
             Success
@@ -516,6 +523,7 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
             }}
             className="flex items-center gap-2"
             size="sm"
+            variant="primary"
           >
             <AlertTriangle size={16} />
             Warning
@@ -528,6 +536,7 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
             }}
             className="flex items-center gap-2"
             size="sm"
+            variant="primary"
           >
             <AlertTriangle size={16} />
             Error
@@ -540,6 +549,7 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
             }}
             className="flex items-center gap-2"
             size="sm"
+            variant="primary"
           >
             <Info size={16} />
             Info
@@ -603,10 +613,16 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
             <BrutalistButton
               onClick={() => setShowAccessibleModal(false)}
               variant="secondary"
+              size="md"
             >
               Close
             </BrutalistButton>
-            <BrutalistButton>Action</BrutalistButton>
+            <BrutalistButton
+              variant="primary"
+              size="md"
+            >
+              Action
+            </BrutalistButton>
           </div>
         }
       >
