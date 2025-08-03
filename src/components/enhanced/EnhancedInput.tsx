@@ -11,7 +11,7 @@ export type InputVariant = "default" | "filled" | "outlined";
 export type InputSize = "sm" | "md" | "lg";
 
 export interface EnhancedInputProps
-  extends InputHTMLAttributes<HTMLInputElement> {
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   variant?: InputVariant;
   size?: InputSize;
   label?: string;

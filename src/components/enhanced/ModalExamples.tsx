@@ -3,7 +3,6 @@
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import {
-  Modal,
   Settings,
   Image,
   FileText,
@@ -73,7 +72,7 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
         <Video size={64} className="text-white" />
       </div>
       <div className="flex items-center justify-center gap-4">
-        <BrutalistButton size="sm">Play</BrutalistButton>
+        <BrutalistButton size="sm" variant="primary">Play</BrutalistButton>
         <BrutalistButton size="sm" variant="secondary">
           Pause
         </BrutalistButton>
@@ -158,11 +157,12 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
         <BrutalistButton
           type="button"
           variant="secondary"
+          size="md"
           onClick={() => closeModal("contact-form")}
         >
           Cancel
         </BrutalistButton>
-        <BrutalistButton type="submit">Send Message</BrutalistButton>
+        <BrutalistButton type="submit" variant="primary" size="md">Send Message</BrutalistButton>
       </div>
     </form>
   );
@@ -266,6 +266,8 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
           </p>
           <div className="flex items-center gap-3">
             <BrutalistButton
+              variant="primary"
+              size="md"
               onClick={() =>
                 openModal({
                   id: "nested-child-1",
@@ -274,6 +276,8 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
                     <div>
                       <p className="font-mono mb-4">This is child modal 1.</p>
                       <BrutalistButton
+                        variant="primary"
+                        size="sm"
                         onClick={() =>
                           openModal({
                             id: "nested-child-2",
@@ -300,6 +304,7 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
 
             <BrutalistButton
               variant="secondary"
+              size="md"
               onClick={() =>
                 openModal({
                   id: "nested-child-2",
@@ -362,7 +367,7 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
           transition={{ delay: 0.1 }}
         >
           <h3 className="text-xl font-black uppercase tracking-wider font-mono mb-4 flex items-center gap-2">
-            <Modal size={20} />
+            <Image size={20} />
             Basic Modals
           </h3>
           <div className="space-y-3">
@@ -370,6 +375,7 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
               onClick={openImageGallery}
               className="w-full flex items-center gap-2"
               size="sm"
+              variant="primary"
             >
               <Image size={16} />
               Image Gallery
@@ -379,6 +385,7 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
               onClick={openVideoPlayer}
               className="w-full flex items-center gap-2"
               size="sm"
+              variant="primary"
             >
               <Video size={16} />
               Video Player
@@ -388,6 +395,7 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
               onClick={openDocumentViewer}
               className="w-full flex items-center gap-2"
               size="sm"
+              variant="primary"
             >
               <FileText size={16} />
               Document Viewer
@@ -564,8 +572,8 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
                     {modal.isMinimized
                       ? "Minimized"
                       : modal.isMaximized
-                      ? "Maximized"
-                      : "Normal"}
+                        ? "Maximized"
+                        : "Normal"}
                   </span>
                 </div>
                 <BrutalistButton
@@ -585,9 +593,8 @@ const ModalExamples: React.FC<ModalExamplesProps> = ({ className }) => {
       <AccessibleModal
         isOpen={showAccessibleModal}
         onClose={() => setShowAccessibleModal(false)}
-        title={`${
-          modalVariant.charAt(0).toUpperCase() + modalVariant.slice(1)
-        } Modal`}
+        title={`${modalVariant.charAt(0).toUpperCase() + modalVariant.slice(1)
+          } Modal`}
         variant={modalVariant}
         size="md"
         returnFocus={buttonRef}

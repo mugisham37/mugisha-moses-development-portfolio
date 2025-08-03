@@ -1,0 +1,10 @@
+export interface EnhancedTextareaProps
+  extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'> {
+  variant?: InputVariant;
+  size?: InputSize;
+  label?: string;
+  helperText?: string;
+  error?: string;
+  fullWidth?: boolean;
+  resize?: boolean;
+} 

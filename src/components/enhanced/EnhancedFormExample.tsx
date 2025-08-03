@@ -97,7 +97,7 @@ const EnhancedFormExample: React.FC<EnhancedFormExampleProps> = ({
           name: "position",
           label: "Position",
           type: "text",
-          conditional: { field: "company", operator: "exists" },
+          conditional: { field: "company", operator: "exists" as const },
         },
       ],
     },
@@ -146,7 +146,7 @@ const EnhancedFormExample: React.FC<EnhancedFormExampleProps> = ({
           type: "text",
           conditional: {
             field: "projectType",
-            operator: "not-equals",
+            operator: "not-equals" as const,
             value: "",
           },
         },
@@ -286,6 +286,8 @@ const EnhancedFormExample: React.FC<EnhancedFormExampleProps> = ({
               form.resetForm();
             }}
             className="mr-4"
+            variant="primary"
+            size="md"
           >
             Submit Another Form
           </BrutalistButton>
@@ -294,6 +296,7 @@ const EnhancedFormExample: React.FC<EnhancedFormExampleProps> = ({
             <BrutalistButton
               onClick={() => setShowAnalyticsDashboard(true)}
               variant="secondary"
+              size="md"
               className="flex items-center gap-2"
             >
               <BarChart3 size={16} />
@@ -426,6 +429,7 @@ const EnhancedFormExample: React.FC<EnhancedFormExampleProps> = ({
                 onClick={form.prevStep}
                 disabled={form.formState.isSubmitting}
                 variant="secondary"
+                size="md"
                 className="flex items-center gap-2"
               >
                 <ArrowLeft size={16} />
@@ -440,6 +444,8 @@ const EnhancedFormExample: React.FC<EnhancedFormExampleProps> = ({
                 type="button"
                 onClick={form.nextStep}
                 disabled={form.formState.isSubmitting}
+                variant="primary"
+                size="md"
                 className="flex items-center gap-2"
               >
                 Next
@@ -449,6 +455,8 @@ const EnhancedFormExample: React.FC<EnhancedFormExampleProps> = ({
               <BrutalistButton
                 type="submit"
                 disabled={form.formState.isSubmitting}
+                variant="primary"
+                size="md"
                 className="flex items-center gap-2"
               >
                 {form.formState.isSubmitting ? (

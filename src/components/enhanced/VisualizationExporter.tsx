@@ -35,7 +35,7 @@ export interface ExportOptions {
 
 export interface VisualizationExporterProps {
   data: any;
-  visualizationRef: React.RefObject<HTMLElement>;
+  visualizationRef: React.RefObject<HTMLDivElement | null>;
   title?: string;
   subtitle?: string;
   className?: string;

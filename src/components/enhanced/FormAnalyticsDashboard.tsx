@@ -277,6 +277,7 @@ const FormAnalyticsDashboard: React.FC<FormAnalyticsDashboardProps> = ({
             <BrutalistButton
               onClick={handleExport}
               variant="secondary"
+              size="md"
               className="flex items-center gap-2"
             >
               <Download size={16} />

@@ -734,7 +734,7 @@ const InteractiveChart: React.FC<InteractiveChartProps> = ({
                     onClick={() => handleExport("svg")}
                     size="sm"
                     variant="secondary"
-                    title="Export as SVG"
+                    ariaLabel="Export as SVG"
                   >
                     <Download size={14} />
                   </BrutalistButton>
@@ -742,7 +742,7 @@ const InteractiveChart: React.FC<InteractiveChartProps> = ({
                     onClick={() => handleExport("json")}
                     size="sm"
                     variant="secondary"
-                    title="Export as JSON"
+                    ariaLabel="Export as JSON"
                   >
                     <Download size={14} />
                   </BrutalistButton>

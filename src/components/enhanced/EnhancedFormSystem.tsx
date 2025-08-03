@@ -135,7 +135,7 @@ const EnhancedFormSystem: React.FC<EnhancedFormSystemProps> = ({
     completed: false,
   });
 
-  const autoSaveTimeoutRef = useRef<NodeJS.Timeout>();
+  const autoSaveTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
   const stepStartTimeRef = useRef<Date>(new Date());
 
   // Get current fields based on single or multi-step configuration
@@ -904,6 +904,7 @@ const EnhancedFormSystem: React.FC<EnhancedFormSystemProps> = ({
                 onClick={prevStep}
                 disabled={isSubmitting}
                 variant="secondary"
+                size="md"
                 className="flex items-center gap-2"
               >
                 <ArrowLeft size={16} />
@@ -918,6 +919,8 @@ const EnhancedFormSystem: React.FC<EnhancedFormSystemProps> = ({
                 type="button"
                 onClick={nextStep}
                 disabled={isSubmitting}
+                variant="primary"
+                size="md"
                 className="flex items-center gap-2"
               >
                 Next
@@ -927,6 +930,8 @@ const EnhancedFormSystem: React.FC<EnhancedFormSystemProps> = ({
               <BrutalistButton
                 type="submit"
                 disabled={isSubmitting}
+                variant="primary"
+                size="md"
                 className="flex items-center gap-2"
               >
                 {isSubmitting ? (

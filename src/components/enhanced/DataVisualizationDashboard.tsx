@@ -570,6 +570,7 @@ const DataVisualizationDashboard: React.FC<DataVisualizationDashboardProps> = ({
             <BrutalistButton
               onClick={() => setHiddenWidgets(new Set())}
               variant="primary"
+              size="md"
             >
               Show All Widgets
             </BrutalistButton>

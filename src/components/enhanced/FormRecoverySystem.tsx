@@ -433,6 +433,7 @@ const FormRecoverySystem: React.FC<FormRecoverySystemProps> = ({
                             <BrutalistButton
                               onClick={() => handleRestore(version)}
                               size="sm"
+                              variant="primary"
                               className="ml-2"
                             >
                               Restore
@@ -457,6 +458,7 @@ const FormRecoverySystem: React.FC<FormRecoverySystemProps> = ({
                       <BrutalistButton
                         onClick={handleClearAll}
                         variant="secondary"
+                        size="md"
                         className="text-red-600 border-red-600 hover:bg-red-50"
                       >
                         Clear All
@@ -466,6 +468,7 @@ const FormRecoverySystem: React.FC<FormRecoverySystemProps> = ({
                     <BrutalistButton
                       onClick={() => setShowRecoveryModal(false)}
                       variant="secondary"
+                      size="md"
                     >
                       Close
                     </BrutalistButton>

@@ -29,7 +29,7 @@ export interface AccessibleModalProps {
   ariaLabel?: string;
   ariaDescribedBy?: string;
   initialFocus?: React.RefObject<HTMLElement>;
-  returnFocus?: React.RefObject<HTMLElement>;
+  returnFocus?: React.RefObject<HTMLButtonElement>;
   onOpen?: () => void;
   onClosed?: () => void;
   preventBodyScroll?: boolean;
