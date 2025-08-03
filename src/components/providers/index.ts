@@ -5,8 +5,8 @@ export {
   useAccessibility,
 } from "./AccessibilityProvider";
 export { NavigationProvider, useNavigation } from "./NavigationProvider";
-export { SearchProvider, useSearch } from "../contexts/SearchContext";
+export { SearchProvider, useSearch } from "../../contexts/SearchContext";
 export {
   PreferencesProvider,
   usePreferences,
-} from "../contexts/PreferencesContext";
+} from "../../contexts/PreferencesContext";

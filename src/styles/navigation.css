@@ -17,7 +17,7 @@
 }
 
 .brutalist-suggestions h3 {
-  @apply text-foreground;
+  @apply text-black dark:text-white;
 }
 
 .brutalist-next-steps {
@@ -25,7 +25,7 @@
 }
 
 .brutalist-next-steps h3 {
-  @apply text-foreground;
+  @apply text-black dark:text-white;
 }
 
 /* Suggestion Card Animations */
@@ -53,7 +53,7 @@
 
 /* User journey visualization */
 .user-journey-debug {
-  @apply bg-background/95 backdrop-blur-sm;
+  @apply bg-white/90 dark:bg-black/90 backdrop-blur-sm;
 }
 
 /* Responsive adjustments */
@@ -118,7 +118,7 @@
 .brutalist-suggestions a:focus,
 .brutalist-next-steps a:focus,
 .brutalist-next-steps button:focus {
-  @apply outline-none ring-2 ring-brutalist-yellow ring-offset-2 ring-offset-background;
+  @apply outline-none ring-2 ring-brutalist-yellow ring-offset-2 ring-offset-white dark:ring-offset-black;
 }
 
 /* Dark mode adjustments */
@@ -136,7 +136,7 @@
 }
 
 .navigation-loading .skeleton {
-  @apply bg-foreground/10 rounded-none;
+  @apply bg-black/10 dark:bg-white/10 rounded-none;
 }
 
 /* Error states */

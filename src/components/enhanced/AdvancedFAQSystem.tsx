@@ -403,7 +403,7 @@ export const AdvancedFAQSystem: React.FC<AdvancedFAQSystemProps> = ({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full text-lg"
-              icon="🔍"
+              rightIcon={<span>🔍</span>}
             />
           </div>
 
@@ -413,11 +413,10 @@ export const AdvancedFAQSystem: React.FC<AdvancedFAQSystemProps> = ({
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 font-mono font-bold border-3 transition-all duration-200 ${
-                  selectedCategory === category
+                className={`px-4 py-2 font-mono font-bold border-3 transition-all duration-200 ${selectedCategory === category
                     ? "bg-brutalist-yellow border-black text-black"
                     : "bg-white border-brutalist-gray text-black hover:bg-brutalist-yellow hover:border-black"
-                }`}
+                  }`}
               >
                 {category} ({getCategoryCount(category)})
               </button>
@@ -509,7 +508,7 @@ export const AdvancedFAQSystem: React.FC<AdvancedFAQSystemProps> = ({
                               </p>
                               <EnhancedButton
                                 variant="secondary"
-                                size="small"
+                                size="sm"
                                 onClick={() => {
                                   // In a real app, this would open a video modal
                                   console.log(
@@ -564,11 +563,10 @@ export const AdvancedFAQSystem: React.FC<AdvancedFAQSystemProps> = ({
                               <button
                                 onClick={() => handleHelpfulVote(faq.id)}
                                 disabled={hasVoted}
-                                className={`px-3 py-1 font-mono text-sm border-2 transition-all duration-200 ${
-                                  hasVoted
+                                className={`px-3 py-1 font-mono text-sm border-2 transition-all duration-200 ${hasVoted
                                     ? "bg-green-100 border-green-500 text-green-700 cursor-not-allowed"
                                     : "border-brutalist-gray hover:bg-brutalist-yellow hover:border-black"
-                                }`}
+                                  }`}
                               >
                                 {hasVoted ? "✓ Thanks!" : "👍 Yes"}
                               </button>

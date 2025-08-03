@@ -358,43 +358,45 @@ export const ConfirmModal: React.FC<{
   variant = "warning",
   loading = false,
 }) => {
-  const handleConfirm = () => {
-    onConfirm();
-    onClose();
-  };
+    const handleConfirm = () => {
+      onConfirm();
+      onClose();
+    };
 
-  return (
-    <AccessibleModal
-      isOpen={isOpen}
-      onClose={onClose}
-      title={title}
-      size="sm"
-      variant={variant}
-      loading={loading}
-      footer={
-        <div className="flex items-center justify-end gap-3">
-          <BrutalistButton
-            onClick={onClose}
-            variant="secondary"
-            disabled={loading}
-          >
-            {cancelText}
-          </BrutalistButton>
-          <BrutalistButton
-            onClick={handleConfirm}
-            variant={variant === "error" ? "primary" : "primary"}
-            disabled={loading}
-            className={variant === "error" ? "bg-red-600 hover:bg-red-700" : ""}
-          >
-            {confirmText}
-          </BrutalistButton>
-        </div>
-      }
-    >
-      <p className="font-mono text-lg">{message}</p>
-    </AccessibleModal>
-  );
-};
+    return (
+      <AccessibleModal
+        isOpen={isOpen}
+        onClose={onClose}
+        title={title}
+        size="sm"
+        variant={variant}
+        loading={loading}
+        footer={
+          <div className="flex items-center justify-end gap-3">
+            <BrutalistButton
+              onClick={onClose}
+              variant="secondary"
+              size="md"
+              disabled={loading}
+            >
+              {cancelText}
+            </BrutalistButton>
+            <BrutalistButton
+              onClick={handleConfirm}
+              variant={variant === "error" ? "primary" : "primary"}
+              size="md"
+              disabled={loading}
+              className={variant === "error" ? "bg-red-600 hover:bg-red-700" : ""}
+            >
+              {confirmText}
+            </BrutalistButton>
+          </div>
+        }
+      >
+        <p className="font-mono text-lg">{message}</p>
+      </AccessibleModal>
+    );
+  };
 
 export const AlertModal: React.FC<{
   isOpen: boolean;
@@ -411,22 +413,22 @@ export const AlertModal: React.FC<{
   variant = "info",
   buttonText = "OK",
 }) => {
-  return (
-    <AccessibleModal
-      isOpen={isOpen}
-      onClose={onClose}
-      title={title}
-      size="sm"
-      variant={variant}
-      footer={
-        <div className="flex items-center justify-center">
-          <BrutalistButton onClick={onClose}>{buttonText}</BrutalistButton>
-        </div>
-      }
-    >
-      <p className="font-mono text-lg text-center">{message}</p>
-    </AccessibleModal>
-  );
-};
+    return (
+      <AccessibleModal
+        isOpen={isOpen}
+        onClose={onClose}
+        title={title}
+        size="sm"
+        variant={variant}
+        footer={
+          <div className="flex items-center justify-center">
+            <BrutalistButton onClick={onClose} variant="primary" size="md">{buttonText}</BrutalistButton>
+          </div>
+        }
+      >
+        <p className="font-mono text-lg text-center">{message}</p>
+      </AccessibleModal>
+    );
+  };
 
 export default AccessibleModal;

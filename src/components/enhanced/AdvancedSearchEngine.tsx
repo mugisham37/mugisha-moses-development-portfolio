@@ -1047,17 +1047,17 @@ export function AdvancedSearchEngine({
                           checked={filters.categories.includes(category)}
                           onChange={(e) => {
                             if (e.target.checked) {
-                              setFilters((prev: SearchFilters) => ({
-                                ...prev,
-                                categories: [...prev.categories, category],
-                              }));
+                              setFilters({
+                                ...filters,
+                                categories: [...filters.categories, category],
+                              });
                             } else {
-                              setFilters((prev: SearchFilters) => ({
-                                ...prev,
-                                categories: prev.categories.filter(
+                              setFilters({
+                                ...filters,
+                                categories: filters.categories.filter(
                                   (c: string) => c !== category
                                 ),
-                              }));
+                              });
                             }
                           }}
                           className="rounded border-2 border-black"
@@ -1084,17 +1084,17 @@ export function AdvancedSearchEngine({
                           checked={filters.technologies.includes(tech)}
                           onChange={(e) => {
                             if (e.target.checked) {
-                              setFilters((prev: SearchFilters) => ({
-                                ...prev,
-                                technologies: [...prev.technologies, tech],
-                              }));
+                              setFilters({
+                                ...filters,
+                                technologies: [...filters.technologies, tech],
+                              });
                             } else {
-                              setFilters((prev: SearchFilters) => ({
-                                ...prev,
-                                technologies: prev.technologies.filter(
+                              setFilters({
+                                ...filters,
+                                technologies: filters.technologies.filter(
                                   (t: string) => t !== tech
                                 ),
-                              }));
+                              });
                             }
                           }}
                           className="rounded border-2 border-black"
@@ -1116,10 +1116,10 @@ export function AdvancedSearchEngine({
                         type="checkbox"
                         checked={filters.featured === true}
                         onChange={(e) =>
-                          setFilters((prev: SearchFilters) => ({
-                            ...prev,
+                          setFilters({
+                            ...filters,
                             featured: e.target.checked ? true : null,
-                          }))
+                          })
                         }
                         className="rounded border-2 border-black"
                       />
@@ -1130,10 +1130,10 @@ export function AdvancedSearchEngine({
                         type="checkbox"
                         checked={filters.hasLiveDemo === true}
                         onChange={(e) =>
-                          setFilters((prev: SearchFilters) => ({
-                            ...prev,
+                          setFilters({
+                            ...filters,
                             hasLiveDemo: e.target.checked ? true : null,
-                          }))
+                          })
                         }
                         className="rounded border-2 border-black"
                       />
@@ -1144,10 +1144,10 @@ export function AdvancedSearchEngine({
                         type="checkbox"
                         checked={filters.hasGithub === true}
                         onChange={(e) =>
-                          setFilters((prev) => ({
-                            ...prev,
+                          setFilters({
+                            ...filters,
                             hasGithub: e.target.checked ? true : null,
-                          }))
+                          })
                         }
                         className="rounded border-2 border-black"
                       />
