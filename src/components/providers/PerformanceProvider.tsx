@@ -1,72 +1,38 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { performanceMonitoringSystem } from "../../lib/performance-monitoring";
-import { bundleAnalyzer } from "../../lib/bundle-analyzer";
-import { memoryOptimizer } from "../../lib/memory-optimization";
-import { preloadCriticalResources } from "../../lib/lazy-loading";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 interface PerformanceContextType {
   isMonitoring: boolean;
   startMonitoring: () => void;
   stopMonitoring: () => void;
-  optimizePerformance: () => void;
-  getPerformanceReport: () => any;
+  performanceData: any;
 }
 
 const PerformanceContext = createContext<PerformanceContextType | undefined>(
   undefined
 );
 
-export const usePerformance = () => {
-  const context = useContext(PerformanceContext);
-  if (!context) {
-    throw new Error("usePerformance must be used within a PerformanceProvider");
-  }
-  return context;
-};
-
 interface PerformanceProviderProps {
   children: React.ReactNode;
   autoStart?: boolean;
   enableLazyLoading?: boolean;
-  enableBundleAnalysis?: boolean;
-  enableMemoryOptimization?: boolean;
 }
 
 export const PerformanceProvider: React.FC<PerformanceProviderProps> = ({
   children,
   autoStart = true,
   enableLazyLoading = true,
-  enableBundleAnalysis = true,
-  enableMemoryOptimization = true,
 }) => {
   const [isMonitoring, setIsMonitoring] = useState(false);
+  const [performanceData, setPerformanceData] = useState<any>(null);
 
   useEffect(() => {
-    // Initialize performance optimizations
+    // Initialize basic performance tracking
     if (typeof window !== "undefined") {
-      // Preload critical resources
-      if (enableLazyLoading) {
-        preloadCriticalResources();
-      }
-
       // Auto-start monitoring if enabled
       if (autoStart) {
         startMonitoring();
-      }
-
-      // Setup performance observer for web vitals
-      setupWebVitalsTracking();
-
-      // Setup bundle size monitoring
-      if (enableBundleAnalysis) {
-        setupBundleMonitoring();
-      }
-
-      // Setup memory optimization
-      if (enableMemoryOptimization) {
-        setupMemoryOptimization();
       }
     }
 
@@ -74,23 +40,12 @@ export const PerformanceProvider: React.FC<PerformanceProviderProps> = ({
       // Cleanup on unmount
       stopMonitoring();
     };
-  }, [
-    autoStart,
-    enableLazyLoading,
-    enableBundleAnalysis,
-    enableMemoryOptimization,
-  ]);
+  }, [autoStart]);
 
   const startMonitoring = () => {
     if (typeof window === "undefined") return;
 
     try {
-      performanceMonitoringSystem.startMonitoring();
-
-      if (enableMemoryOptimization) {
-        memoryOptimizer.startMonitoring();
-      }
-
       setIsMonitoring(true);
       console.log("🚀 Performance monitoring started");
     } catch (error) {
@@ -100,8 +55,6 @@ export const PerformanceProvider: React.FC<PerformanceProviderProps> = ({
 
   const stopMonitoring = () => {
     try {
-      performanceMonitoringSystem.stopMonitoring();
-      memoryOptimizer.stopMonitoring();
       setIsMonitoring(false);
       console.log("⏹️ Performance monitoring stopped");
     } catch (error) {
@@ -109,144 +62,26 @@ export const PerformanceProvider: React.FC<PerformanceProviderProps> = ({
     }
   };
 
-  const optimizePerformance = () => {
-    try {
-      // Force garbage collection
-      memoryOptimizer.optimizeMemory();
-
-      // Clear bundle analysis cache
-      bundleAnalyzer.clearCache();
-
-      // Clear performance alerts
-      performanceMonitoringSystem.clearAlerts();
-
-      console.log("🧹 Performance optimization completed");
-    } catch (error) {
-      console.error("Failed to optimize performance:", error);
-    }
-  };
-
-  const getPerformanceReport = () => {
-    try {
-      return {
-        monitoring: performanceMonitoringSystem.generateReport(),
-        memory: memoryOptimizer.generateMemoryReport(),
-        timestamp: new Date().toISOString(),
-      };
-    } catch (error) {
-      console.error("Failed to generate performance report:", error);
-      return null;
-    }
-  };
-
-  // Setup Web Vitals tracking
-  const setupWebVitalsTracking = () => {
-    if (typeof window === "undefined") return;
-
-    // Import web-vitals dynamically to avoid SSR issues
-    import("web-vitals")
-      .then(({ onCLS, onFID, onFCP, onLCP, onTTFB }) => {
-        onLCP((metric) => {
-          performanceMonitoringSystem.trackWebVital(
-            "LCP",
-            metric.value,
-            metric
-          );
-        });
-
-        onFID((metric) => {
-          performanceMonitoringSystem.trackWebVital(
-            "FID",
-            metric.value,
-            metric
-          );
-        });
-
-        onCLS((metric) => {
-          performanceMonitoringSystem.trackWebVital(
-            "CLS",
-            metric.value,
-            metric
-          );
-        });
-
-        onFCP((metric) => {
-          performanceMonitoringSystem.trackWebVital(
-            "FCP",
-            metric.value,
-            metric
-          );
-        });
-
-        onTTFB((metric) => {
-          performanceMonitoringSystem.trackWebVital(
-            "TTFB",
-            metric.value,
-            metric
-          );
-        });
-      })
-      .catch((error) => {
-        console.warn("Failed to load web-vitals library:", error);
-      });
-  };
-
-  // Setup bundle monitoring
-  const setupBundleMonitoring = () => {
-    if (typeof window === "undefined") return;
-
-    // Monitor bundle size periodically
-    const checkBundleSize = async () => {
-      try {
-        const analysis = await bundleAnalyzer.analyzeCurrent();
-
-        // Log bundle size warnings
-        if (analysis.score < 70) {
-          console.warn("⚠️ Bundle size optimization needed:", analysis);
-        }
-      } catch (error) {
-        console.error("Bundle analysis error:", error);
-      }
-    };
-
-    // Check bundle size on page load and periodically
-    setTimeout(checkBundleSize, 5000); // After 5 seconds
-    setInterval(checkBundleSize, 300000); // Every 5 minutes
-  };
-
-  // Setup memory optimization
-  const setupMemoryOptimization = () => {
-    if (typeof window === "undefined") return;
-
-    // Setup memory leak detection
-    const unsubscribe = memoryOptimizer.onMemoryLeak((leak) => {
-      console.warn("🧠 Memory leak detected:", leak);
-
-      // Auto-optimize for critical leaks
-      if (leak.severity === "high") {
-        setTimeout(() => {
-          memoryOptimizer.optimizeMemory();
-        }, 1000);
-      }
-    });
-
-    // Cleanup function
-    return unsubscribe;
-  };
-
-  const contextValue: PerformanceContextType = {
+  const value: PerformanceContextType = {
     isMonitoring,
     startMonitoring,
     stopMonitoring,
-    optimizePerformance,
-    getPerformanceReport,
+    performanceData,
   };
 
   return (
-    <PerformanceContext.Provider value={contextValue}>
+    <PerformanceContext.Provider value={value}>
       {children}
     </PerformanceContext.Provider>
   );
+};
+
+export const usePerformance = () => {
+  const context = useContext(PerformanceContext);
+  if (context === undefined) {
+    throw new Error("usePerformance must be used within a PerformanceProvider");
+  }
+  return context;
 };
 
 // Performance HOC for components
@@ -304,26 +139,3 @@ export const usePerformanceTracking = (componentName: string) => {
 
   return { renderTime };
 };
-
-// Performance metrics hook
-export const usePerformanceMetrics = () => {
-  const [metrics, setMetrics] = useState<any>(null);
-  const { getPerformanceReport } = usePerformance();
-
-  useEffect(() => {
-    const updateMetrics = () => {
-      const report = getPerformanceReport();
-      setMetrics(report);
-    };
-
-    // Update metrics initially and then every 10 seconds
-    updateMetrics();
-    const interval = setInterval(updateMetrics, 10000);
-
-    return () => clearInterval(interval);
-  }, [getPerformanceReport]);
-
-  return metrics;
-};
-
-export default PerformanceProvider;

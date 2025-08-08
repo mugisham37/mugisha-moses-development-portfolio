@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Performance optimizations
+  // Simplified experimental features
   experimental: {
-    optimizePackageImports: ["lucide-react", "framer-motion"],
+    optimizePackageImports: ["lucide-react"],
     turbo: {
       rules: {
         "*.svg": {
@@ -28,7 +28,7 @@ const nextConfig: NextConfig = {
   // Compression
   compress: true,
 
-  // Webpack configuration with performance optimizations
+  // Simplified webpack configuration
   webpack: (config: any, { dev, isServer }) => {
     // Bundle analyzer (only in development)
     if (process.env.ANALYZE === "true" && dev) {
@@ -41,9 +41,9 @@ const nextConfig: NextConfig = {
       );
     }
 
-    // Performance optimizations
+    // Simplified performance optimizations
     if (!dev && !isServer) {
-      // Code splitting optimization
+      // Basic code splitting
       config.optimization = {
         ...config.optimization,
         splitChunks: {
@@ -64,20 +64,6 @@ const nextConfig: NextConfig = {
               name: "ui",
               chunks: "all",
               priority: 9,
-            },
-            // Form libraries chunk
-            forms: {
-              test: /[\\/]node_modules[\\/](react-hook-form|@hookform\/resolvers|zod)[\\/]/,
-              name: "forms",
-              chunks: "all",
-              priority: 8,
-            },
-            // Three.js chunk (large library)
-            three: {
-              test: /[\\/]node_modules[\\/](three|vanta)[\\/]/,
-              name: "three",
-              chunks: "all",
-              priority: 7,
             },
             // Common chunk for shared modules
             common: {
@@ -190,10 +176,6 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // Output configuration for static export if needed
-  // output: 'export', // Uncomment for static export
-  // trailingSlash: true, // Uncomment for static export
-
   // Environment variables
   env: {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
@@ -214,8 +196,8 @@ const nextConfig: NextConfig = {
     removeConsole:
       process.env.NODE_ENV === "production"
         ? {
-            exclude: ["error", "warn"],
-          }
+          exclude: ["error", "warn"],
+        }
         : false,
   },
 };

@@ -83,42 +83,36 @@ body {
 *:focus {
   outline: 3px solid var(--safe-accent);
   outline-offset: 2px;
-  /* Enhanced contrasting background ring for maximum visibility on all backgrounds */
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
-    0 0 8px rgba(255, 255, 0, 0.4);
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
 }
 
 /* Focus-visible for modern browsers - only show focus on keyboard navigation */
 *:focus-visible {
   outline: 3px solid var(--safe-accent);
   outline-offset: 2px;
-  /* Enhanced visibility with glow effect and contrasting ring */
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
-    0 0 8px rgba(255, 255, 0, 0.4);
-  /* Add subtle animation for better attention */
-  animation: focus-visibility-pulse 1.5s ease-in-out infinite;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
 }
 
-/* Remove focus outline for mouse users */
+/* Hide focus outline for mouse users */
 *:focus:not(:focus-visible) {
   outline: none;
   box-shadow: none;
 }
 
-/* Reduced motion */
+/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-/* Accessibility Styles */
-
-/* Screen reader only content */
+/* Screen reader only */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -131,42 +125,32 @@ body {
   border: 0;
 }
 
-/* Enhanced focus visible styles with better contrast */
+/* Focus utilities */
 .focus-visible {
-  outline: 3px solid var(--safe-accent) !important;
-  outline-offset: 2px !important;
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent) !important;
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
 }
 
-/* Focus styles for specific interactive elements */
 .focus-contrast-safe:focus-visible {
   outline: 3px solid var(--safe-accent);
   outline-offset: 2px;
   box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
-  /* Add subtle glow for enhanced visibility */
-  filter: drop-shadow(0 0 4px rgba(255, 255, 0, 0.6));
 }
 
 /* High contrast mode */
 .high-contrast {
-  --background: var(--safe-bg-dark);
-  --foreground: var(--safe-text-dark);
+  --safe-accent: #ffff00;
   --safe-text-light: #ffffff;
   --safe-text-dark: #000000;
-  --safe-bg-light: #000000;
-  --safe-bg-dark: #ffffff;
 }
 
 .high-contrast * {
-  background-color: var(--safe-bg-dark) !important;
-  color: var(--safe-text-dark) !important;
-  border-color: var(--safe-text-dark) !important;
+  border-color: var(--safe-accent) !important;
 }
 
 .high-contrast .bg-brutalist-yellow,
 .high-contrast .bg-yellow-400 {
   background-color: var(--safe-accent) !important;
-  color: var(--safe-text-light) !important;
 }
 
 .high-contrast .text-brutalist-yellow,
@@ -189,140 +173,90 @@ body {
   scroll-behavior: auto !important;
 }
 
-/* Font size adjustments */
+/* Typography */
 .font-normal {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .font-large {
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .font-extra-large {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
-/* Enhanced keyboard navigation styles with maximum visibility */
+/* Button focus styles */
 button:focus-visible,
-a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+}
+
+/* Link focus styles */
+a:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  text-decoration: underline;
+}
+
+/* Form field focus styles */
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
   outline: 3px solid var(--safe-accent);
   outline-offset: 2px;
-  /* Maximum visibility with enhanced glow and contrasting ring */
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
-    0 0 12px rgba(255, 255, 0, 0.5), 0 0 20px rgba(255, 255, 0, 0.2);
-  /* Enhanced animation for better attention */
-  animation: focus-visibility-pulse 1.5s ease-in-out infinite;
-}
-
-/* Enhanced focus visibility pulse animation */
-@keyframes focus-visibility-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
-      0 0 8px rgba(255, 255, 0, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
-      0 0 12px rgba(255, 255, 0, 0.6);
-  }
-}
-
-/* Legacy focus pulse animation for backward compatibility */
-@keyframes focus-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
-      0 0 8px rgba(255, 255, 0, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
-      0 0 12px rgba(255, 255, 0, 0.6);
-  }
-}
-
-/* Enhanced focus styles for different element types with maximum visibility */
-button:focus-visible {
-  /* Buttons get enhanced emphasis with better visibility */
-  transform: translateY(-2px) scale(1.02);
-  transition: transform 0.2s ease;
-  /* Additional glow for button focus */
-  filter: drop-shadow(0 0 6px rgba(255, 255, 0, 0.6));
-}
-
-a:focus-visible {
-  /* Links get enhanced underline emphasis with better visibility */
-  text-decoration: underline;
-  text-decoration-color: var(--safe-accent);
-  text-decoration-thickness: 4px;
-  text-underline-offset: 4px;
-  /* Add background highlight for better visibility */
-  background: rgba(255, 255, 0, 0.1);
-  padding: 2px 4px;
-  border-radius: 2px;
-}
-
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  /* Form elements get enhanced border emphasis with better visibility */
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
   border-color: var(--safe-accent);
-  border-width: 3px;
-  /* Add inner glow for form elements */
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
-    0 0 12px rgba(255, 255, 0, 0.5), inset 0 0 8px rgba(255, 255, 0, 0.1);
 }
 
-/* Skip links */
+/* Skip link styles */
 .skip-link:focus {
   position: absolute;
-  top: 6px;
-  left: 6px;
-  background: #000000;
-  color: #ffff00;
-  padding: 8px 16px;
-  text-decoration: none;
-  font-family: "Space Mono", monospace;
-  font-weight: bold;
-  font-size: 14px;
-  border: 3px solid #ffff00;
+  top: 0;
+  left: 0;
   z-index: 9999;
+  padding: 1rem;
+  background: var(--safe-accent);
+  color: var(--safe-text-dark);
+  text-decoration: none;
+  border: 3px solid var(--safe-text-dark);
+  outline: none;
 }
 
-/* Ensure interactive elements are large enough */
+/* Basic element styles */
 button,
-a,
 input,
-textarea,
-select {
-  min-height: 44px;
-  min-width: 44px;
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
 }
 
-/* Improve text readability */
 p,
-li,
-td,
-th {
-  max-width: 70ch;
+li {
+  margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
-/* Ensure sufficient color contrast */
+/* Text colors */
 .text-gray-500 {
   color: var(--safe-text-medium);
 }
 
 .text-gray-600 {
-  color: var(--brutalist-medium-gray, #666666);
+  color: var(--safe-text-medium);
 }
 
 .text-gray-700 {
   color: var(--safe-text-light);
 }
 
-/* Additional contrast-safe text utilities */
+/* Contrast-safe text */
 .text-contrast-safe {
   color: var(--safe-text-light);
 }
@@ -335,19 +269,18 @@ th {
   color: var(--safe-text-dark);
 }
 
-/* Background utilities with safe contrast */
+/* Contrast-safe backgrounds */
 .bg-contrast-safe-light {
   background-color: var(--safe-bg-light);
-  color: var(--safe-text-light);
 }
 
 .bg-contrast-safe-dark {
   background-color: var(--safe-bg-dark);
-  color: var(--safe-text-dark);
 }
 
-/* Motion safe animations */
+/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -358,67 +291,64 @@ th {
   }
 }
 
-/* High contrast media query */
+/* High contrast mode */
 @media (prefers-contrast: high) {
   * {
-    border-width: 2px !important;
+    border-color: var(--safe-accent) !important;
   }
 
   .border-5 {
-    border-width: 3px !important;
+    border-width: 5px !important;
   }
 
   .border-3 {
-    border-width: 2px !important;
+    border-width: 3px !important;
   }
 }
 
-/* Forced colors mode (Windows High Contrast) */
+/* Forced colors mode */
 @media (forced-colors: active) {
   * {
-    forced-color-adjust: auto;
+    border-color: CanvasText !important;
   }
 
   .bg-brutalist-yellow,
-  .bg-yellow-safe {
+  .bg-yellow-400 {
     background-color: Highlight !important;
-    color: HighlightText !important;
   }
 
-  .border-brutalist-yellow {
+  .border-brutalist-yellow,
+  .border-yellow-400 {
     border-color: Highlight !important;
   }
 
   .text-brutalist-yellow,
-  .text-safe-on-white,
-  .text-safe-on-yellow {
+  .text-yellow-400 {
     color: Highlight !important;
   }
 
   .bg-white-safe,
-  .bg-light-gray-safe {
+  .bg-white {
     background-color: Canvas !important;
-    color: CanvasText !important;
   }
 
   .bg-black-safe,
-  .bg-dark-gray-safe {
+  .bg-black {
     background-color: Canvas !important;
-    color: CanvasText !important;
   }
 }
 
-/* Print styles for accessibility */
+/* Print styles */
 @media print {
+
   .skip-link,
-  .accessibility-toolbar,
-  .cursor-trail,
-  .scroll-progress {
+  .sr-only,
+  .no-print {
     display: none !important;
   }
 
   * {
-    background: white !important;
+    background: transparent !important;
     color: black !important;
     box-shadow: none !important;
     text-shadow: none !important;
@@ -433,61 +363,84 @@ th {
   }
 }
 
-/* Ensure proper heading hierarchy */
+/* Typography */
 h1 {
   font-size: 2.5rem;
-}
-h2 {
-  font-size: 2rem;
-}
-h3 {
-  font-size: 1.75rem;
-}
-h4 {
-  font-size: 1.5rem;
-}
-h5 {
-  font-size: 1.25rem;
-}
-h6 {
-  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
-/* Improve form accessibility */
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+h5 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+/* Form elements */
 label {
   display: block;
   margin-bottom: 0.5rem;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 input:invalid,
 textarea:invalid,
 select:invalid {
-  border-color: #ef4444;
-  box-shadow: 0 0 0 1px #ef4444;
+  border-color: #dc2626;
+  box-shadow: 0 0 0 1px #dc2626;
 }
 
 input:valid,
 textarea:valid,
 select:valid {
-  border-color: #10b981;
+  border-color: #059669;
+  box-shadow: 0 0 0 1px #059669;
 }
 
-/* Error message styles */
+/* Status messages */
 .error-message {
-  color: #ef4444;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
+  color: #dc2626;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  margin-bottom: 1rem;
 }
 
-/* Success message styles */
 .success-message {
-  color: #10b981;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
+  color: #059669;
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  margin-bottom: 1rem;
 }
 
-/* Loading states */
+/* Loading state */
 .loading {
   position: relative;
   overflow: hidden;
@@ -500,12 +453,10 @@ select:valid {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent);
   animation: loading 1.5s infinite;
 }
 
@@ -513,103 +464,105 @@ select:valid {
   0% {
     left: -100%;
   }
+
   100% {
     left: 100%;
   }
 }
 
-/* Ensure tooltips are accessible */
+/* Accessibility utilities */
 [role="tooltip"] {
   position: absolute;
-  z-index: 1000;
-  padding: 0.5rem;
   background: var(--safe-bg-dark);
   color: var(--safe-text-dark);
-  border: 1px solid var(--safe-text-dark);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
   font-size: 0.875rem;
+  z-index: 1000;
   max-width: 200px;
+  word-wrap: break-word;
 }
 
-/* Modal accessibility */
 [role="dialog"] {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background: var(--safe-bg-light);
+  border: 2px solid var(--safe-accent);
+  padding: 1rem;
   z-index: 1000;
-  background: var(--background);
-  border: 3px solid var(--foreground);
-  padding: 2rem;
   max-width: 90vw;
   max-height: 90vh;
-  overflow-y: auto;
+  overflow: auto;
 }
 
 [role="dialog"]:focus {
-  outline: none;
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
 }
 
-/* Ensure proper table accessibility */
+/* Table styles */
 table {
-  border-collapse: collapse;
   width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
 }
 
 th,
 td {
-  border: 1px solid var(--foreground);
   padding: 0.75rem;
   text-align: left;
+  border-bottom: 1px solid var(--safe-text-medium);
 }
 
 th {
+  font-weight: 700;
   background-color: var(--safe-bg-light);
-  color: var(--safe-text-light);
-  font-weight: bold;
 }
 
-/* Improve list accessibility */
+/* List styles */
 ul,
 ol {
-  padding-left: 2rem;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
 }
 
 li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
-/* Ensure proper button states */
+/* Disabled state */
 button:disabled,
 input:disabled,
-textarea:disabled,
-select:disabled {
-  opacity: 0.6;
+select:disabled,
+textarea:disabled {
+  opacity: 0.5;
   cursor: not-allowed;
+  pointer-events: none;
 }
 
 button:disabled:hover,
 input:disabled:hover,
-textarea:disabled:hover,
-select:disabled:hover {
-  background-color: initial;
-  color: initial;
+select:disabled:hover,
+textarea:disabled:hover {
+  opacity: 0.5;
 }
-/* Additional contrast-safe utility classes */
+
+/* Contrast-safe components */
 .contrast-safe-button {
-  background: var(--background);
-  color: var(--foreground);
-  border: 2px solid var(--foreground);
+  background-color: var(--safe-accent);
+  color: var(--safe-text-dark);
+  border: 3px solid var(--safe-text-dark);
   padding: 0.75rem 1.5rem;
-  font-family: "Space Mono", monospace;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-weight: 700;
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .contrast-safe-button:hover {
-  background: var(--foreground);
-  color: var(--background);
+  background-color: var(--safe-text-dark);
+  color: var(--safe-accent);
 }
 
 .contrast-safe-button:focus {
@@ -617,98 +570,94 @@ select:disabled:hover {
   outline-offset: 2px;
 }
 
-/* Contrast-safe link styles */
 .contrast-safe-link {
-  color: var(--foreground);
+  color: var(--safe-accent);
   text-decoration: underline;
-  text-decoration-color: var(--safe-accent);
-  text-underline-offset: 0.2em;
+  font-weight: 600;
   transition: all 0.2s ease;
 }
 
 .contrast-safe-link:hover {
-  color: var(--safe-accent);
-  text-decoration-color: var(--foreground);
+  color: var(--safe-text-dark);
+  background-color: var(--safe-accent);
 }
 
 .contrast-safe-link:focus {
-  outline: 2px solid var(--safe-accent);
+  outline: 3px solid var(--safe-accent);
   outline-offset: 2px;
-  background: var(--safe-accent);
-  color: var(--safe-text-light);
   text-decoration: none;
 }
 
-/* Contrast-safe card styles */
 .contrast-safe-card {
-  background: var(--background);
-  color: var(--foreground);
-  border: 3px solid var(--foreground);
+  background-color: var(--safe-bg-light);
+  border: 3px solid var(--safe-text-light);
   padding: 1.5rem;
-  box-shadow: 5px 5px 0px var(--foreground);
+  transition: all 0.2s ease;
 }
 
 .contrast-safe-card:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 7px 7px 0px var(--foreground);
+  border-color: var(--safe-accent);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Contrast-safe text on colored backgrounds */
+/* Text on different backgrounds */
 .text-on-yellow-bg {
-  background: var(--safe-accent);
-  color: var(--safe-text-light);
-  padding: 0.25rem 0.5rem;
+  color: var(--safe-text-dark);
 }
 
 .text-on-dark-bg {
-  background: var(--safe-bg-dark);
   color: var(--safe-text-dark);
-  padding: 0.25rem 0.5rem;
 }
 
 .text-on-light-bg {
-  background: var(--safe-bg-light);
   color: var(--safe-text-light);
-  padding: 0.25rem 0.5rem;
 }
 
-/* Skip link styles for accessibility */
+/* Skip link */
 .skip-link {
   position: absolute;
   top: -40px;
   left: 6px;
-  background: var(--foreground);
-  color: var(--safe-accent);
-  padding: 8px 16px;
+  background: var(--safe-accent);
+  color: var(--safe-text-dark);
+  padding: 8px;
   text-decoration: none;
-  font-family: "Space Mono", monospace;
-  font-weight: bold;
-  font-size: 14px;
-  border: 3px solid var(--safe-accent);
-  z-index: 9999;
-  transition: top 0.3s;
+  z-index: 10000;
+  border: 3px solid var(--safe-text-dark);
+  font-weight: 700;
 }
 
 .skip-link:focus {
   top: 6px;
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
 }
 
-/* Ensure proper contrast for form elements */
+/* Form fields */
 input[type="text"],
 input[type="email"],
 input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
 textarea,
 select {
-  background: var(--background);
-  color: var(--foreground);
-  border: 2px solid var(--foreground);
+  width: 100%;
   padding: 0.75rem;
-  font-family: "Space Mono", monospace;
+  border: 2px solid var(--safe-text-medium);
+  border-radius: 0.25rem;
+  font-family: inherit;
+  font-size: inherit;
+  background-color: var(--safe-bg-light);
+  color: var(--safe-text-light);
 }
 
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
 textarea:focus,
 select:focus {
   outline: 3px solid var(--safe-accent);
@@ -716,1225 +665,371 @@ select:focus {
   border-color: var(--safe-accent);
 }
 
-/* Contrast-safe status indicators */
+/* Status indicators */
 .status-success {
-  background: #10b981;
-  color: #ffffff;
-  padding: 0.5rem 1rem;
-  border: 2px solid #065f46;
-}
-
-.status-error {
-  background: #ef4444;
-  color: #ffffff;
-  padding: 0.5rem 1rem;
-  border: 2px solid #991b1b;
-}
-
-.status-warning {
-  background: var(--safe-accent);
-  color: var(--safe-text-light);
-  padding: 0.5rem 1rem;
-  border: 2px solid var(--safe-text-light);
-}
-
-.status-info {
-  background: var(--safe-bg-light);
-  color: var(--safe-text-light);
-  padding: 0.5rem 1rem;
-  border: 2px solid var(--safe-text-light);
-}
-/* Enhanced focus states for navigation elements */
-.nav-focus-safe:focus-visible {
-  outline: 3px solid var(--brutalist-yellow);
-  outline-offset: 2px;
-  background: var(--brutalist-yellow);
-  color: var(--text-on-yellow);
-  /* Enhanced visibility with contrasting ring */
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--brutalist-yellow),
-    0 0 8px rgba(255, 255, 0, 0.5);
-  /* Add subtle transform for better attention */
-  transform: translateY(-1px);
-  transition: all 0.2s ease;
-}
-
-[data-theme="dark"] .nav-focus-safe:focus-visible {
-  background: var(--brutalist-yellow);
-  color: var(--text-on-yellow);
-  box-shadow: 0 0 0 1px var(--brutalist-black),
-    0 0 0 5px var(--brutalist-yellow), 0 0 8px rgba(255, 255, 0, 0.5);
-}
-
-/* Mobile navigation focus styles */
-.mobile-nav-item:focus-visible {
-  outline: 3px solid var(--brutalist-yellow);
-  outline-offset: 2px;
-  background: var(--brutalist-yellow);
-  color: var(--text-on-yellow);
-  padding-left: 1rem;
-  border-left: 5px solid var(--brutalist-black);
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--brutalist-yellow);
-  transform: translateX(4px);
-  transition: all 0.2s ease;
-}
-
-/* Enhanced focus styles for interactive cards */
-.brutalist-card:focus-visible {
-  outline: 3px solid var(--brutalist-yellow);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--brutalist-yellow),
-    0 0 12px rgba(255, 255, 0, 0.6);
-  transform: translateY(-2px);
-  transition: all 0.2s ease;
-}
-
-/* Enhanced focus styles for buttons with different variants */
-.brutalist-btn:focus-visible {
-  outline: 3px solid var(--brutalist-yellow);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--brutalist-yellow),
-    0 0 8px rgba(255, 255, 0, 0.5);
-  transform: translateY(-1px) scale(1.02);
-  transition: all 0.2s ease;
-}
-
-/* Focus styles for sticky contact button */
-.sticky-contact:focus-visible,
-.sticky-contact-option:focus-visible {
-  outline: 3px solid var(--brutalist-yellow);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--brutalist-yellow),
-    0 0 12px rgba(255, 255, 0, 0.7);
-  transform: translateY(-2px) scale(1.05);
-  transition: all 0.2s ease;
-}
-
-/* Focus styles for form elements with enhanced visibility */
-.form-field:focus-visible {
-  outline: 3px solid var(--brutalist-yellow);
-  outline-offset: 2px;
-  border-color: var(--brutalist-yellow);
-  border-width: 3px;
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--brutalist-yellow),
-    inset 0 0 8px rgba(255, 255, 0, 0.1);
-}
-
-/* Focus styles for skip links with maximum visibility */
-.skip-link:focus {
-  outline: 3px solid var(--brutalist-yellow);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 1px var(--brutalist-black),
-    0 0 0 5px var(--brutalist-yellow), 0 0 16px rgba(255, 255, 0, 0.8);
-  transform: scale(1.05);
-  animation: skip-link-attention 0.5s ease-in-out;
-}
-
-@keyframes skip-link-attention {
-  0%,
-  100% {
-    transform: scale(1.05);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-}
-
-/* High contrast mode enhancements */
-@media (prefers-contrast: high) {
-  *:focus-visible {
-    outline-width: 4px;
-    outline-offset: 3px;
-    box-shadow: 0 0 0 2px Canvas, 0 0 0 7px Highlight, 0 0 12px Highlight;
-  }
-
-  button:focus-visible,
-  a:focus-visible {
-    transform: translateY(-2px) scale(1.03);
-  }
-}
-
-/* Forced colors mode (Windows High Contrast) */
-@media (forced-colors: active) {
-  *:focus-visible {
-    outline: 3px solid Highlight;
-    outline-offset: 2px;
-    box-shadow: none;
-    background: Highlight;
-    color: HighlightText;
-  }
-
-  .nav-focus-safe:focus-visible,
-  .mobile-nav-item:focus-visible {
-    background: Highlight;
-    color: HighlightText;
-    border-color: HighlightText;
-  }
-}
-
-/* Reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  *:focus-visible {
-    animation: none;
-    transition: none;
-    transform: none;
-  }
-
-  .focus-pulse,
-  .skip-link-attention {
-    animation: none;
-  }
-}
-
-/* Focus styles for dark mode toggle with enhanced visibility */
-.brutalist-toggle:focus-visible {
-  outline: 3px solid var(--brutalist-yellow);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--brutalist-yellow),
-    0 0 12px rgba(255, 255, 0, 0.6);
-  animation: toggle-focus-glow 1.5s ease-in-out infinite;
-}
-
-@keyframes toggle-focus-glow {
-  0%,
-  100% {
-    box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--brutalist-yellow),
-      0 0 12px rgba(255, 255, 0, 0.6);
-  }
-  50% {
-    box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--brutalist-yellow),
-      0 0 16px rgba(255, 255, 0, 0.8);
-  }
-}
-
-[data-theme="dark"] .brutalist-toggle:focus-visible {
-  box-shadow: 0 0 0 1px var(--brutalist-black),
-    0 0 0 5px var(--brutalist-yellow), 0 0 12px rgba(255, 255, 0, 0.6);
-}
-/* Enhanced high contrast mode for maximum accessibility */
-@media (prefers-contrast: high) {
-  *:focus-visible {
-    outline-width: 5px;
-    outline-offset: 4px;
-    /* Maximum contrast with enhanced visibility */
-    box-shadow: 0 0 0 2px Canvas, 0 0 0 8px Highlight, 0 0 16px Highlight,
-      0 0 24px rgba(255, 255, 255, 0.3);
-    /* Enhanced animation for high contrast */
-    animation: focus-high-contrast-pulse 1.2s ease-in-out infinite;
-  }
-
-  button:focus-visible,
-  a:focus-visible {
-    transform: translateY(-3px) scale(1.05);
-    /* Additional emphasis in high contrast mode */
-    filter: drop-shadow(0 0 8px Highlight);
-  }
-
-  input:focus-visible,
-  textarea:focus-visible,
-  select:focus-visible {
-    border-width: 4px;
-    /* Enhanced inner glow for high contrast */
-    box-shadow: 0 0 0 2px Canvas, 0 0 0 8px Highlight, 0 0 16px Highlight,
-      inset 0 0 12px rgba(255, 255, 255, 0.2);
-  }
-}
-
-/* High contrast pulse animation */
-@keyframes focus-high-contrast-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 2px Canvas, 0 0 0 8px Highlight, 0 0 16px Highlight,
-      0 0 24px rgba(255, 255, 255, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 0 2px Canvas, 0 0 0 8px Highlight, 0 0 20px Highlight,
-      0 0 32px rgba(255, 255, 255, 0.5);
-  }
-}
-
-/* Enhanced forced colors mode (Windows High Contrast) for maximum visibility */
-@media (forced-colors: active) {
-  *:focus-visible {
-    outline: 4px solid Highlight;
-    outline-offset: 3px;
-    /* Use system colors for maximum compatibility */
-    box-shadow: 0 0 0 1px Canvas, 0 0 0 7px Highlight;
-    background: Highlight;
-    color: HighlightText;
-    /* Remove animations in forced colors mode for better performance */
-    animation: none;
-  }
-
-  button:focus-visible,
-  a:focus-visible {
-    background: Highlight;
-    color: HighlightText;
-    border-color: HighlightText;
-    transform: translateY(-2px) scale(1.03);
-  }
-
-  input:focus-visible,
-  textarea:focus-visible,
-  select:focus-visible {
-    background: Field;
-    color: FieldText;
-    border-color: Highlight;
-    border-width: 3px;
-  }
-
-  /* Ensure navigation elements are visible in forced colors */
-  .nav-focus-safe:focus-visible,
-  .mobile-nav-item:focus-visible {
-    background: Highlight;
-    color: HighlightText;
-    border-color: HighlightText;
-  }
-
-  /* Ensure brutalist components are visible in forced colors */
-  .brutalist-btn:focus-visible,
-  .brutalist-card:focus-visible,
-  .brutalist-toggle:focus-visible {
-    background: Highlight;
-    color: HighlightText;
-    border-color: HighlightText;
-  }
-}
-
-/* Enhanced focus styles for reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  *:focus-visible {
-    /* Remove animations but maintain visibility */
-    animation: none;
-    /* Ensure static focus indicators are still highly visible */
-    box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
-      0 0 12px rgba(255, 255, 0, 0.6);
-  }
-
-  button:focus-visible,
-  a:focus-visible {
-    /* Remove transform animations but maintain emphasis */
-    transform: none;
-    /* Use static visual emphasis instead */
-    filter: drop-shadow(0 0 4px rgba(255, 255, 0, 0.8));
-  }
-
-  .focus-pulse,
-  .focus-visibility-pulse,
-  .focus-high-contrast-pulse {
-    animation: none;
-  }
-}
-
-/* Enhanced focus styles for specific component classes */
-.brutalist-btn:focus-visible {
-  /* Enhanced button focus with maximum visibility */
-  outline: 3px solid var(--safe-accent);
-  outline-offset: 3px;
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 6px var(--safe-accent),
-    0 0 16px rgba(255, 255, 0, 0.6), 0 0 24px rgba(255, 255, 0, 0.3);
-  transform: translateY(-2px) scale(1.03);
-  filter: drop-shadow(0 0 8px rgba(255, 255, 0, 0.7));
-}
-
-.brutalist-card:focus-visible {
-  /* Enhanced card focus with maximum visibility */
-  outline: 3px solid var(--safe-accent);
-  outline-offset: 3px;
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 6px var(--safe-accent),
-    0 0 20px rgba(255, 255, 0, 0.6), 0 0 32px rgba(255, 255, 0, 0.3);
-  transform: translateY(-3px) scale(1.02);
-}
-
-.nav-focus-safe:focus-visible,
-.mobile-nav-item:focus-visible {
-  /* Enhanced navigation focus with maximum visibility */
-  outline: 3px solid var(--safe-accent);
-  outline-offset: 2px;
-  background: var(--safe-accent);
-  color: var(--text-on-yellow);
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 6px var(--safe-accent),
-    0 0 16px rgba(255, 255, 0, 0.7);
-  transform: translateY(-1px) scale(1.02);
-}
-
-.form-field:focus-visible {
-  /* Enhanced form field focus with maximum visibility */
-  outline: 3px solid var(--safe-accent);
-  outline-offset: 2px;
-  border-color: var(--safe-accent);
-  border-width: 3px;
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 6px var(--safe-accent),
-    0 0 12px rgba(255, 255, 0, 0.5), inset 0 0 8px rgba(255, 255, 0, 0.1);
-}
-
-.skip-link:focus {
-  /* Enhanced skip link focus with maximum visibility and attention */
-  outline: 4px solid var(--safe-accent);
-  outline-offset: 3px;
-  box-shadow: 0 0 0 1px var(--brutalist-black), 0 0 0 7px var(--safe-accent),
-    0 0 20px rgba(255, 255, 0, 0.8), 0 0 32px rgba(255, 255, 0, 0.5);
-  transform: scale(1.05);
-  animation: skip-link-enhanced-attention 0.6s ease-in-out;
-}
-
-@keyframes skip-link-enhanced-attention {
-  0%,
-  100% {
-    transform: scale(1.05);
-  }
-  25% {
-    transform: scale(1.08);
-  }
-  75% {
-    transform: scale(1.12);
-  }
-}
-
-/* Enhanced focus styles for sticky contact button */
-.sticky-contact:focus-visible,
-.sticky-contact-option:focus-visible {
-  outline: 3px solid var(--safe-accent);
-  outline-offset: 3px;
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 6px var(--safe-accent),
-    0 0 20px rgba(255, 255, 0, 0.7), 0 0 32px rgba(255, 255, 0, 0.4);
-  transform: translateY(-3px) scale(1.08);
-  filter: drop-shadow(0 0 10px rgba(255, 255, 0, 0.8));
-}
-
-/* Enhanced focus styles for dark mode toggle */
-.brutalist-toggle:focus-visible {
-  outline: 3px solid var(--safe-accent);
-  outline-offset: 3px;
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 6px var(--safe-accent),
-    0 0 16px rgba(255, 255, 0, 0.6), 0 0 24px rgba(255, 255, 0, 0.3);
-  transform: translateY(-1px) scale(1.03);
-  animation: toggle-enhanced-glow 1.5s ease-in-out infinite;
-}
-
-@keyframes toggle-enhanced-glow {
-  0%,
-  100% {
-    box-shadow: 0 0 0 1px var(--background), 0 0 0 6px var(--safe-accent),
-      0 0 16px rgba(255, 255, 0, 0.6), 0 0 24px rgba(255, 255, 0, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 0 1px var(--background), 0 0 0 6px var(--safe-accent),
-      0 0 20px rgba(255, 255, 0, 0.8), 0 0 32px rgba(255, 255, 0, 0.5);
-  }
-}
-
-/* Focus trap styles for modals and overlays */
-.focus-trap:focus-within {
-  /* Ensure focus trap containers are clearly defined */
-  outline: 2px dashed var(--safe-accent);
-  outline-offset: 4px;
-}
-
-/* Enhanced focus styles for interactive elements in different contexts */
-[role="button"]:focus-visible,
-[role="link"]:focus-visible,
-[role="menuitem"]:focus-visible,
-[role="tab"]:focus-visible {
-  outline: 3px solid var(--safe-accent);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent),
-    0 0 12px rgba(255, 255, 0, 0.5);
-  animation: focus-visibility-pulse 1.5s ease-in-out infinite;
-}
-
-/* Ensure minimum touch target size for focused elements */
-button:focus-visible,
-a:focus-visible,
-[role="button"]:focus-visible,
-[role="link"]:focus-visible {
-  min-height: 44px;
-  min-width: 44px;
-}
-
-/* Enhanced focus styles for table elements */
-th:focus-visible,
-td:focus-visible {
-  outline: 2px solid var(--safe-accent);
-  outline-offset: 1px;
-  background: rgba(255, 255, 0, 0.1);
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 4px var(--safe-accent);
-}
-
-/* Enhanced focus styles for list items that are interactive */
-li[tabindex]:focus-visible,
-li[role="button"]:focus-visible,
-li[role="menuitem"]:focus-visible {
-  outline: 2px solid var(--safe-accent);
-  outline-offset: 2px;
-  background: rgba(255, 255, 0, 0.1);
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 4px var(--safe-accent);
-}
-/* Accessibility Control Center Styles */
-:root {
-  /* Default accessibility settings */
-  --accessibility-font-size: 16px;
-  --accessibility-font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas,
-    "Liberation Mono", Menlo, monospace;
-  --accessibility-contrast: 1;
-}
-
-/* Font size adjustments */
-.accessibility-font-small {
-  font-size: 14px;
-}
-
-.accessibility-font-medium {
-  font-size: 16px;
-}
-
-.accessibility-font-large {
-  font-size: 18px;
-}
-
-.accessibility-font-extra-large {
-  font-size: 22px;
-}
-
-/* Font family adjustments */
-.accessibility-font-default {
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas,
-    "Liberation Mono", Menlo, monospace;
-}
-
-.accessibility-font-dyslexia-friendly {
-  font-family: "OpenDyslexic", ui-monospace, monospace;
-}
-
-.accessibility-font-high-readability {
-  font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-/* Contrast ratio adjustments */
-.accessibility-contrast-normal {
-  filter: contrast(1);
-}
-
-.accessibility-contrast-high {
-  filter: contrast(1.2);
-}
-
-.accessibility-contrast-maximum {
-  filter: contrast(1.5);
-}
-
-/* Enhanced focus indicators */
-.enhanced-focus *:focus-visible {
-  outline: 4px solid var(--safe-accent) !important;
-  outline-offset: 3px !important;
-  box-shadow: 0 0 0 1px var(--background), 0 0 0 7px var(--safe-accent),
-    0 0 16px rgba(255, 255, 0, 0.7) !important;
-  animation: enhanced-focus-pulse 1.5s ease-in-out infinite !important;
-}
-
-@keyframes enhanced-focus-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 1px var(--background), 0 0 0 7px var(--safe-accent),
-      0 0 16px rgba(255, 255, 0, 0.7);
-  }
-  50% {
-    box-shadow: 0 0 0 1px var(--background), 0 0 0 7px var(--safe-accent),
-      0 0 20px rgba(255, 255, 0, 0.9);
-  }
-}
-
-/* Screen reader optimizations */
-.screen-reader-optimized {
-  /* Improve heading hierarchy */
-}
-
-.screen-reader-optimized h1,
-.screen-reader-optimized h2,
-.screen-reader-optimized h3,
-.screen-reader-optimized h4,
-.screen-reader-optimized h5,
-.screen-reader-optimized h6 {
-  /* Ensure proper heading structure */
-  position: relative;
-}
-
-.screen-reader-optimized h1::before {
-  content: "Main heading: ";
-  position: absolute;
-  left: -10000px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-.screen-reader-optimized h2::before {
-  content: "Section heading: ";
-  position: absolute;
-  left: -10000px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-.screen-reader-optimized h3::before {
-  content: "Subsection heading: ";
-  position: absolute;
-  left: -10000px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-/* Enhanced keyboard navigation */
-.enhanced-keyboard-nav {
-  /* Skip links */
-}
-
-.enhanced-keyboard-nav .skip-link {
-  position: absolute;
-  top: -40px;
-  left: 6px;
-  background: var(--foreground);
-  color: var(--safe-accent);
-  padding: 12px 20px;
-  text-decoration: none;
-  font-family: var(--accessibility-font-family);
-  font-weight: bold;
-  font-size: var(--accessibility-font-size);
-  border: 3px solid var(--safe-accent);
-  z-index: 9999;
-  transition: top 0.3s;
-  border-radius: 0;
-}
-
-.enhanced-keyboard-nav .skip-link:focus {
-  top: 6px;
-  outline: 4px solid var(--safe-accent);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 1px var(--foreground), 0 0 0 8px var(--safe-accent),
-    0 0 20px rgba(255, 255, 0, 0.8);
-}
-
-/* Apply accessibility settings globally */
-body {
-  font-size: var(--accessibility-font-size);
-  font-family: var(--accessibility-font-family);
-  filter: contrast(var(--accessibility-contrast));
-}
-
-/* Ensure all text respects accessibility font size */
-p,
-span,
-div,
-li,
-td,
-th,
-label,
-input,
-textarea,
-select,
-button {
-  font-size: inherit;
-  font-family: inherit;
-}
-
-/* Headings maintain relative sizing */
-h1 {
-  font-size: calc(var(--accessibility-font-size) * 2.5);
-}
-
-h2 {
-  font-size: calc(var(--accessibility-font-size) * 2);
-}
-
-h3 {
-  font-size: calc(var(--accessibility-font-size) * 1.75);
-}
-
-h4 {
-  font-size: calc(var(--accessibility-font-size) * 1.5);
-}
-
-h5 {
-  font-size: calc(var(--accessibility-font-size) * 1.25);
-}
-
-h6 {
-  font-size: var(--accessibility-font-size);
-}
-
-/* Audio descriptions and captions support */
-.audio-descriptions-enabled [data-audio-description] {
-  position: relative;
-}
-
-.audio-descriptions-enabled [data-audio-description]::after {
-  content: attr(data-audio-description);
-  position: absolute;
-  left: -10000px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-.captions-enabled video {
-  /* Ensure captions are always visible when enabled */
-}
-
-.captions-enabled video::cue {
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  font-size: calc(var(--accessibility-font-size) * 0.9);
-  font-family: var(--accessibility-font-family);
-}
-
-/* High contrast mode enhancements for accessibility settings */
-@media (prefers-contrast: high) {
-  .enhanced-focus *:focus-visible {
-    outline-width: 5px !important;
-    outline-offset: 4px !important;
-    box-shadow: 0 0 0 2px Canvas, 0 0 0 9px Highlight, 0 0 20px Highlight !important;
-  }
-}
-
-/* Forced colors mode support for accessibility settings */
-@media (forced-colors: active) {
-  .enhanced-focus *:focus-visible {
-    outline: 4px solid Highlight !important;
-    outline-offset: 3px !important;
-    box-shadow: 0 0 0 1px Canvas, 0 0 0 7px Highlight !important;
-    background: Highlight !important;
-    color: HighlightText !important;
-  }
-}
-
-/* Reduced motion support for accessibility settings */
-@media (prefers-reduced-motion: reduce) {
-  .enhanced-focus *:focus-visible {
-    animation: none !important;
-  }
-
-  .enhanced-focus-pulse {
-    animation: none !important;
-  }
-}
-
-/* Print styles for accessibility */
-@media print {
-  body {
-    font-size: 12pt !important;
-    font-family: serif !important;
-    filter: none !important;
-  }
-
-  .screen-reader-optimized h1::before,
-  .screen-reader-optimized h2::before,
-  .screen-reader-optimized h3::before {
-    content: none !important;
-  }
-}
-
-/* Theme Customization Studio Styles */
-:root {
-  /* Theme customization variables */
-  --theme-primary: #000000;
-  --theme-accent: #ffff00;
-  --theme-spacing: 1rem;
-  --theme-color-scheme: auto;
-}
-
-/* Color scheme implementations */
-[data-color-scheme="light"] {
-  --background: #ffffff;
-  --foreground: #000000;
-  --safe-text-light: #000000;
-  --safe-text-dark: #ffffff;
-  --safe-bg-light: #f5f5f5;
-  --safe-bg-dark: #2a2a2a;
-}
-
-[data-color-scheme="dark"] {
-  --background: #000000;
-  --foreground: #ffffff;
-  --safe-text-light: #ffffff;
-  --safe-text-dark: #000000;
-  --safe-bg-light: #2a2a2a;
-  --safe-bg-dark: #f5f5f5;
-}
-
-[data-color-scheme="high-contrast"] {
-  --background: #000000;
-  --foreground: #ffffff;
-  --safe-text-light: #ffffff;
-  --safe-text-dark: #000000;
-  --safe-bg-light: #000000;
-  --safe-bg-dark: #ffffff;
-  --theme-primary: #ffffff;
-  --theme-accent: #ffff00;
-}
-
-[data-color-scheme="high-contrast"] * {
-  background-color: var(--background) !important;
-  color: var(--foreground) !important;
-  border-color: var(--foreground) !important;
-}
-
-[data-color-scheme="high-contrast"] .bg-yellow-400,
-[data-color-scheme="high-contrast"] .bg-brutalist-yellow {
-  background-color: var(--theme-accent) !important;
-  color: var(--background) !important;
-}
-
-/* Layout density implementations */
-.layout-density-compact {
-  --theme-spacing: 0.75rem;
-}
-
-.layout-density-comfortable {
-  --theme-spacing: 1rem;
-}
-
-.layout-density-spacious {
-  --theme-spacing: 1.5rem;
-}
-
-/* Apply theme spacing to components */
-.theme-spacing {
-  padding: var(--theme-spacing);
-}
-
-.theme-spacing-x {
-  padding-left: var(--theme-spacing);
-  padding-right: var(--theme-spacing);
-}
-
-.theme-spacing-y {
-  padding-top: var(--theme-spacing);
-  padding-bottom: var(--theme-spacing);
-}
-
-.theme-gap {
-  gap: var(--theme-spacing);
-}
-
-.theme-margin {
-  margin: var(--theme-spacing);
-}
-
-/* Theme color applications */
-.theme-primary-color {
-  color: var(--theme-primary);
-}
-
-.theme-primary-bg {
-  background-color: var(--theme-primary);
-}
-
-.theme-primary-border {
-  border-color: var(--theme-primary);
-}
-
-.theme-accent-color {
-  color: var(--theme-accent);
-}
-
-.theme-accent-bg {
-  background-color: var(--theme-accent);
-}
-
-.theme-accent-border {
-  border-color: var(--theme-accent);
-}
-
-/* Reduced motion implementation */
-.reduce-motion *,
-.reduce-motion *::before,
-.reduce-motion *::after {
-  animation-duration: 0.01ms !important;
-  animation-iteration-count: 1 !important;
-  transition-duration: 0.01ms !important;
-  scroll-behavior: auto !important;
-}
-
-/* Animation preferences */
-.animations-enabled {
-  /* Default animations are enabled */
-}
-
-.animations-disabled *,
-.animations-disabled *::before,
-.animations-disabled *::after {
-  animation: none !important;
-  transition: none !important;
-}
-
-/* Custom CSS safety wrapper */
-.custom-css-wrapper {
-  /* Isolate custom CSS to prevent global interference */
-  contain: style;
-}
-
-/* Theme preview styles */
-.theme-preview-panel {
-  border: 2px solid var(--theme-primary);
-  background: var(--background);
-  color: var(--foreground);
-  padding: var(--theme-spacing);
-  font-family: var(--accessibility-font-family);
-  font-size: var(--accessibility-font-size);
-}
-
-.theme-preview-button {
-  background: var(--theme-accent);
-  color: var(--background);
-  border: 2px solid var(--theme-primary);
-  padding: calc(var(--theme-spacing) * 0.5) var(--theme-spacing);
-  font-family: inherit;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.theme-preview-button:hover {
-  background: var(--theme-primary);
-  color: var(--theme-accent);
-}
-
-.theme-preview-button:focus-visible {
-  outline: 3px solid var(--theme-accent);
-  outline-offset: 2px;
-}
-
-/* Color preset buttons */
-.color-preset-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  color: #059669;
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
   padding: 0.5rem;
-  border: 2px solid var(--theme-primary);
-  background: var(--background);
-  color: var(--foreground);
-  font-family: inherit;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.color-preset-button:hover {
-  background: var(--safe-bg-light);
-}
-
-.color-preset-button:focus-visible {
-  outline: 2px solid var(--theme-accent);
-  outline-offset: 2px;
-}
-
-.color-preset-swatch {
-  width: 1rem;
-  height: 1rem;
-  border: 1px solid var(--theme-primary);
-  flex-shrink: 0;
-}
-
-/* Performance impact indicators */
-.performance-impact-low {
-  background: #dcfce7;
-  border-color: #16a34a;
-  color: #166534;
-}
-
-.performance-impact-medium {
-  background: #fef3c7;
-  border-color: #d97706;
-  color: #92400e;
-}
-
-.performance-impact-high {
-  background: #fee2e2;
-  border-color: #dc2626;
-  color: #991b1b;
-}
-
-/* Accessibility note styles */
-.accessibility-note {
-  border: 1px solid #3b82f6;
-  background: #eff6ff;
-  color: #1e40af;
-  padding: 0.75rem;
-  font-size: 0.875rem;
   border-radius: 0.25rem;
 }
 
-.accessibility-note-icon {
-  color: #3b82f6;
-  flex-shrink: 0;
-}
-
-/* CSS validation error styles */
-.css-validation-error {
+.status-error {
   color: #dc2626;
-  font-size: 0.875rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
 }
 
-/* Theme settings form controls */
-.theme-radio-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.status-warning {
+  color: #d97706;
+  background-color: #fffbeb;
+  border: 1px solid #fed7aa;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
 }
 
-.theme-radio-option {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem;
-  border: 2px solid #d1d5db;
-  background: var(--background);
-  color: var(--foreground);
-  cursor: pointer;
-  transition: all 0.2s ease;
+.status-info {
+  color: #2563eb;
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
 }
 
-.theme-radio-option:hover {
-  border-color: var(--theme-primary);
+/* Navigation focus styles */
+.nav-focus-safe:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  background-color: var(--safe-accent);
+  color: var(--safe-text-dark);
+  text-decoration: none;
 }
 
-.theme-radio-option.selected {
-  border-color: var(--theme-primary);
-  background: var(--theme-primary);
-  color: var(--background);
+[data-theme="dark"] .nav-focus-safe:focus-visible {
+  background-color: var(--safe-accent);
+  color: var(--safe-text-dark);
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
 }
 
-.theme-radio-option input[type="radio"] {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
+/* Mobile navigation focus */
+.mobile-nav-item:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  background-color: var(--safe-accent);
+  color: var(--safe-text-dark);
 }
 
-.theme-radio-preview {
-  width: 2rem;
-  height: 2rem;
-  border: 2px solid currentColor;
-  flex-shrink: 0;
+/* Card focus styles */
+.brutalist-card:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  border-color: var(--safe-accent);
 }
 
-.theme-toggle-control {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  cursor: pointer;
+/* Button focus styles */
+.brutalist-btn:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  background-color: var(--safe-accent);
+  color: var(--safe-text-dark);
 }
 
-.theme-toggle-switch {
-  position: relative;
-  width: 3rem;
-  height: 1.5rem;
-  border: 2px solid var(--theme-primary);
-  background: var(--background);
-  transition: all 0.2s ease;
+/* Sticky contact button focus */
+.sticky-contact:focus-visible,
+.contact-button:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  background-color: var(--safe-accent);
+  color: var(--safe-text-dark);
 }
 
-.theme-toggle-switch.active {
-  background: var(--theme-primary);
+/* Form field focus */
+.form-field:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  border-color: var(--safe-accent);
 }
 
-.theme-toggle-thumb {
+/* Skip link focus */
+.skip-link:focus {
   position: absolute;
   top: 0;
   left: 0;
-  width: 1rem;
-  height: 1rem;
-  background: var(--theme-accent);
-  border: 1px solid var(--theme-primary);
-  transition: transform 0.2s ease;
-}
-
-.theme-toggle-switch.active .theme-toggle-thumb {
-  transform: translateX(1.5rem);
-}
-
-.theme-color-input {
-  width: 4rem;
-  height: 4rem;
-  border: 2px solid var(--theme-primary);
-  cursor: pointer;
-  background: none;
-  padding: 0;
-}
-
-.theme-color-input::-webkit-color-swatch-wrapper {
-  padding: 0;
-  border: none;
-}
-
-.theme-color-input::-webkit-color-swatch {
-  border: none;
-}
-
-.theme-color-input::-moz-color-swatch {
-  border: none;
-}
-
-.theme-textarea {
-  width: 100%;
-  min-height: 8rem;
-  padding: 0.75rem;
-  border: 2px solid var(--theme-primary);
-  background: var(--background);
-  color: var(--foreground);
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas,
-    "Liberation Mono", Menlo, monospace;
-  font-size: 0.875rem;
-  resize: vertical;
-  line-height: 1.5;
-}
-
-.theme-textarea:focus {
-  outline: 2px solid var(--theme-accent);
-  outline-offset: 2px;
-}
-
-/* Save status indicators */
-.save-status-saving {
-  background: #fbbf24;
-  color: #92400e;
-}
-
-.save-status-saved {
-  background: #34d399;
-  color: #065f46;
-}
-
-.save-status-error {
-  background: #f87171;
-  color: #991b1b;
-}
-
-/* Action button styles */
-.theme-action-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border: 2px solid var(--theme-primary);
-  background: var(--background);
-  color: var(--foreground);
-  font-family: inherit;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.theme-action-button:hover:not(:disabled) {
-  background: var(--theme-primary);
-  color: var(--background);
-}
-
-.theme-action-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.theme-action-button:focus-visible {
-  outline: 2px solid var(--theme-accent);
-  outline-offset: 2px;
-}
-
-.theme-reset-button {
-  background: #f3f4f6;
-  border-color: var(--theme-primary);
-}
-
-.theme-reset-button:hover:not(:disabled) {
-  background: var(--theme-primary);
-  color: var(--background);
-}
-
-/* Loading spinner */
-.theme-loading-spinner {
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid var(--theme-primary);
-  border-top-color: transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Info panel styles */
-.theme-info-panel {
-  border: 2px solid #fbbf24;
-  background: #fffbeb;
-  color: #92400e;
+  z-index: 9999;
   padding: 1rem;
+  background: var(--safe-accent);
+  color: var(--safe-text-dark);
+  text-decoration: none;
+  border: 3px solid var(--safe-text-dark);
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
 }
 
-.theme-info-icon {
-  color: #f59e0b;
-  flex-shrink: 0;
-}
-
-.theme-performance-panel {
-  border: 2px solid var(--theme-primary);
-  background: #f9fafb;
-  color: var(--foreground);
-  padding: 1.5rem;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .theme-radio-option {
-    padding: 0.5rem;
-    font-size: 0.875rem;
+/* High contrast focus styles */
+@media (prefers-contrast: high) {
+  *:focus-visible {
+    outline: 5px solid var(--safe-accent) !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 0 2px var(--background), 0 0 0 8px var(--safe-accent) !important;
   }
 
-  .theme-color-input {
-    width: 3rem;
-    height: 3rem;
-  }
-
-  .theme-action-button {
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 5px solid var(--safe-accent) !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 0 2px var(--background), 0 0 0 8px var(--safe-accent) !important;
   }
 }
 
-/* Dark mode specific adjustments */
-[data-color-scheme="dark"] .theme-info-panel {
-  background: #451a03;
-  color: #fdba74;
-  border-color: #f59e0b;
+/* Forced colors mode focus */
+@media (forced-colors: active) {
+  *:focus-visible {
+    outline: 3px solid Highlight !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 1px Canvas, 0 0 0 5px Highlight !important;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid Highlight !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 1px Canvas, 0 0 0 5px Highlight !important;
+  }
+
+  .nav-focus-safe:focus-visible,
+  .brutalist-btn:focus-visible,
+  .brutalist-card:focus-visible,
+  .form-field:focus-visible {
+    outline: 3px solid Highlight !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 1px Canvas, 0 0 0 5px Highlight !important;
+  }
 }
 
-[data-color-scheme="dark"] .theme-performance-panel {
-  background: #111827;
-  color: #f9fafb;
+/* Reduced motion focus */
+@media (prefers-reduced-motion: reduce) {
+  *:focus-visible {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .focus-pulse,
+  .focus-glow {
+    animation: none !important;
+  }
 }
 
-[data-color-scheme="dark"] .accessibility-note {
-  background: #1e3a8a;
-  color: #93c5fd;
-  border-color: #3b82f6;
+/* Toggle button focus */
+.brutalist-toggle:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  background-color: var(--safe-accent);
+  color: var(--safe-text-dark);
 }
 
-/* High contrast mode adjustments */
-[data-color-scheme="high-contrast"] .theme-info-panel,
-[data-color-scheme="high-contrast"] .theme-performance-panel,
-[data-color-scheme="high-contrast"] .accessibility-note {
-  background: var(--background) !important;
-  color: var(--foreground) !important;
-  border-color: var(--foreground) !important;
+/* High contrast toggle focus */
+@media (prefers-contrast: high) {
+  *:focus-visible {
+    outline: 5px solid var(--safe-accent) !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 0 2px var(--background), 0 0 0 8px var(--safe-accent) !important;
+  }
+
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 5px solid var(--safe-accent) !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 0 2px var(--background), 0 0 0 8px var(--safe-accent) !important;
+  }
+}
+
+/* Forced colors toggle focus */
+@media (forced-colors: active) {
+  *:focus-visible {
+    outline: 3px solid Highlight !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 1px Canvas, 0 0 0 5px Highlight !important;
+  }
+
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid Highlight !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 1px Canvas, 0 0 0 5px Highlight !important;
+  }
+
+  .nav-focus-safe:focus-visible,
+  .brutalist-btn:focus-visible,
+  .brutalist-card:focus-visible,
+  .form-field:focus-visible {
+    outline: 3px solid Highlight !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 1px Canvas, 0 0 0 5px Highlight !important;
+  }
+}
+
+/* Reduced motion toggle focus */
+@media (prefers-reduced-motion: reduce) {
+  *:focus-visible {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .focus-pulse,
+  .focus-glow {
+    animation: none !important;
+  }
+}
+
+/* Button focus styles */
+.brutalist-btn:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  background-color: var(--safe-accent);
+  color: var(--safe-text-dark);
+}
+
+/* Card focus styles */
+.brutalist-card:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  border-color: var(--safe-accent);
+}
+
+/* Navigation focus styles */
+.nav-focus-safe:focus-visible,
+.mobile-nav-item:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  background-color: var(--safe-accent);
+  color: var(--safe-text-dark);
+  text-decoration: none;
+}
+
+/* Form field focus */
+.form-field:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  border-color: var(--safe-accent);
+}
+
+/* Skip link focus */
+.skip-link:focus {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  padding: 1rem;
+  background: var(--safe-accent);
+  color: var(--safe-text-dark);
+  text-decoration: none;
+  border: 3px solid var(--safe-text-dark);
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+}
+
+/* Sticky contact focus */
+.sticky-contact:focus-visible,
+.contact-button:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  background-color: var(--safe-accent);
+  color: var(--safe-text-dark);
+}
+
+/* Toggle focus */
+.brutalist-toggle:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  background-color: var(--safe-accent);
+  color: var(--safe-text-dark);
+}
+
+/* Focus trap */
+.focus-trap:focus-within {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+}
+
+/* Role-based focus */
+[role="button"]:focus-visible,
+[role="tab"]:focus-visible,
+[role="menuitem"]:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  background-color: var(--safe-accent);
+  color: var(--safe-text-dark);
+}
+
+button:focus-visible,
+input[type="button"]:focus-visible,
+input[type="submit"]:focus-visible,
+input[type="reset"]:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  background-color: var(--safe-accent);
+  color: var(--safe-text-dark);
+}
+
+th:focus-visible,
+td:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  background-color: var(--safe-accent);
+  color: var(--safe-text-dark);
+}
+
+li[tabindex]:focus-visible {
+  outline: 3px solid var(--safe-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--background), 0 0 0 5px var(--safe-accent);
+  background-color: var(--safe-accent);
+  color: var(--safe-text-dark);
 }
